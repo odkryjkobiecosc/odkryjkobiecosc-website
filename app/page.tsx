@@ -1,0 +1,304 @@
+const fears = [
+  "Nie umiem pozować",
+  "Nie wiem, co założyć",
+  "Nie jestem fotogeniczna",
+  "To nie dla mnie",
+];
+
+const experienceFor = [
+  "zbyt długo odkładałaś siebie na później",
+  "chcesz poczuć się pięknie, pewnie i kobieco",
+  "budujesz swoją markę i potrzebujesz profesjonalnego wizerunku",
+  "szukasz czegoś więcej niż tylko zdjęć",
+  "chcesz przeżyć moment tylko dla siebie",
+];
+
+const steps = [
+  ["01", "Rozmowa i plan sesji"],
+  ["02", "Dobór klimatu i stylizacji"],
+  ["03", "Makijaż i przygotowanie"],
+  ["04", "Sesja z prowadzeniem krok po kroku"],
+  ["05", "Odbiór zdjęć i prywatna galeria"],
+];
+
+const packages = [
+  {
+    name: "ESSENCE",
+    price: "1200 zł",
+    text: "Dla kobiet, które chcą zrobić coś dla siebie — spokojnie, elegancko i bez presji.",
+    features: [
+      "konsultacja przed sesją",
+      "dobór klimatu i stylizacji",
+      "profesjonalny makijaż",
+      "prowadzenie krok po kroku",
+      "10 wyretuszowanych zdjęć",
+      "prywatna galeria online",
+    ],
+  },
+  {
+    name: "SIGNATURE",
+    price: "1700 zł",
+    text: "Najbardziej kompletne doświadczenie kobiece — więcej czasu, więcej stylizacji, więcej przestrzeni.",
+    features: [
+      "pełna konsultacja i plan sesji",
+      "2–3 stylizacje",
+      "makijaż i przygotowanie",
+      "sesja kobieca lub biznesowa",
+      "15 wyretuszowanych zdjęć",
+      "możliwość dokupienia ujęć",
+    ],
+  },
+  {
+    name: "PRESTIGE",
+    price: "2500 zł",
+    text: "Sesja premium dla kobiet, które chcą stworzyć mocny, elegancki i świadomy wizerunek.",
+    features: [
+      "rozbudowany plan sesji",
+      "kilka scen / klimatów",
+      "sesja kobieca + wizerunkowa",
+      "profesjonalne prowadzenie",
+      "25 wyretuszowanych zdjęć",
+      "galeria premium",
+    ],
+  },
+];
+
+const stories = [
+  {
+    name: "Anna",
+    text: "Przyszłam zestresowana. Po kilku minutach zapomniałam o aparacie. Gdy zobaczyłam zdjęcia, pierwszy raz od dawna poczułam się naprawdę piękna.",
+  },
+  {
+    name: "Wiktoria",
+    text: "Myślałam, że nie będę wiedziała co robić. Marta poprowadziła mnie krok po kroku. To była chwila tylko dla mnie.",
+  },
+  {
+    name: "Klaudia",
+    text: "Potrzebowałam zdjęć do marki osobistej, ale dostałam coś więcej — poczucie, że mogę pokazać siebie pewnie i kobieco.",
+  },
+];
+
+export default function Home() {
+  return (
+    <main>
+      <nav className="nav">
+        <a className="brand" href="#top" aria-label="Odkryj Kobiecość">
+          <span>Odkryj</span>
+          <strong>Kobiecość</strong>
+        </a>
+        <div className="navLinks">
+          <a href="#doswiadczenie">Doświadczenie</a>
+          <a href="#pakiety">Pakiety</a>
+          <a href="#kontakt">Kontakt</a>
+        </div>
+      </nav>
+
+      <section id="top" className="hero section">
+        <div className="heroCopy">
+          <p className="eyebrow">Sesje kobiece • biznesowe • premium</p>
+          <h1>Nie odkładaj siebie na później.</h1>
+          <p className="lead">
+            Profesjonalna sesja kobieca w Trójmieście, która pozwala Ci
+            zobaczyć siebie w bardziej pewnej, kobiecej i świadomej odsłonie.
+          </p>
+          <div className="heroActions">
+            <a className="button primary" href="#kontakt">
+              Umów konsultację
+            </a>
+            <a className="button secondary" href="#doswiadczenie">
+              Zobacz doświadczenie
+            </a>
+          </div>
+        </div>
+
+        <div className="heroVisual">
+          <div className="portraitPlaceholder tall">
+            <span>premium portrait</span>
+          </div>
+          <div className="floatingCard topCard">sesja kobieca</div>
+          <div className="floatingCard bottomCard">metamorfoza</div>
+        </div>
+      </section>
+
+      <section className="problem section light">
+        <div className="sectionNumber">01</div>
+        <div>
+          <p className="eyebrow">Zanim powstanie zdjęcie</p>
+          <h2>Od miesięcy jesteś mamą, partnerką, pracownikiem.</h2>
+        </div>
+        <p className="sectionText">
+          Dbasz o wszystkich dookoła. Organizujesz, pamiętasz, ogarniasz.
+          A kiedy ostatnio zrobiłaś coś tylko dla siebie?
+        </p>
+      </section>
+
+      <section className="dream section dark">
+        <div className="dreamText">
+          <p className="eyebrow lightText">Transformacja</p>
+          <h2>
+            Chcę, żebyś wyszła z tej sesji i pomyślała: nie wiedziałam, że mogę
+            wyglądać właśnie tak.
+          </h2>
+        </div>
+        <div className="imageFrame wide">
+          <span>Zobacz siebie inaczej</span>
+        </div>
+      </section>
+
+      <section className="fears section">
+        <div className="splitHeader">
+          <div>
+            <p className="eyebrow">Obawy</p>
+            <h2>Nie musisz czuć się pewnie przed aparatem.</h2>
+          </div>
+          <p>
+            Większość kobiet przychodzi z podobnymi myślami. Właśnie dlatego
+            prowadzę Cię krok po kroku.
+          </p>
+        </div>
+        <div className="fearGrid">
+          {fears.map((fear) => (
+            <div className="fearCard" key={fear}>
+              {fear}
+            </div>
+          ))}
+        </div>
+        <p className="signatureLine">Od tego jestem ja.</p>
+      </section>
+
+      <section id="doswiadczenie" className="experience section light">
+        <div>
+          <p className="eyebrow">Dla Ciebie</p>
+          <h2>To doświadczenie jest dla Ciebie, jeśli...</h2>
+        </div>
+        <ul className="premiumList">
+          {experienceFor.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="process section dark">
+        <div>
+          <p className="eyebrow lightText">Proces premium</p>
+          <h2>Jak wygląda współpraca</h2>
+        </div>
+        <div className="timeline">
+          {steps.map(([number, title]) => (
+            <div className="timelineItem" key={number}>
+              <span>{number}</span>
+              <p>{title}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="gallery section">
+        <p className="eyebrow">Klimat sesji</p>
+        <h2>Kobiecość. Siła. Spokój. Pewność siebie.</h2>
+        <div className="galleryGrid">
+          <div className="photoCard large" />
+          <div className="photoCard" />
+          <div className="photoCard" />
+          <div className="photoCard vertical" />
+          <div className="photoCard" />
+        </div>
+      </section>
+
+      <section id="pakiety" className="packages section dark">
+        <div className="splitHeader">
+          <div>
+            <p className="eyebrow lightText">Pakiety</p>
+            <h2>Wybierz doświadczenie dla siebie.</h2>
+          </div>
+          <p>
+            Każdy pakiet obejmuje spokojne prowadzenie, przygotowanie i
+            atmosferę, w której możesz poczuć się swobodnie.
+          </p>
+        </div>
+
+        <div className="packageGrid">
+          {packages.map((item) => (
+            <article className="packageCard" key={item.name}>
+              <div>
+                <p className="packageName">{item.name}</p>
+                <h3>{item.price}</h3>
+                <p className="packageText">{item.text}</p>
+              </div>
+              <ul>
+                {item.features.map((feature) => (
+                  <li key={feature}>{feature}</li>
+                ))}
+              </ul>
+              <a className="button packageButton" href="#kontakt">
+                Zapytaj o termin
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="stories section light">
+        <p className="eyebrow">Historie klientek</p>
+        <h2>Kobiety, które zobaczyły siebie inaczej.</h2>
+        <div className="storyGrid">
+          {stories.map((story) => (
+            <article className="storyCard" key={story.name}>
+              <div className="stars">★★★★★</div>
+              <p>„{story.text}”</p>
+              <strong>{story.name}</strong>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="about section">
+        <div className="aboutImage">
+          <div className="portraitPlaceholder small">
+            <span>Marta</span>
+          </div>
+        </div>
+        <div className="aboutCopy">
+          <p className="eyebrow">O mnie</p>
+          <h2>Marta Krajewska</h2>
+          <p>
+            W swoich sesjach stawiam na eleganckie kadry, spokojną atmosferę i
+            prowadzenie krok po kroku, dzięki któremu możesz poczuć się swobodnie
+            przed aparatem.
+          </p>
+          <p>
+            Tworzę doświadczenie, dzięki któremu możesz zobaczyć siebie w
+            bardziej kobiecej, pewnej i świadomej odsłonie.
+          </p>
+        </div>
+      </section>
+
+      <section id="kontakt" className="finalCta section dark">
+        <p className="eyebrow lightText">Odkryj Kobiecość</p>
+        <h2>
+          Czasem jedna decyzja wystarczy, żeby zacząć patrzeć na siebie inaczej.
+        </h2>
+        <div className="heroActions center">
+          <a className="button primary lightButton" href="mailto:krajewskaphoto@gmail.com">
+            Napisz do mnie
+          </a>
+          <a className="button secondary darkSecondary" href="https://wa.me/48500000000">
+            Umów konsultację
+          </a>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div>
+          <strong>Odkryj Kobiecość</strong>
+          <p>Marta Krajewska Photo • Trójmiasto / Gdańsk</p>
+        </div>
+        <div className="footerLinks">
+          <a href="#kontakt">Kontakt</a>
+          <a href="#">Regulamin</a>
+          <a href="#">Polityka prywatności</a>
+        </div>
+      </footer>
+    </main>
+  );
+}
