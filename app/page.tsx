@@ -1,6 +1,17 @@
 // app/page.tsx
 import Image from "next/image";
 
+import gallery01 from "../public/images/gallery/gallery-01.webp";
+import gallery02 from "../public/images/gallery/gallery-02.webp";
+import gallery03 from "../public/images/gallery/gallery-03.webp";
+import gallery04 from "../public/images/gallery/gallery-04.webp";
+import gallery05 from "../public/images/gallery/gallery-05.webp";
+import gallery06 from "../public/images/gallery/gallery-06.webp";
+import gallery07 from "../public/images/gallery/gallery-07.webp";
+import gallery08 from "../public/images/gallery/gallery-08.webp";
+import gallery09 from "../public/images/gallery/gallery-09.webp";
+import gallery10 from "../public/images/gallery/gallery-10.webp";
+
 const fears = [
   "Nie umiem pozować",
   "Nie wiem, co założyć",
@@ -81,78 +92,62 @@ const stories = [
   },
 ];
 
-const galleryImages = [
+const rawGalleryImages = [
   {
-    src: "/images/gallery/gallery-01.webp",
+    image: gallery01,
     alt: "Sesja kobieca premium w Gdańsku - portret studyjny",
-    className: "photoCard large",
-    width: 2000,
-    height: 2500,
+    featured: true,
   },
   {
-    src: "/images/gallery/gallery-02.webp",
+    image: gallery02,
     alt: "Elegancka sesja kobieca w Trójmieście",
-    className: "photoCard",
-    width: 2000,
-    height: 1400,
   },
   {
-    src: "/images/gallery/gallery-03.webp",
+    image: gallery03,
     alt: "Kobiecy portret beauty",
-    className: "photoCard",
-    width: 2000,
-    height: 1400,
   },
   {
-    src: "/images/gallery/gallery-04.webp",
+    image: gallery04,
     alt: "Sesja kobieca z prowadzeniem krok po kroku",
-    className: "photoCard vertical",
-    width: 1600,
-    height: 2200,
   },
   {
-    src: "/images/gallery/gallery-05.webp",
+    image: gallery05,
     alt: "Sesja kobieca premium - spokojny editorial",
-    className: "photoCard",
-    width: 2000,
-    height: 1400,
   },
   {
-    src: "/images/gallery/gallery-06.webp",
+    image: gallery06,
     alt: "Portret kobiecy w ciemnym klimacie",
-    className: "photoCard",
-    width: 2000,
-    height: 1400,
   },
   {
-    src: "/images/gallery/gallery-07.webp",
+    image: gallery07,
     alt: "Profesjonalna sesja kobieca w Gdańsku",
-    className: "photoCard vertical",
-    width: 1600,
-    height: 2200,
   },
   {
-    src: "/images/gallery/gallery-08.webp",
+    image: gallery08,
     alt: "Sesja kobieca - kobiecość, siła i spokój",
-    className: "photoCard",
-    width: 2000,
-    height: 1400,
   },
   {
-    src: "/images/gallery/gallery-09.webp",
+    image: gallery09,
     alt: "Sesja biznesowa kobieca w Trójmieście",
-    className: "photoCard",
-    width: 2000,
-    height: 1400,
   },
   {
-    src: "/images/gallery/gallery-10.webp",
+    image: gallery10,
     alt: "Portret kobiecy premium",
-    className: "photoCard",
-    width: 2000,
-    height: 1400,
   },
 ];
+
+const galleryImages = rawGalleryImages.map((item) => {
+  const orientation =
+    item.image.width > item.image.height ? "landscape" : "portrait";
+
+  return {
+    ...item,
+    orientation,
+    className: item.featured
+      ? `photoCard featured ${orientation}`
+      : `photoCard ${orientation}`,
+  };
+});
 
 const imageCoverStyle = {
   width: "100%",
@@ -160,6 +155,12 @@ const imageCoverStyle = {
   objectFit: "cover",
   display: "block",
 } as const;
+
+const whatsappMessage = encodeURIComponent(
+  "Dzień dobry, chciałabym umówić konsultację w sprawie sesji kobiecej."
+);
+
+const whatsappLink = `https://wa.me/48666091909?text=${whatsappMessage}`;
 
 export default function Home() {
   return (
@@ -219,8 +220,8 @@ export default function Home() {
           <h2>Od miesięcy jesteś mamą, partnerką, pracownikiem.</h2>
         </div>
         <p className="sectionText">
-          Dbasz o wszystkich dookoła. Organizujesz, pamiętasz, ogarniasz.
-          A kiedy ostatnio zrobiłaś coś tylko dla siebie?
+          Dbasz o wszystkich dookoła. Organizujesz, pamiętasz, ogarniasz. A
+          kiedy ostatnio zrobiłaś coś tylko dla siebie?
         </p>
       </section>
 
@@ -296,16 +297,15 @@ export default function Home() {
       <section className="gallery section">
         <p className="eyebrow">Klimat sesji</p>
         <h2>Kobiecość. Siła. Spokój. Pewność siebie.</h2>
+
         <div className="galleryGrid">
-          {galleryImages.map((image) => (
-            <div className={image.className} key={image.src}>
+          {galleryImages.map((item) => (
+            <div className={item.className} key={item.image.src}>
               <Image
-                src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
-                sizes="(max-width: 768px) 92vw, (max-width: 1200px) 45vw, 31vw"
-                style={imageCoverStyle}
+                src={item.image}
+                alt={item.alt}
+                sizes="(max-width: 560px) 92vw, (max-width: 980px) 45vw, (max-width: 1280px) 31vw, 24vw"
+                className="galleryImage"
               />
             </div>
           ))}
@@ -378,8 +378,8 @@ export default function Home() {
           <h2>Marta Krajewska</h2>
           <p>
             W swoich sesjach stawiam na eleganckie kadry, spokojną atmosferę i
-            prowadzenie krok po kroku, dzięki któremu możesz poczuć się swobodnie
-            przed aparatem.
+            prowadzenie krok po kroku, dzięki któremu możesz poczuć się
+            swobodnie przed aparatem.
           </p>
           <p>
             Tworzę doświadczenie, dzięki któremu możesz zobaczyć siebie w
@@ -413,7 +413,9 @@ export default function Home() {
           </a>
           <a
             className="button secondary darkSecondary"
-            href="https://wa.me/48500000000"
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Umów konsultację
           </a>
