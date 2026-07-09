@@ -26,7 +26,9 @@ body {
   max-width: 100%;
   margin: 0;
   overflow-x: hidden;
-  background: var(--paper);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(216, 185, 135, 0.18), transparent 34%),
+    linear-gradient(180deg, #fbf8f3 0%, #f6f1ea 52%, #fbf8f3 100%);
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
 }
@@ -36,21 +38,31 @@ a {
   text-decoration: none;
 }
 
+img {
+  max-width: 100%;
+}
+
 main {
+  width: 100%;
   overflow: hidden;
 }
 
 .nav {
-  position: fixed;
-  inset: 18px 24px auto 24px;
-  z-index: 20;
+  position: sticky;
+  top: 14px;
+  z-index: 30;
+  width: calc(100% - 48px);
+  max-width: 1540px;
+  margin: 14px auto 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  background: rgba(246, 241, 234, 0.72);
+  min-height: 58px;
+  padding: 12px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  background: rgba(246, 241, 234, 0.76);
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border-radius: 999px;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.08);
 }
@@ -58,8 +70,10 @@ main {
 .brand {
   display: flex;
   gap: 6px;
-  font-size: 16px;
+  font-size: 17px;
+  line-height: 1;
   letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .brand strong {
@@ -68,26 +82,32 @@ main {
 
 .navLinks {
   display: flex;
-  gap: 22px;
+  gap: 26px;
   font-family: Arial, sans-serif;
-  font-size: 13px;
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
 }
 
 .section {
-  padding: 130px 7vw;
+  width: min(1540px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 130px 0;
 }
 
 .hero {
-  min-height: 100vh;
+  min-height: calc(100vh - 86px);
   display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
+  grid-template-columns: minmax(0, 1.04fr) minmax(420px, 0.92fr);
   gap: 70px;
   align-items: center;
-  background:
-    radial-gradient(circle at 88% 12%, rgba(216, 185, 135, 0.28), transparent 34%),
-    linear-gradient(135deg, #fbf8f3 0%, #f1e6d7 100%);
+  padding-top: 92px;
+  padding-bottom: 90px;
+}
+
+.heroCopy {
+  max-width: 780px;
 }
 
 .eyebrow {
@@ -111,29 +131,32 @@ p {
   margin-top: 0;
 }
 
+h1,
+h2,
+h3 {
+  font-weight: 500;
+}
+
 h1 {
   max-width: 920px;
   margin-bottom: 28px;
-  font-size: clamp(66px, 8.8vw, 142px);
+  font-size: clamp(70px, 8.9vw, 156px);
   line-height: 0.86;
   letter-spacing: -0.075em;
-  font-weight: 500;
 }
 
 h2 {
   max-width: 980px;
   margin-bottom: 28px;
-  font-size: clamp(42px, 6vw, 92px);
+  font-size: clamp(44px, 6vw, 96px);
   line-height: 0.92;
   letter-spacing: -0.062em;
-  font-weight: 500;
 }
 
 h3 {
   font-size: 44px;
   line-height: 1;
   letter-spacing: -0.04em;
-  font-weight: 500;
 }
 
 .lead {
@@ -148,6 +171,10 @@ h3 {
   flex-wrap: wrap;
   gap: 14px;
   margin-top: 34px;
+}
+
+.heroActions.center {
+  justify-content: center;
 }
 
 .button {
@@ -180,14 +207,29 @@ h3 {
   background: rgba(255, 255, 255, 0.22);
 }
 
+.lightButton {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.darkSecondary {
+  color: var(--paper);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
 .heroVisual {
   position: relative;
+  width: 100%;
   min-height: 680px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
 }
 
 .portraitPlaceholder,
 .imageFrame,
-.photoCard {
+.photoCard,
+.finalCtaVisual {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.26);
@@ -195,19 +237,31 @@ h3 {
     linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0)),
     radial-gradient(circle at 68% 20%, rgba(216, 185, 135, 0.18), transparent 28%),
     linear-gradient(145deg, #111 0%, #373331 48%, #090909 100%);
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.22);
 }
 
+.portraitPlaceholder img,
+.imageFrame img,
+.photoCard img,
+.finalCtaVisual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* lekki filmowy overlay na zdjęciach */
 .portraitPlaceholder::after,
 .imageFrame::after,
-.photoCard::after {
+.photoCard::after,
+.finalCtaVisual::after {
   content: "";
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.09), transparent 28%),
-    radial-gradient(circle at 42% 18%, rgba(255, 255, 255, 0.16), transparent 22%);
-  mix-blend-mode: screen;
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.28) 100%),
+    radial-gradient(circle at top right, rgba(255, 244, 224, 0.13), transparent 28rem);
 }
 
 .portraitPlaceholder span,
@@ -217,20 +271,21 @@ h3 {
   bottom: 26px;
   z-index: 2;
   font-family: Arial, sans-serif;
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .tall {
-  height: 680px;
+  width: min(100%, 660px);
+  min-height: 680px;
   border-radius: 180px 180px 12px 12px;
 }
 
 .small {
-  width: min(420px, 100%);
-  height: 540px;
+  width: min(460px, 100%);
+  aspect-ratio: 4 / 5.35;
   border-radius: 12px 160px 12px 12px;
 }
 
@@ -238,10 +293,11 @@ h3 {
   position: absolute;
   z-index: 3;
   padding: 18px 22px;
-  background: rgba(251, 248, 243, 0.82);
+  background: rgba(251, 248, 243, 0.86);
   border: 1px solid rgba(255, 255, 255, 0.58);
   border-radius: 999px;
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   font-family: Arial, sans-serif;
   font-size: 12px;
   letter-spacing: 0.16em;
@@ -251,20 +307,31 @@ h3 {
 
 .topCard {
   top: 70px;
-  left: -40px;
+  left: -18px;
 }
 
 .bottomCard {
-  right: -24px;
+  right: -18px;
   bottom: 110px;
 }
 
 .light {
-  background: var(--ivory);
+  width: min(1540px, calc(100% - 48px));
+  padding: 110px 70px;
+  border-radius: 42px;
+  background: rgba(246, 241, 234, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.54);
+  box-shadow: 0 28px 90px rgba(21, 19, 19, 0.05);
 }
 
 .dark {
-  background: var(--graphite);
+  width: 100%;
+  max-width: none;
+  padding-left: max(24px, calc((100vw - 1540px) / 2));
+  padding-right: max(24px, calc((100vw - 1540px) / 2));
+  background:
+    radial-gradient(circle at 88% 0%, rgba(216, 185, 135, 0.16), transparent 36%),
+    linear-gradient(135deg, #1b1a18 0%, #0f0e0d 100%);
   color: var(--paper);
 }
 
@@ -302,8 +369,10 @@ h3 {
 }
 
 .wide {
+  width: 100%;
   min-height: 560px;
-  border-radius: 6px;
+  aspect-ratio: 16 / 11;
+  border-radius: 26px;
 }
 
 .splitHeader {
@@ -421,22 +490,29 @@ h3 {
 
 .galleryGrid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr 0.8fr;
-  grid-auto-rows: 260px;
-  gap: 24px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  gap: 22px;
 }
 
 .photoCard {
-  min-height: 260px;
-  border-radius: 4px;
+  min-height: 330px;
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  border: 1px solid rgba(21, 19, 19, 0.1);
+  box-shadow: 0 22px 70px rgba(21, 19, 19, 0.08);
 }
 
 .photoCard.large {
+  grid-column: span 2;
   grid-row: span 2;
+  min-height: 700px;
+  aspect-ratio: 4 / 5;
 }
 
 .photoCard.vertical {
-  grid-row: span 2;
+  min-height: 530px;
+  aspect-ratio: 3 / 4;
 }
 
 .packages .splitHeader p,
@@ -522,7 +598,11 @@ h3 {
   grid-template-columns: 0.8fr 1.2fr;
   gap: 70px;
   align-items: center;
-  background: linear-gradient(180deg, var(--paper), var(--ivory));
+}
+
+.aboutImage {
+  display: flex;
+  justify-content: center;
 }
 
 .aboutCopy p {
@@ -530,7 +610,41 @@ h3 {
 }
 
 .finalCta {
+  position: relative;
+  overflow: hidden;
   text-align: center;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.finalCta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(216, 185, 135, 0.16), transparent 38rem),
+    linear-gradient(180deg, rgba(15, 14, 13, 0.42), rgba(15, 14, 13, 0.9));
+  pointer-events: none;
+}
+
+.finalCtaVisual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.46;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.finalCta > .eyebrow,
+.finalCta > h2,
+.finalCta > .heroActions {
+  position: relative;
+  z-index: 2;
 }
 
 .finalCta h2 {
@@ -539,16 +653,6 @@ h3 {
 
 .center {
   justify-content: center;
-}
-
-.lightButton {
-  background: var(--paper);
-  color: var(--ink);
-}
-
-.darkSecondary {
-  color: var(--paper);
-  border-color: rgba(255, 255, 255, 0.22);
 }
 
 .footer {
@@ -570,6 +674,29 @@ h3 {
   display: flex;
   gap: 20px;
   color: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 1280px) {
+  .hero {
+    grid-template-columns: minmax(0, 0.95fr) minmax(380px, 0.82fr);
+    gap: 48px;
+  }
+
+  .heroVisual {
+    min-height: 600px;
+  }
+
+  .tall {
+    min-height: 600px;
+  }
+
+  .galleryGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .photoCard.large {
+    min-height: 620px;
+  }
 }
 
 @media (max-width: 980px) {
@@ -594,7 +721,13 @@ h3 {
   }
 
   .section {
-    padding: 88px 22px;
+    width: min(100% - 36px, 1540px);
+    padding: 88px 0;
+  }
+
+  .light {
+    width: min(100% - 36px, 1540px);
+    padding: 74px 32px;
   }
 
   .hero,
@@ -608,10 +741,10 @@ h3 {
   }
 
   .hero {
-    display: block;
     min-height: auto;
-    padding-top: 118px;
+    padding-top: 104px;
     padding-bottom: 76px;
+    gap: 42px;
   }
 
   .heroCopy {
@@ -619,11 +752,30 @@ h3 {
     z-index: 4;
   }
 
-  .heroVisual,
-  .heroVisual *,
-  .portraitPlaceholder,
-  .floatingCard {
-    display: none !important;
+  .heroVisual {
+    min-height: auto;
+  }
+
+  .tall {
+    width: min(100%, 640px);
+    min-height: auto;
+    aspect-ratio: 4 / 5.2;
+    margin: 0 auto;
+    border-radius: 150px 150px 14px 14px;
+  }
+
+  .small {
+    width: min(100%, 460px);
+  }
+
+  .topCard {
+    top: 32px;
+    left: 16px;
+  }
+
+  .bottomCard {
+    right: 16px;
+    bottom: 32px;
   }
 
   h1 {
@@ -646,7 +798,8 @@ h3 {
   }
 
   .wide {
-    min-height: 380px;
+    min-height: auto;
+    aspect-ratio: 4 / 5;
   }
 
   .fearGrid,
@@ -656,16 +809,156 @@ h3 {
   }
 
   .galleryGrid {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 320px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .photoCard,
+  .photoCard.vertical {
+    min-height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .photoCard.large {
+    grid-column: span 2;
+    min-height: auto;
+    aspect-ratio: 4 / 5;
   }
 
   .packageCard {
     min-height: auto;
   }
 
+  .finalCta {
+    min-height: 540px;
+  }
+
   .footer,
   .footerLinks {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    width: min(100% - 24px, 1540px);
+    padding: 72px 0;
+  }
+
+  .light {
+    width: min(100% - 24px, 1540px);
+    padding: 56px 22px;
+    border-radius: 28px;
+  }
+
+  .hero {
+    padding-top: 88px;
+    padding-bottom: 64px;
+  }
+
+  h1 {
+    font-size: clamp(58px, 18vw, 78px);
+  }
+
+  h2 {
+    font-size: clamp(42px, 13vw, 64px);
+  }
+
+  h3 {
+    font-size: 42px;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+
+  .lead {
+    font-size: 20px;
+  }
+
+  .heroActions {
+    gap: 10px;
+  }
+
+  .tall {
+    aspect-ratio: 4 / 5.4;
+    border-radius: 120px 120px 14px 14px;
+  }
+
+  .floatingCard {
+    padding: 12px 14px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+
+  .problem {
+    gap: 24px;
+  }
+
+  .sectionText,
+  .splitHeader p,
+  .aboutCopy p {
+    font-size: 21px;
+  }
+
+  .fearCard {
+    min-height: 132px;
+    font-size: 24px;
+  }
+
+  .premiumList li {
+    font-size: 24px;
+  }
+
+  .timelineItem {
+    grid-template-columns: 54px 1fr;
+    gap: 16px;
+    padding: 0 0 38px 26px;
+  }
+
+  .timelineItem p {
+    font-size: 27px;
+  }
+
+  .galleryGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .photoCard,
+  .photoCard.large,
+  .photoCard.vertical {
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: 4 / 5;
+    border-radius: 16px;
+  }
+
+  .photoCard:nth-child(2),
+  .photoCard:nth-child(3),
+  .photoCard:nth-child(5),
+  .photoCard:nth-child(6),
+  .photoCard:nth-child(8),
+  .photoCard:nth-child(9),
+  .photoCard:nth-child(10) {
+    aspect-ratio: 4 / 3;
+  }
+
+  .packageCard {
+    padding: 26px;
+    border-radius: 24px;
+  }
+
+  .storyCard {
+    padding: 26px;
+  }
+
+  .finalCta {
+    min-height: 500px;
+  }
+
+  .finalCtaVisual {
+    opacity: 0.34;
   }
 }
