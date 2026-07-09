@@ -1,4 +1,6 @@
+// app/layout.tsx
 import type { Metadata, Viewport } from "next";
+import FloatingWhatsApp from "../components/FloatingWhatsApp";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -20,7 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
-      <body>{children}</body>
+      <body>
+        {children}
+        <FloatingWhatsApp />
+      </body>
     </html>
   );
 }
