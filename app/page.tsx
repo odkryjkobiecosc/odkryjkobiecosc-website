@@ -1,3 +1,6 @@
+// app/page.tsx
+import Image from "next/image";
+
 const fears = [
   "Nie umiem pozować",
   "Nie wiem, co założyć",
@@ -78,6 +81,86 @@ const stories = [
   },
 ];
 
+const galleryImages = [
+  {
+    src: "/images/gallery/gallery-01.webp",
+    alt: "Sesja kobieca premium w Gdańsku - portret studyjny",
+    className: "photoCard large",
+    width: 2000,
+    height: 2500,
+  },
+  {
+    src: "/images/gallery/gallery-02.webp",
+    alt: "Elegancka sesja kobieca w Trójmieście",
+    className: "photoCard",
+    width: 2000,
+    height: 1400,
+  },
+  {
+    src: "/images/gallery/gallery-03.webp",
+    alt: "Kobiecy portret beauty",
+    className: "photoCard",
+    width: 2000,
+    height: 1400,
+  },
+  {
+    src: "/images/gallery/gallery-04.webp",
+    alt: "Sesja kobieca z prowadzeniem krok po kroku",
+    className: "photoCard vertical",
+    width: 1600,
+    height: 2200,
+  },
+  {
+    src: "/images/gallery/gallery-05.webp",
+    alt: "Sesja kobieca premium - spokojny editorial",
+    className: "photoCard",
+    width: 2000,
+    height: 1400,
+  },
+  {
+    src: "/images/gallery/gallery-06.webp",
+    alt: "Portret kobiecy w ciemnym klimacie",
+    className: "photoCard",
+    width: 2000,
+    height: 1400,
+  },
+  {
+    src: "/images/gallery/gallery-07.webp",
+    alt: "Profesjonalna sesja kobieca w Gdańsku",
+    className: "photoCard vertical",
+    width: 1600,
+    height: 2200,
+  },
+  {
+    src: "/images/gallery/gallery-08.webp",
+    alt: "Sesja kobieca - kobiecość, siła i spokój",
+    className: "photoCard",
+    width: 2000,
+    height: 1400,
+  },
+  {
+    src: "/images/gallery/gallery-09.webp",
+    alt: "Sesja biznesowa kobieca w Trójmieście",
+    className: "photoCard",
+    width: 2000,
+    height: 1400,
+  },
+  {
+    src: "/images/gallery/gallery-10.webp",
+    alt: "Portret kobiecy premium",
+    className: "photoCard",
+    width: 2000,
+    height: 1400,
+  },
+];
+
+const imageCoverStyle = {
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  display: "block",
+} as const;
+
 export default function Home() {
   return (
     <main>
@@ -113,6 +196,15 @@ export default function Home() {
 
         <div className="heroVisual">
           <div className="portraitPlaceholder tall">
+            <Image
+              src="/images/hero/hero-main.webp"
+              alt="Profesjonalna sesja kobieca premium w Trójmieście"
+              width={1800}
+              height={2400}
+              priority
+              sizes="(max-width: 768px) 92vw, 48vw"
+              style={imageCoverStyle}
+            />
             <span>premium portrait</span>
           </div>
           <div className="floatingCard topCard">sesja kobieca</div>
@@ -141,6 +233,14 @@ export default function Home() {
           </h2>
         </div>
         <div className="imageFrame wide">
+          <Image
+            src="/images/sections/transformation.webp"
+            alt="Transformacyjna sesja kobieca - zobacz siebie inaczej"
+            width={2400}
+            height={1600}
+            sizes="(max-width: 768px) 92vw, 52vw"
+            style={imageCoverStyle}
+          />
           <span>Zobacz siebie inaczej</span>
         </div>
       </section>
@@ -197,11 +297,18 @@ export default function Home() {
         <p className="eyebrow">Klimat sesji</p>
         <h2>Kobiecość. Siła. Spokój. Pewność siebie.</h2>
         <div className="galleryGrid">
-          <div className="photoCard large" />
-          <div className="photoCard" />
-          <div className="photoCard" />
-          <div className="photoCard vertical" />
-          <div className="photoCard" />
+          {galleryImages.map((image) => (
+            <div className={image.className} key={image.src}>
+              <Image
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                sizes="(max-width: 768px) 92vw, (max-width: 1200px) 45vw, 31vw"
+                style={imageCoverStyle}
+              />
+            </div>
+          ))}
         </div>
       </section>
 
@@ -255,6 +362,14 @@ export default function Home() {
       <section className="about section">
         <div className="aboutImage">
           <div className="portraitPlaceholder small">
+            <Image
+              src="/images/sections/about-marta.webp"
+              alt="Marta Krajewska - fotografka sesji kobiecych w Trójmieście"
+              width={1600}
+              height={2200}
+              sizes="(max-width: 768px) 90vw, 34vw"
+              style={imageCoverStyle}
+            />
             <span>Marta</span>
           </div>
         </div>
@@ -274,15 +389,32 @@ export default function Home() {
       </section>
 
       <section id="kontakt" className="finalCta section dark">
+        <div className="finalCtaVisual">
+          <Image
+            src="/images/sections/final-cta.webp"
+            alt="Sesja kobieca premium - Odkryj Kobiecość"
+            width={2400}
+            height={1600}
+            sizes="(max-width: 768px) 92vw, 80vw"
+            style={imageCoverStyle}
+          />
+        </div>
+
         <p className="eyebrow lightText">Odkryj Kobiecość</p>
         <h2>
           Czasem jedna decyzja wystarczy, żeby zacząć patrzeć na siebie inaczej.
         </h2>
         <div className="heroActions center">
-          <a className="button primary lightButton" href="mailto:krajewskaphoto@gmail.com">
+          <a
+            className="button primary lightButton"
+            href="mailto:krajewskaphoto@gmail.com"
+          >
             Napisz do mnie
           </a>
-          <a className="button secondary darkSecondary" href="https://wa.me/48500000000">
+          <a
+            className="button secondary darkSecondary"
+            href="https://wa.me/48500000000"
+          >
             Umów konsultację
           </a>
         </div>
