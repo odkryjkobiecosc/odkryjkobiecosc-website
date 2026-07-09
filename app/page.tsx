@@ -81,14 +81,17 @@ const stories = [
   {
     name: "Anna",
     text: "Przyszłam zestresowana. Po kilku minutach zapomniałam o aparacie. Gdy zobaczyłam zdjęcia, pierwszy raz od dawna poczułam się naprawdę piękna.",
+    source: "Opinia klientki",
   },
   {
     name: "Wiktoria",
     text: "Myślałam, że nie będę wiedziała co robić. Marta poprowadziła mnie krok po kroku. To była chwila tylko dla mnie.",
+    source: "Opinia klientki",
   },
   {
     name: "Klaudia",
     text: "Potrzebowałam zdjęć do marki osobistej, ale dostałam coś więcej — poczucie, że mogę pokazać siebie pewnie i kobieco.",
+    source: "Opinia klientki",
   },
 ];
 
@@ -171,7 +174,7 @@ export default function Home() {
           <strong>Kobiecość</strong>
         </a>
         <div className="navLinks">
-          <a href="#doswiadczenie">Doświadczenie</a>
+          <a href="#galeria">Zdjęcia</a>
           <a href="#pakiety">Pakiety</a>
           <a href="#kontakt">Kontakt</a>
         </div>
@@ -186,11 +189,16 @@ export default function Home() {
             zobaczyć siebie w bardziej pewnej, kobiecej i świadomej odsłonie.
           </p>
           <div className="heroActions">
-            <a className="button primary" href="#kontakt">
+            <a
+              className="button primary"
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Umów konsultację
             </a>
-            <a className="button secondary" href="#doswiadczenie">
-              Zobacz doświadczenie
+            <a className="button secondary" href="#galeria">
+              Zobacz zdjęcia
             </a>
           </div>
         </div>
@@ -229,8 +237,8 @@ export default function Home() {
         <div className="dreamText">
           <p className="eyebrow lightText">Transformacja</p>
           <h2>
-            Chcę, żebyś wyszła z tej sesji i pomyślała: nie wiedziałam, że mogę
-            wyglądać właśnie tak.
+            Chcę, żebyś spojrzała na siebie i pomyślała: mogę wyglądać właśnie
+            tak.
           </h2>
         </div>
         <div className="imageFrame wide">
@@ -294,7 +302,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="gallery section">
+      <section id="galeria" className="gallery section">
         <p className="eyebrow">Klimat sesji</p>
         <h2>Kobiecość. Siła. Spokój. Pewność siebie.</h2>
 
@@ -337,7 +345,12 @@ export default function Home() {
                   <li key={feature}>{feature}</li>
                 ))}
               </ul>
-              <a className="button packageButton" href="#kontakt">
+              <a
+                className="button packageButton"
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Zapytaj o termin
               </a>
             </article>
@@ -346,7 +359,7 @@ export default function Home() {
       </section>
 
       <section className="stories section light">
-        <p className="eyebrow">Historie klientek</p>
+        <p className="eyebrow">Opinie klientek</p>
         <h2>Kobiety, które zobaczyły siebie inaczej.</h2>
         <div className="storyGrid">
           {stories.map((story) => (
@@ -354,6 +367,7 @@ export default function Home() {
               <div className="stars">★★★★★</div>
               <p>„{story.text}”</p>
               <strong>{story.name}</strong>
+              <span className="storySource">{story.source}</span>
             </article>
           ))}
         </div>
@@ -407,17 +421,17 @@ export default function Home() {
         <div className="heroActions center">
           <a
             className="button primary lightButton"
-            href="mailto:krajewskaphoto@gmail.com"
-          >
-            Napisz do mnie
-          </a>
-          <a
-            className="button secondary darkSecondary"
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Umów konsultację
+            Napisz na WhatsApp
+          </a>
+          <a
+            className="button secondary darkSecondary"
+            href="mailto:krajewskaphoto@gmail.com"
+          >
+            Napisz e-mail
           </a>
         </div>
       </section>
