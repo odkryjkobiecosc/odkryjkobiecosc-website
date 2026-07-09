@@ -962,3 +962,139 @@ h3 {
     opacity: 0.34;
   }
 }
+
+/* Floating WhatsApp */
+
+.floatingWhatsApp {
+  position: fixed;
+  right: 24px;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  z-index: 9999;
+  min-height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 20px 0 16px;
+  border-radius: 999px;
+  background: #25d366;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 22px 70px rgba(37, 211, 102, 0.36);
+  transform: translateZ(0);
+  isolation: isolate;
+}
+
+.floatingWhatsApp:hover {
+  transform: translateY(-2px);
+}
+
+.floatingWhatsApp::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  z-index: -1;
+  border-radius: 999px;
+  background: rgba(37, 211, 102, 0.24);
+  animation: whatsappPulse 1.8s ease-out infinite;
+}
+
+.floatingWhatsAppPulse {
+  position: absolute;
+  inset: -14px;
+  z-index: -2;
+  border-radius: 999px;
+  border: 1px solid rgba(37, 211, 102, 0.42);
+  animation: whatsappRing 2.4s ease-out infinite;
+}
+
+.floatingWhatsAppIcon {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.floatingWhatsAppIcon svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.floatingWhatsAppText {
+  position: relative;
+  top: 1px;
+  white-space: nowrap;
+}
+
+@keyframes whatsappPulse {
+  0% {
+    transform: scale(0.94);
+    opacity: 0.75;
+  }
+
+  70% {
+    transform: scale(1.22);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.22);
+    opacity: 0;
+  }
+}
+
+@keyframes whatsappRing {
+  0% {
+    transform: scale(0.86);
+    opacity: 0.48;
+  }
+
+  72% {
+    transform: scale(1.28);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.28);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .floatingWhatsApp {
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    width: 58px;
+    min-height: 58px;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .floatingWhatsAppText {
+    display: none;
+  }
+
+  .floatingWhatsAppIcon {
+    width: 31px;
+    height: 31px;
+  }
+
+  .floatingWhatsAppIcon svg {
+    width: 31px;
+    height: 31px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floatingWhatsApp::after,
+  .floatingWhatsAppPulse {
+    animation: none;
+  }
+}
