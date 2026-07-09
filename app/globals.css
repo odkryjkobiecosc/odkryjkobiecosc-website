@@ -242,7 +242,6 @@ h3 {
 
 .portraitPlaceholder img,
 .imageFrame img,
-.photoCard img,
 .finalCtaVisual img {
   width: 100%;
   height: 100%;
@@ -496,23 +495,60 @@ h3 {
 }
 
 .photoCard {
-  min-height: 330px;
-  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+  min-height: auto;
   border-radius: 18px;
   border: 1px solid rgba(21, 19, 19, 0.1);
+  background: #151313;
   box-shadow: 0 22px 70px rgba(21, 19, 19, 0.08);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
-.photoCard.large {
-  grid-column: span 2;
-  grid-row: span 2;
-  min-height: 700px;
+.photoCard.portrait {
   aspect-ratio: 4 / 5;
 }
 
-.photoCard.vertical {
-  min-height: 530px;
-  aspect-ratio: 3 / 4;
+.photoCard.landscape {
+  aspect-ratio: 16 / 10;
+}
+
+.photoCard.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.photoCard.featured.portrait {
+  aspect-ratio: 4 / 5;
+}
+
+.photoCard.featured.landscape {
+  aspect-ratio: 16 / 11;
+}
+
+.photoCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(216, 185, 135, 0.48);
+  box-shadow: 0 34px 92px rgba(21, 19, 19, 0.18);
+}
+
+.photoCard .galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.001);
+  transition:
+    transform 0.75s ease,
+    filter 0.75s ease;
+}
+
+.photoCard:hover .galleryImage {
+  transform: scale(1.055);
+  filter: contrast(1.04) saturate(1.04);
 }
 
 .packages .splitHeader p,
@@ -693,10 +729,6 @@ h3 {
   .galleryGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-
-  .photoCard.large {
-    min-height: 620px;
-  }
 }
 
 @media (max-width: 980px) {
@@ -813,16 +845,8 @@ h3 {
     gap: 16px;
   }
 
-  .photoCard,
-  .photoCard.vertical {
-    min-height: auto;
-    aspect-ratio: 4 / 5;
-  }
-
-  .photoCard.large {
+  .photoCard.featured {
     grid-column: span 2;
-    min-height: auto;
-    aspect-ratio: 4 / 5;
   }
 
   .packageCard {
@@ -927,22 +951,32 @@ h3 {
   }
 
   .photoCard,
-  .photoCard.large,
-  .photoCard.vertical {
+  .photoCard.featured,
+  .photoCard.portrait,
+  .photoCard.landscape,
+  .photoCard.featured.portrait,
+  .photoCard.featured.landscape {
     grid-column: auto;
     grid-row: auto;
-    aspect-ratio: 4 / 5;
     border-radius: 16px;
   }
 
-  .photoCard:nth-child(2),
-  .photoCard:nth-child(3),
-  .photoCard:nth-child(5),
-  .photoCard:nth-child(6),
-  .photoCard:nth-child(8),
-  .photoCard:nth-child(9),
-  .photoCard:nth-child(10) {
-    aspect-ratio: 4 / 3;
+  .photoCard.portrait,
+  .photoCard.featured.portrait {
+    aspect-ratio: 4 / 5;
+  }
+
+  .photoCard.landscape,
+  .photoCard.featured.landscape {
+    aspect-ratio: 16 / 10;
+  }
+
+  .photoCard:hover {
+    transform: translateY(-3px);
+  }
+
+  .photoCard:hover .galleryImage {
+    transform: scale(1.035);
   }
 
   .packageCard {
@@ -1096,5 +1130,10 @@ h3 {
   .floatingWhatsApp::after,
   .floatingWhatsAppPulse {
     animation: none;
+  }
+
+  .photoCard,
+  .galleryImage {
+    transition: none;
   }
 }
