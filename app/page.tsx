@@ -44,8 +44,7 @@ const packages = [
       "konsultacja przed sesją",
       "dobór klimatu i stylizacji",
       "prowadzenie krok po kroku",
-      "10 wyretuszowanych zdjęć
-       w wersji kolorowej i czarno-białej",
+      "10 wyretuszowanych zdjęć w wersji kolorowej i czarno-białej",
       "prywatna galeria online",
       "możliwość dokupienia ujęć (60zł/zdjęcie)",
     ],
