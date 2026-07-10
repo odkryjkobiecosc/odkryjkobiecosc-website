@@ -46,7 +46,7 @@ const packages = [
       "prowadzenie krok po kroku",
       "10 wyretuszowanych zdjęć w wersji kolorowej i czarno-białej",
       "prywatna galeria online",
-      "możliwość dokupienia ujęć*",
+      "możliwość dokupienia ujęć (60zł/zdjęcie)",
     ],
   },
   {
@@ -59,7 +59,7 @@ const packages = [
       "sesja kobieca lub biznesowa",
       "15 wyretuszowanych zdjęć w wersji kolorowej i czarno-białej",
       "prywatna galeria online",
-      "możliwość dokupienia ujęć*",
+      "możliwość dokupienia ujęć (60zł/zdjęcie)",
     ],
   },
   {
@@ -73,7 +73,7 @@ const packages = [
       "profesjonalne prowadzenie",
       "25 wyretuszowanych zdjęć w wersji kolorowej i czarno-białej",
       "prywatna galeria online",
-      "możliwość dokupienia ujęć*",
+      "możliwość dokupienia ujęć (60zł/zdjęcie)",
     ],
   },
 ];
