@@ -38,12 +38,11 @@ const steps = [
 const packages = [
   {
     name: "ESSENCE",
-    price: "1200 zł",
+    price: "700 zł",
     text: "Dla kobiet, które chcą zrobić coś dla siebie — spokojnie, elegancko i bez presji.",
     features: [
       "konsultacja przed sesją",
       "dobór klimatu i stylizacji",
-      "profesjonalny makijaż",
       "prowadzenie krok po kroku",
       "10 wyretuszowanych zdjęć",
       "prywatna galeria online",
