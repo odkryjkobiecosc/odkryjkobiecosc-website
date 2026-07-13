@@ -1,5 +1,7 @@
 // app/layout.tsx
+
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import FloatingWhatsApp from "../components/FloatingWhatsApp";
 import "./globals.css";
 
@@ -25,6 +27,29 @@ export default function RootLayout({
       <body>
         {children}
         <FloatingWhatsApp />
+
+        <Script
+          id="google-ads-gtag"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17974081291"
+          strategy="afterInteractive"
+        />
+
+        <Script
+          id="google-ads-config"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+
+              function gtag() {
+                window.dataLayer.push(arguments);
+              }
+
+              gtag('js', new Date());
+              gtag('config', 'AW-17974081291');
+            `,
+          }}
+        />
       </body>
     </html>
   );
