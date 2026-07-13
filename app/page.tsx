@@ -96,6 +96,34 @@ const stories = [
   },
 ];
 
+const faqs = [
+  {
+    question: "Czy muszę umieć pozować?",
+    answer:
+      "Nie. Podczas sesji Marta prowadzi Cię krok po kroku — od ustawienia sylwetki, przez dłonie, spojrzenie i mimikę. Nie musisz wiedzieć, co robić przed aparatem.",
+  },
+  {
+    question: "Czy sesja kobieca jest tylko dla pewnych siebie kobiet?",
+    answer:
+      "Nie. Wiele kobiet przychodzi zestresowanych albo z obawą, że nie są fotogeniczne. Całe doświadczenie jest zaplanowane tak, żebyś mogła poczuć się swobodnie.",
+  },
+  {
+    question: "Ile trwa sesja?",
+    answer:
+      "Czas zależy od wybranego pakietu, liczby stylizacji i charakteru zdjęć. Szczegóły najlepiej ustalić podczas krótkiej konsultacji przed sesją.",
+  },
+  {
+    question: "Czy mogę zrobić sesję biznesową lub wizerunkową?",
+    answer:
+      "Tak. Sesja może mieć charakter kobiecy, biznesowy albo łączyć oba kierunki — elegancki portret, zdjęcia do marki osobistej i kadry bardziej kobiece.",
+  },
+  {
+    question: "Jak zapytać o termin?",
+    answer:
+      "Najprościej napisać do Marty na WhatsApp. W wiadomości możesz podać, że interesuje Cię sesja kobieca, biznesowa albo premium.",
+  },
+];
+
 const rawGalleryImages = [
   {
     image: gallery01,
@@ -182,8 +210,11 @@ export default function Home() {
           <strong>Kobiecość</strong>
         </a>
         <div className="navLinks">
-          <a href="#galeria">Zdjęcia</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#jak-wyglada-sesja">Proces</a>
           <a href="#pakiety">Pakiety</a>
+          <a href="#opinie">Opinie</a>
+          <a href="#faq">FAQ</a>
           <a href="#kontakt">Kontakt</a>
         </div>
       </nav>
@@ -205,7 +236,7 @@ export default function Home() {
             >
               Umów konsultację
             </a>
-            <a className="button secondary" href="#galeria">
+            <a className="button secondary" href="#portfolio">
               Zobacz zdjęcia
             </a>
           </div>
@@ -295,7 +326,7 @@ export default function Home() {
         </ul>
       </section>
 
-      <section className="process section dark">
+      <section id="jak-wyglada-sesja" className="process section dark">
         <div>
           <p className="eyebrow lightText">Proces premium</p>
           <h2>Jak wygląda współpraca</h2>
@@ -310,8 +341,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="galeria" className="gallery section">
-        <p className="eyebrow">Klimat sesji</p>
+      <section id="portfolio" className="gallery section">
+        <p className="eyebrow">Portfolio</p>
         <h2>Kobiecość. Siła. Spokój. Pewność siebie.</h2>
 
         <div className="galleryGrid">
@@ -366,7 +397,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="stories section light">
+      <section id="opinie" className="stories section light">
         <p className="eyebrow">Opinie klientek</p>
         <h2>Kobiety, które zobaczyły siebie inaczej.</h2>
         <div className="storyGrid">
@@ -410,6 +441,20 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="faq" className="faq section light">
+        <p className="eyebrow">FAQ</p>
+        <h2>Najczęstsze pytania przed sesją.</h2>
+
+        <div className="faqGrid">
+          {faqs.map((item) => (
+            <article className="faqItem" key={item.question}>
+              <h3>{item.question}</h3>
+              <p>{item.answer}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section id="kontakt" className="finalCta section dark">
         <div className="finalCtaVisual">
           <Image
@@ -450,9 +495,11 @@ export default function Home() {
           <p>Marta Krajewska Photo • Trójmiasto / Gdańsk</p>
         </div>
         <div className="footerLinks">
+          <a href="#portfolio">Portfolio</a>
+          <a href="#pakiety">Pakiety</a>
+          <a href="#opinie">Opinie</a>
+          <a href="#faq">FAQ</a>
           <a href="#kontakt">Kontakt</a>
-          <a href="#">Regulamin</a>
-          <a href="#">Polityka prywatności</a>
         </div>
       </footer>
     </main>
