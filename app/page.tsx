@@ -99,44 +99,53 @@ const stories = [
 const rawGalleryImages = [
   {
     image: gallery01,
-    alt: "Sesja kobieca premium w Gdańsku - portret studyjny",
-    featured: true,
+    alt: "Sesja kobieca premium w Gdańsku - elegancki kadr poziomy",
+    layout: "galleryWide",
   },
   {
     image: gallery02,
-    alt: "Elegancka sesja kobieca w Trójmieście",
+    alt: "Sesja kobieca w Trójmieście - kobiecy portret studyjny",
+    layout: "gallerySmall",
   },
   {
     image: gallery03,
-    alt: "Kobiecy portret beauty",
+    alt: "Kobiecy portret beauty w eleganckim klimacie",
+    layout: "galleryTall",
   },
   {
     image: gallery04,
     alt: "Sesja kobieca z prowadzeniem krok po kroku",
+    layout: "galleryPortrait",
   },
   {
     image: gallery05,
     alt: "Sesja kobieca premium - spokojny editorial",
+    layout: "galleryWide",
   },
   {
     image: gallery06,
     alt: "Portret kobiecy w ciemnym klimacie",
+    layout: "galleryPortrait",
   },
   {
     image: gallery07,
     alt: "Profesjonalna sesja kobieca w Gdańsku",
+    layout: "galleryPortrait",
   },
   {
     image: gallery08,
     alt: "Sesja kobieca - kobiecość, siła i spokój",
+    layout: "galleryPortrait",
   },
   {
     image: gallery09,
     alt: "Sesja biznesowa kobieca w Trójmieście",
+    layout: "galleryPortrait",
   },
   {
     image: gallery10,
     alt: "Portret kobiecy premium",
+    layout: "galleryTall",
   },
 ];
 
@@ -147,9 +156,7 @@ const galleryImages = rawGalleryImages.map((item) => {
   return {
     ...item,
     orientation,
-    className: item.featured
-      ? `photoCard featured ${orientation}`
-      : `photoCard ${orientation}`,
+    className: `photoCard ${orientation} ${item.layout}`,
   };
 });
 
