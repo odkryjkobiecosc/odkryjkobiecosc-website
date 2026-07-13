@@ -485,6 +485,8 @@ h3 {
   overflow-wrap: break-word;
 }
 
+/* Galeria */
+
 .gallery h2 {
   margin-bottom: 70px;
 }
@@ -492,8 +494,10 @@ h3 {
 .galleryGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 8px;
   grid-auto-flow: dense;
-  gap: 22px;
+  gap: 18px;
+  align-items: stretch;
 }
 
 .photoCard {
@@ -510,25 +514,45 @@ h3 {
     border-color 0.35s ease;
 }
 
+.photoCard.galleryWide {
+  grid-column: span 2;
+  grid-row: span 17;
+}
+
+.photoCard.gallerySmall {
+  grid-column: span 1;
+  grid-row: span 10;
+}
+
+.photoCard.galleryPortrait {
+  grid-column: span 1;
+  grid-row: span 18;
+}
+
+.photoCard.galleryTall {
+  grid-column: span 1;
+  grid-row: span 23;
+}
+
 .photoCard.portrait {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: auto;
 }
 
 .photoCard.landscape {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: auto;
 }
 
 .photoCard.featured {
   grid-column: span 2;
-  grid-row: span 2;
+  grid-row: span 22;
 }
 
 .photoCard.featured.portrait {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: auto;
 }
 
 .photoCard.featured.landscape {
-  aspect-ratio: 16 / 11;
+  aspect-ratio: auto;
 }
 
 .photoCard:hover {
@@ -541,6 +565,7 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   display: block;
   transform: scale(1.001);
   transition:
@@ -748,6 +773,28 @@ h3 {
 
   .galleryGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 8px;
+    gap: 16px;
+  }
+
+  .photoCard.galleryWide {
+    grid-column: span 2;
+    grid-row: span 16;
+  }
+
+  .photoCard.gallerySmall {
+    grid-column: span 1;
+    grid-row: span 10;
+  }
+
+  .photoCard.galleryPortrait {
+    grid-column: span 1;
+    grid-row: span 18;
+  }
+
+  .photoCard.galleryTall {
+    grid-column: span 1;
+    grid-row: span 22;
   }
 }
 
@@ -947,11 +994,37 @@ h3 {
 
   .galleryGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: auto;
     gap: 16px;
   }
 
+  .photoCard.galleryWide,
+  .photoCard.gallerySmall,
+  .photoCard.galleryPortrait,
+  .photoCard.galleryTall,
   .photoCard.featured {
-    grid-column: span 2;
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .photoCard.galleryWide,
+  .photoCard.landscape,
+  .photoCard.featured.landscape {
+    aspect-ratio: 16 / 10;
+  }
+
+  .photoCard.gallerySmall {
+    aspect-ratio: 4 / 3;
+  }
+
+  .photoCard.galleryPortrait,
+  .photoCard.portrait,
+  .photoCard.featured.portrait {
+    aspect-ratio: 4 / 5;
+  }
+
+  .photoCard.galleryTall {
+    aspect-ratio: 3 / 4.6;
   }
 
   .packages .splitHeader {
@@ -1129,10 +1202,15 @@ h3 {
 
   .galleryGrid {
     grid-template-columns: 1fr;
+    grid-auto-rows: auto;
     gap: 14px;
   }
 
   .photoCard,
+  .photoCard.galleryWide,
+  .photoCard.gallerySmall,
+  .photoCard.galleryPortrait,
+  .photoCard.galleryTall,
   .photoCard.featured,
   .photoCard.portrait,
   .photoCard.landscape,
@@ -1143,14 +1221,24 @@ h3 {
     border-radius: 16px;
   }
 
+  .photoCard.galleryWide,
+  .photoCard.landscape,
+  .photoCard.featured.landscape {
+    aspect-ratio: 16 / 10;
+  }
+
+  .photoCard.gallerySmall {
+    aspect-ratio: 4 / 3;
+  }
+
+  .photoCard.galleryPortrait,
   .photoCard.portrait,
   .photoCard.featured.portrait {
     aspect-ratio: 4 / 5;
   }
 
-  .photoCard.landscape,
-  .photoCard.featured.landscape {
-    aspect-ratio: 16 / 10;
+  .photoCard.galleryTall {
+    aspect-ratio: 3 / 4.6;
   }
 
   .photoCard:hover {
