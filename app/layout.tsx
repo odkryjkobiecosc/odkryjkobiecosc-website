@@ -2,13 +2,23 @@
 
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+
 import FloatingWhatsApp from "../components/FloatingWhatsApp";
+import GoogleAdsWhatsAppTracker from "../components/GoogleAdsWhatsAppTracker";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://odkryjkobiecosc.pl"),
+
   title: "Odkryj Kobiecość | Profesjonalne sesje kobiece Trójmiasto",
+
   description:
     "Profesjonalna sesja kobieca, biznesowa i premium w Trójmieście. Doświadczenie, które pozwala zobaczyć siebie w bardziej pewnej, kobiecej i świadomej odsłonie.",
+
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export const viewport: Viewport = {
@@ -26,8 +36,13 @@ export default function RootLayout({
     <html lang="pl">
       <body>
         {children}
+
         <FloatingWhatsApp />
 
+        {/* Rejestruje każde kliknięcie w link WhatsApp */}
+        <GoogleAdsWhatsAppTracker />
+
+        {/* Podstawowy Google tag */}
         <Script
           id="google-ads-gtag"
           src="https://www.googletagmanager.com/gtag/js?id=AW-17974081291"
