@@ -529,6 +529,15 @@ export default function Home() {
           <div className="footerLegal">
             <a href="/polityka-prywatnosci">Polityka prywatności</a>
             <a href="/polityka-cookies">Polityka cookies</a>
+
+            <button
+              type="button"
+              className="footerCookieButton"
+              data-cookie-settings
+            >
+              Zmień ustawienia cookies
+            </button>
+
             <a href="mailto:krajewskaphoto@gmail.com">
               krajewskaphoto@gmail.com
             </a>
