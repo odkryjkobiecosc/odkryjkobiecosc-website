@@ -98,31 +98,91 @@ export default function CookieConsent() {
   const [analytics, setAnalytics] = useState(true);
   const [marketing, setMarketing] = useState(true);
 
+  function openSettingsPanel() {
+    const savedConsent = readConsent();
+
+    if (savedConsent) {
+      setAnalytics(savedConsent.analytics);
+      setMarketing(savedConsent.marketing);
+    } else {
+      setAnalytics(true);
+      setMarketing(true);
+    }
+
+    setSettingsOpen(true);
+    setVisible(true);
+  }
+
   useEffect(() => {
     const savedConsent = readConsent();
 
     if (savedConsent) {
+      setAnalytics(savedConsent.analytics);
+      setMarketing(savedConsent.marketing);
       updateGoogleConsent(savedConsent);
-      return;
+    } else {
+      setVisible(true);
     }
 
-    setVisible(true);
+    const handleOpenCookieSettings = () => {
+      openSettingsPanel();
+    };
+
+    const handleCookieSettingsClick = (event: MouseEvent) => {
+      const target = event.target;
+
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      const trigger = target.closest("[data-cookie-settings]");
+
+      if (!trigger) {
+        return;
+      }
+
+      event.preventDefault();
+      openSettingsPanel();
+    };
+
+    window.addEventListener(
+      "odkryjOpenCookieSettings",
+      handleOpenCookieSettings
+    );
+
+    document.addEventListener("click", handleCookieSettingsClick);
+
+    return () => {
+      window.removeEventListener(
+        "odkryjOpenCookieSettings",
+        handleOpenCookieSettings
+      );
+
+      document.removeEventListener("click", handleCookieSettingsClick);
+    };
   }, []);
 
   function acceptAll() {
     const consent = createConsent(true, true);
+
+    setAnalytics(true);
+    setMarketing(true);
     saveConsent(consent);
     setVisible(false);
   }
 
   function rejectOptional() {
     const consent = createConsent(false, false);
+
+    setAnalytics(false);
+    setMarketing(false);
     saveConsent(consent);
     setVisible(false);
   }
 
   function saveSettings() {
     const consent = createConsent(analytics, marketing);
+
     saveConsent(consent);
     setVisible(false);
   }
@@ -175,7 +235,8 @@ export default function CookieConsent() {
               <span>
                 <strong>Marketingowe</strong>
                 <small>
-                  Pozwalają mierzyć reklamy, konwersje i działania remarketingowe.
+                  Pozwalają mierzyć reklamy, konwersje i działania
+                  remarketingowe.
                 </small>
               </span>
             </label>
@@ -183,7 +244,11 @@ export default function CookieConsent() {
         ) : null}
 
         <div className="cookieConsentActions">
-          <button type="button" className="cookieButton primaryCookie" onClick={acceptAll}>
+          <button
+            type="button"
+            className="cookieButton primaryCookie"
+            onClick={acceptAll}
+          >
             Akceptuję
           </button>
 
