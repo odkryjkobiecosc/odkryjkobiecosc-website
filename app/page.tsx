@@ -497,16 +497,42 @@ export default function Home() {
       </section>
 
       <footer className="footer">
-        <div>
-          <strong>Odkryj Kobiecość</strong>
-          <p>Marta Krajewska Photo • Trójmiasto / Gdańsk</p>
+        <div className="footerMain">
+          <div className="footerBrandBlock">
+            <a className="footerBrand" href="#top" aria-label="Odkryj Kobiecość">
+              <span>Odkryj</span>
+              <strong>Kobiecość</strong>
+            </a>
+
+            <p className="footerMeta">
+              Marta Krajewska Photo • Trójmiasto / Gdańsk
+            </p>
+
+            <p className="footerStatement">
+              Sesje kobiece, biznesowe i premium dla kobiet, które chcą zobaczyć
+              siebie inaczej.
+            </p>
+          </div>
+
+          <nav className="footerNav" aria-label="Nawigacja w stopce">
+            <a href="#portfolio">Portfolio</a>
+            <a href="#pakiety">Pakiety</a>
+            <a href="#opinie">Opinie</a>
+            <a href="#faq">FAQ</a>
+            <a href="#kontakt">Kontakt</a>
+          </nav>
         </div>
-        <div className="footerLinks">
-          <a href="#portfolio">Portfolio</a>
-          <a href="#pakiety">Pakiety</a>
-          <a href="#opinie">Opinie</a>
-          <a href="#faq">FAQ</a>
-          <a href="#kontakt">Kontakt</a>
+
+        <div className="footerBottom">
+          <p>© 2026 Odkryj Kobiecość / Marta Krajewska Photo</p>
+
+          <div className="footerLegal">
+            <a href="/polityka-prywatnosci">Polityka prywatności</a>
+            <a href="/polityka-cookies">Polityka cookies</a>
+            <a href="mailto:krajewskaphoto@gmail.com">
+              krajewskaphoto@gmail.com
+            </a>
+          </div>
         </div>
       </footer>
     </main>
