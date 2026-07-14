@@ -1,0 +1,207 @@
+.problem {
+  display: grid;
+  grid-template-columns: 120px 1.1fr 0.9fr;
+  gap: 42px;
+  align-items: start;
+}
+
+.sectionNumber {
+  color: var(--champagne);
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+}
+
+.sectionText,
+.splitHeader p,
+.aboutCopy p {
+  color: var(--muted);
+  font-size: clamp(21px, 2.1vw, 31px);
+  line-height: 1.45;
+}
+
+.dream {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 58px;
+  align-items: center;
+}
+
+.dream h2 {
+  color: var(--paper);
+}
+
+.wide {
+  width: 100%;
+  min-height: 560px;
+  aspect-ratio: 16 / 11;
+  border-radius: 26px;
+}
+
+.splitHeader {
+  display: grid;
+  grid-template-columns: 1fr 0.72fr;
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 58px;
+}
+
+.fearGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.fearCard {
+  min-height: 170px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.42);
+  border-radius: 28px;
+  display: flex;
+  align-items: end;
+  font-size: 26px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.fearCard:hover {
+  transform: translateY(-5px);
+  background: var(--white);
+}
+
+.signatureLine {
+  margin: 42px 0 0;
+  font-size: clamp(36px, 5vw, 78px);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.experience {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 70px;
+}
+
+.premiumList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.premiumList li {
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(24px, 3vw, 46px);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.process {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 70px;
+}
+
+.process h2,
+.finalCta h2 {
+  color: var(--paper);
+}
+
+.timeline {
+  border-left: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.timelineItem {
+  position: relative;
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: 24px;
+  padding: 0 0 54px 34px;
+}
+
+.timelineItem::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 4px;
+  width: 11px;
+  height: 11px;
+  background: var(--champagne);
+  border-radius: 50%;
+}
+
+.timelineItem span {
+  font-family: Arial, sans-serif;
+  color: var(--champagne);
+  letter-spacing: 0.2em;
+}
+
+.timelineItem p {
+  min-width: 0;
+  margin: 0;
+  font-size: clamp(25px, 3.1vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  overflow-wrap: break-word;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.aboutImage {
+  display: flex;
+  justify-content: center;
+}
+
+.aboutCopy p {
+  max-width: 760px;
+}
+
+.finalCta {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.finalCta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(216, 185, 135, 0.16), transparent 38rem),
+    linear-gradient(180deg, rgba(15, 14, 13, 0.42), rgba(15, 14, 13, 0.9));
+  pointer-events: none;
+}
+
+.finalCtaVisual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.46;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.finalCta > .eyebrow,
+.finalCta > h2,
+.finalCta > .heroActions {
+  position: relative;
+  z-index: 2;
+}
+
+.finalCta h2 {
+  margin-inline: auto;
+}
