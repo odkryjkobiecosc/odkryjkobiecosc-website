@@ -9,6 +9,9 @@ import GoogleAdsWhatsAppTracker from "../components/GoogleAdsWhatsAppTracker";
 
 import "./globals.css";
 
+const GOOGLE_ADS_ID = "AW-17974081291";
+const GA4_ID = "G-HRM14LHKYT";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.odkryjkobiecosc.pl"),
 
@@ -43,10 +46,10 @@ export default function RootLayout({
         {/* Baner zgód cookies */}
         <CookieConsent />
 
-        {/* Rejestruje każde kliknięcie w link WhatsApp */}
+        {/* Rejestruje każde kliknięcie w link WhatsApp jako konwersję Google Ads */}
         <GoogleAdsWhatsAppTracker />
 
-        {/* Domyślnie blokujemy zgody reklamowe/analityczne do czasu decyzji użytkownika */}
+        {/* Consent Mode: domyślnie blokujemy zgody reklamowe/analityczne do czasu decyzji użytkownika */}
         <Script
           id="google-consent-default"
           strategy="beforeInteractive"
@@ -54,11 +57,11 @@ export default function RootLayout({
             __html: `
               window.dataLayer = window.dataLayer || [];
 
-              function gtag() {
+              window.gtag = window.gtag || function() {
                 window.dataLayer.push(arguments);
-              }
+              };
 
-              gtag('consent', 'default', {
+              window.gtag('consent', 'default', {
                 ad_storage: 'denied',
                 analytics_storage: 'denied',
                 ad_user_data: 'denied',
@@ -71,21 +74,28 @@ export default function RootLayout({
           }}
         />
 
-        {/* Podstawowy Google tag - Google Ads */}
+        {/* Jeden Google tag dla Google Ads + GA4 */}
         <Script
-          id="google-ads-gtag"
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17974081291"
+          id="google-tag"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
           strategy="afterInteractive"
         />
 
         <Script
-          id="google-ads-config"
+          id="google-tag-config"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              gtag('js', new Date());
+              window.dataLayer = window.dataLayer || [];
 
-              gtag('config', 'AW-17974081291');
+              window.gtag = window.gtag || function() {
+                window.dataLayer.push(arguments);
+              };
+
+              window.gtag('js', new Date());
+
+              window.gtag('config', '${GOOGLE_ADS_ID}');
+              window.gtag('config', '${GA4_ID}');
             `,
           }}
         />
