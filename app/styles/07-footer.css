@@ -86,17 +86,29 @@
 }
 
 .footerNav a,
-.footerLegal a {
+.footerLegal a,
+.footerCookieButton {
   color: rgba(255, 255, 255, 0.68);
+  font-family: Arial, sans-serif;
   font-size: 11px;
   font-weight: 800;
+  line-height: 1.4;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   transition: color 0.22s ease, transform 0.22s ease;
 }
 
+.footerCookieButton {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
 .footerNav a:hover,
-.footerLegal a:hover {
+.footerLegal a:hover,
+.footerCookieButton:hover {
   color: var(--champagne);
   transform: translateX(-2px);
 }
@@ -121,4 +133,5 @@
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 18px;
+  align-items: center;
 }
