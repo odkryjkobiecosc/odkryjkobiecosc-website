@@ -2,24 +2,25 @@
 
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+
+type ConsentChoice = {
+  necessary: true;
+  analytics: boolean;
+  marketing: boolean;
+  date: string;
+  version: "1.0";
+};
 
 declare global {
   interface Window {
-    gtag?: (
-      command: "event",
-      eventName: string,
-      parameters?: {
-        send_to?: string;
-        event_callback?: () => void;
-        event_timeout?: number;
-      }
-    ) => void;
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
-const GOOGLE_ADS_CONVERSION_ID =
-  "AW-17974081291/hsCZCLLV-5IcEIvu2vpC";
+const STORAGE_KEY = "odkryj_cookie_consent_v1";
+
+const GOOGLE_ADS_CONVERSION_ID = "AW-17974081291/hsCZCLLV-5IcEIvu2vpC";
 
 function isWhatsAppLink(link: HTMLAnchorElement): boolean {
   try {
@@ -35,8 +36,40 @@ function isWhatsAppLink(link: HTMLAnchorElement): boolean {
   }
 }
 
+function readMarketingConsent(): boolean {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  try {
+    const savedConsent = localStorage.getItem(STORAGE_KEY);
+
+    if (!savedConsent) {
+      return false;
+    }
+
+    const parsed = JSON.parse(savedConsent) as ConsentChoice;
+
+    return parsed.version === "1.0" && parsed.marketing === true;
+  } catch {
+    return false;
+  }
+}
+
 export default function GoogleAdsWhatsAppTracker() {
+  const marketingConsentRef = useRef(false);
+
   useEffect(() => {
+    marketingConsentRef.current = readMarketingConsent();
+
+    const handleConsentUpdated = (event: Event) => {
+      const customEvent = event as CustomEvent<ConsentChoice>;
+
+      marketingConsentRef.current =
+        customEvent.detail?.version === "1.0" &&
+        customEvent.detail?.marketing === true;
+    };
+
     const handleWhatsAppClick = (event: MouseEvent) => {
       const target = event.target;
 
@@ -60,6 +93,15 @@ export default function GoogleAdsWhatsAppTracker() {
         event.ctrlKey ||
         event.metaKey ||
         event.shiftKey;
+
+      /*
+       * Jeśli użytkownik nie wyraził zgody marketingowej,
+       * nie wysyłamy konwersji Google Ads.
+       * Link WhatsApp działa normalnie.
+       */
+      if (!marketingConsentRef.current) {
+        return;
+      }
 
       event.preventDefault();
 
@@ -110,9 +152,11 @@ export default function GoogleAdsWhatsAppTracker() {
       window.setTimeout(continueToWhatsApp, 1300);
     };
 
+    window.addEventListener("odkryjConsentUpdated", handleConsentUpdated);
     document.addEventListener("click", handleWhatsAppClick, true);
 
     return () => {
+      window.removeEventListener("odkryjConsentUpdated", handleConsentUpdated);
       document.removeEventListener("click", handleWhatsAppClick, true);
     };
   }, []);
