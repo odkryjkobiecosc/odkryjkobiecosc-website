@@ -220,6 +220,13 @@ export default function Home() {
       </nav>
 
       <section id="top" className="hero section">
+        <div className="mobileAnchorNav" aria-label="Szybka nawigacja">
+          <a href="#portfolio">Portfolio</a>
+          <a href="#pakiety">Pakiety</a>
+          <a href="#opinie">Opinie</a>
+          <a href="#kontakt">Kontakt</a>
+        </div>
+
         <div className="heroCopy">
           <p className="eyebrow">Sesje kobiece • biznesowe • premium</p>
           <h1>Nie odkładaj siebie na później.</h1>
