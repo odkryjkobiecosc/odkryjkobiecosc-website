@@ -56,6 +56,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.76,
     },
     {
+      url: `${siteUrl}/poradnik/sesja-kobieca-40-plus`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.76,
+    },
+    {
       url: `${siteUrl}/polityka-prywatnosci`,
       lastModified: currentDate,
       changeFrequency: "yearly",
