@@ -14,6 +14,8 @@ export const size = {
 
 export const contentType = "image/png";
 
+const SITE_URL = "https://www.odkryjkobiecosc.pl";
+
 export default function OpenGraphImage() {
   return new ImageResponse(
     (
@@ -24,35 +26,47 @@ export default function OpenGraphImage() {
           display: "flex",
           position: "relative",
           overflow: "hidden",
-          background:
-            "linear-gradient(135deg, #151313 0%, #292522 48%, #f6f1ea 100%)",
+          background: "#151313",
           color: "#f6f1ea",
           fontFamily: "Georgia, serif",
         }}
       >
+        {/* Zdjęcie Marty */}
+        <img
+          src={`${SITE_URL}/images/og/marta-profile.jpeg`}
+          alt="Marta Krajewska Photo"
+          style={{
+            position: "absolute",
+            right: 0,
+            top: 0,
+            width: 560,
+            height: 630,
+            objectFit: "cover",
+            objectPosition: "center center",
+          }}
+        />
+
+        {/* Gradient przyciemniający zdjęcie i poprawiający czytelność */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(circle at 76% 24%, rgba(216,185,135,0.38), transparent 32%), radial-gradient(circle at 14% 80%, rgba(246,241,234,0.18), transparent 30%)",
+              "linear-gradient(90deg, #151313 0%, rgba(21,19,19,0.96) 34%, rgba(21,19,19,0.62) 58%, rgba(21,19,19,0.18) 100%)",
           }}
         />
 
+        {/* Subtelne światło premium */}
         <div
           style={{
             position: "absolute",
-            right: 70,
-            top: 70,
-            width: 330,
-            height: 490,
-            borderRadius: "170px 170px 18px 18px",
-            border: "1px solid rgba(246,241,234,0.28)",
+            inset: 0,
             background:
-              "linear-gradient(145deg, rgba(216,185,135,0.72), rgba(21,19,19,0.18))",
+              "radial-gradient(circle at 72% 18%, rgba(216,185,135,0.18), transparent 34%), radial-gradient(circle at 10% 82%, rgba(216,185,135,0.14), transparent 30%)",
           }}
         />
 
+        {/* Tekst */}
         <div
           style={{
             position: "relative",
@@ -82,7 +96,7 @@ export default function OpenGraphImage() {
             style={{
               display: "flex",
               flexDirection: "column",
-              fontSize: 96,
+              fontSize: 92,
               lineHeight: 0.92,
               letterSpacing: "-0.055em",
             }}
@@ -94,8 +108,8 @@ export default function OpenGraphImage() {
           <div
             style={{
               marginTop: 38,
-              maxWidth: 720,
-              fontSize: 32,
+              maxWidth: 690,
+              fontSize: 31,
               lineHeight: 1.25,
               color: "rgba(246,241,234,0.78)",
             }}
@@ -114,7 +128,7 @@ export default function OpenGraphImage() {
               color: "#d8b987",
             }}
           >
-            odkryjkobiecosc.pl
+            Marta Krajewska Photo • odkryjkobiecosc.pl
           </div>
         </div>
       </div>
