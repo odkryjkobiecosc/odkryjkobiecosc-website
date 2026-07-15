@@ -22,15 +22,29 @@ export default function AppleIcon() {
           alignItems: "center",
           justifyContent: "center",
           background:
-            "linear-gradient(135deg, #151313 0%, #292522 58%, #d8b987 100%)",
-          color: "#f6f1ea",
-          fontFamily: "Georgia, serif",
-          fontSize: 76,
-          fontWeight: 700,
-          letterSpacing: "-0.1em",
+            "radial-gradient(circle at 72% 18%, #d8b987 0%, #3b342d 32%, #151313 70%)",
         }}
       >
-        OK
+        <div
+          style={{
+            width: 126,
+            height: 126,
+            borderRadius: "50%",
+            border: "4px solid #d8b987",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#f6f1ea",
+            fontFamily: "Georgia, serif",
+            fontSize: 76,
+            fontWeight: 700,
+            lineHeight: 1,
+            letterSpacing: "-0.08em",
+            boxShadow: "0 18px 50px rgba(0,0,0,0.34)",
+          }}
+        >
+          K
+        </div>
       </div>
     ),
     {
