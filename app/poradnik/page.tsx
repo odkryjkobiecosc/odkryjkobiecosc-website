@@ -362,13 +362,16 @@ export default function PoradnikPage() {
 
         <div className="storyGrid">
           {guidePages.map((item) => (
-            <article className="storyCard" key={item.href}>
+            <a
+              className="storyCard storyCardLink"
+              href={item.href}
+              key={item.href}
+              aria-label={item.title}
+            >
               <span className="storySource">{item.category}</span>
               <p>{item.description}</p>
-              <strong>
-                <a href={item.href}>{item.title}</a>
-              </strong>
-            </article>
+              <strong>{item.title}</strong>
+            </a>
           ))}
         </div>
       </section>
@@ -414,13 +417,16 @@ export default function PoradnikPage() {
 
         <div className="storyGrid">
           {servicePages.map((item) => (
-            <article className="storyCard" key={item.href}>
+            <a
+              className="storyCard storyCardLink"
+              href={item.href}
+              key={item.href}
+              aria-label={item.title}
+            >
               <p>{item.text}</p>
-              <strong>
-                <a href={item.href}>{item.title}</a>
-              </strong>
+              <strong>{item.title}</strong>
               <span className="storySource">Strona usługowa</span>
-            </article>
+            </a>
           ))}
         </div>
       </section>
