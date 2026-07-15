@@ -26,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${siteUrl}/poradnik/jak-przygotowac-sie-do-sesji-kobiecej`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
       url: `${siteUrl}/polityka-prywatnosci`,
       lastModified: currentDate,
       changeFrequency: "yearly",
