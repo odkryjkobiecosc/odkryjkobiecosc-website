@@ -44,6 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.78,
     },
     {
+      url: `${siteUrl}/poradnik/nie-umiem-pozowac-sesja-kobieca`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.74,
+    },
+    {
       url: `${siteUrl}/polityka-prywatnosci`,
       lastModified: currentDate,
       changeFrequency: "yearly",
