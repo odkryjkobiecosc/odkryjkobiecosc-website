@@ -20,6 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${siteUrl}/sesja-kobieca-trojmiasto`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.88,
+    },
+    {
       url: `${siteUrl}/sesja-biznesowa-gdansk`,
       lastModified: currentDate,
       changeFrequency: "weekly",
