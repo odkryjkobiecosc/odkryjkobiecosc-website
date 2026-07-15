@@ -68,6 +68,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.77,
     },
     {
+      url: `${siteUrl}/poradnik/sesja-kobieca-a-sesja-biznesowa-roznice`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.74,
+    },
+    {
       url: `${siteUrl}/polityka-prywatnosci`,
       lastModified: currentDate,
       changeFrequency: "yearly",
