@@ -38,6 +38,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.75,
     },
     {
+      url: `${siteUrl}/poradnik/sesja-kobieca-cena-gdansk`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.78,
+    },
+    {
       url: `${siteUrl}/polityka-prywatnosci`,
       lastModified: currentDate,
       changeFrequency: "yearly",
