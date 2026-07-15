@@ -32,6 +32,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${siteUrl}/sesja-wizerunkowa-gdansk`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: `${siteUrl}/fotograf-kobiecy-gdansk`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.86,
+    },
+    {
       url: `${siteUrl}/poradnik`,
       lastModified: currentDate,
       changeFrequency: "weekly",
