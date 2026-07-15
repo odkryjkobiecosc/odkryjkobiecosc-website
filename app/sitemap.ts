@@ -62,6 +62,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.76,
     },
     {
+      url: `${siteUrl}/poradnik/sesja-kobieca-czy-warto`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.77,
+    },
+    {
       url: `${siteUrl}/polityka-prywatnosci`,
       lastModified: currentDate,
       changeFrequency: "yearly",
