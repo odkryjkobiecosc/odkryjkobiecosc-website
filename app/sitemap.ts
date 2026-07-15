@@ -50,6 +50,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.74,
     },
     {
+      url: `${siteUrl}/poradnik/sesja-kobieca-po-ciazy`,
+      lastModified: currentDate,
+      changeFrequency: "monthly",
+      priority: 0.76,
+    },
+    {
       url: `${siteUrl}/polityka-prywatnosci`,
       lastModified: currentDate,
       changeFrequency: "yearly",
