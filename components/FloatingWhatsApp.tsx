@@ -11,8 +11,6 @@ export default function FloatingWhatsApp() {
     <a
       className="floatingWhatsApp"
       href={whatsappUrl}
-      target="_blank"
-      rel="noopener noreferrer"
       aria-label="Napisz do Marty na WhatsApp"
     >
       <span className="floatingWhatsAppPulse" />
