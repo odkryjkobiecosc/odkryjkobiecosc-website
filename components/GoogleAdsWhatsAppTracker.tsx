@@ -21,7 +21,8 @@ declare global {
 
 const STORAGE_KEY = "odkryj_cookie_consent_v1";
 
-const GOOGLE_ADS_CONVERSION_ID = "AW-17974081291/hsCZCLLV-5IcEIvu2vpC";
+const GOOGLE_ADS_CONVERSION_ID =
+  "AW-17974081291/hsCZCLLV-5IcEIvu2vpC";
 
 function isWhatsAppLink(link: HTMLAnchorElement): boolean {
   try {
@@ -43,7 +44,7 @@ function readConsent(): ConsentChoice | null {
   }
 
   try {
-    const savedConsent = localStorage.getItem(STORAGE_KEY);
+    const savedConsent = window.localStorage.getItem(STORAGE_KEY);
 
     if (!savedConsent) {
       return null;
@@ -61,7 +62,7 @@ function readConsent(): ConsentChoice | null {
   }
 }
 
-function ensureGtag() {
+function ensureGtag(): void {
   if (typeof window === "undefined") {
     return;
   }
@@ -90,11 +91,11 @@ export default function GoogleAdsWhatsAppTracker() {
 
       analyticsConsentRef.current =
         customEvent.detail?.version === "1.0" &&
-        customEvent.detail?.analytics === true;
+        customEvent.detail.analytics === true;
 
       marketingConsentRef.current =
         customEvent.detail?.version === "1.0" &&
-        customEvent.detail?.marketing === true;
+        customEvent.detail.marketing === true;
     };
 
     const handleWhatsAppClick = (event: MouseEvent) => {
@@ -122,60 +123,26 @@ export default function GoogleAdsWhatsAppTracker() {
       const hasMarketingConsent = marketingConsentRef.current;
 
       /*
-       * Brak zgód opcjonalnych:
-       * nie mierzymy GA4 ani Google Ads, link działa normalnie.
+       * Nie zatrzymujemy kliknięcia i nie otwieramy pustej karty.
+       * Dzięki temu Safari i iOS mogą od razu przekazać użytkownika
+       * do aplikacji WhatsApp bez ryzyka pozostania na about:blank.
        */
+
       if (!hasAnalyticsConsent && !hasMarketingConsent) {
         return;
       }
 
-      const destinationUrl = link.href;
-      const shouldOpenNewTab =
-        link.target === "_blank" ||
-        event.ctrlKey ||
-        event.metaKey ||
-        event.shiftKey;
-
-      event.preventDefault();
-
-      /*
-       * Przy target="_blank" otwieramy pustą kartę natychmiast,
-       * żeby przeglądarka nie zablokowała jej jako pop-up.
-       */
-      const openedWindow = shouldOpenNewTab
-        ? window.open("", "_blank", "noopener,noreferrer")
-        : null;
-
-      let redirected = false;
-
-      const continueToWhatsApp = () => {
-        if (redirected) {
-          return;
-        }
-
-        redirected = true;
-
-        if (openedWindow) {
-          openedWindow.location.href = destinationUrl;
-          return;
-        }
-
-        window.location.href = destinationUrl;
-      };
-
       ensureGtag();
 
-      /*
-       * Jeżeli Google tag nie jest dostępny, nie blokujemy użytkownika.
-       */
       if (typeof window.gtag !== "function") {
-        continueToWhatsApp();
         return;
       }
 
+      const destinationUrl = link.href;
+
       /*
-       * GA4 event:
-       * wysyłamy tylko przy zgodzie analitycznej.
+       * Zdarzenie GA4:
+       * wysyłamy wyłącznie po zgodzie analitycznej.
        */
       if (hasAnalyticsConsent) {
         window.gtag("event", "whatsapp_click", {
@@ -189,35 +156,41 @@ export default function GoogleAdsWhatsAppTracker() {
       }
 
       /*
-       * Google Ads conversion:
-       * wysyłamy tylko przy zgodzie marketingowej.
-       * To zdarzenie steruje przekierowaniem do WhatsApp,
-       * żeby konwersja miała chwilę na wysłanie.
+       * Konwersja Google Ads:
+       * wysyłamy wyłącznie po zgodzie marketingowej.
+       * Nie używamy event_callback ani opóźnionego przekierowania,
+       * ponieważ naturalne otwarcie WhatsApp ma pierwszeństwo.
        */
       if (hasMarketingConsent) {
         window.gtag("event", "conversion", {
           send_to: GOOGLE_ADS_CONVERSION_ID,
-          event_callback: continueToWhatsApp,
-          event_timeout: 1200,
+          transport_type: "beacon",
         });
-
-        window.setTimeout(continueToWhatsApp, 1300);
-        return;
       }
-
-      /*
-       * Jeśli jest tylko zgoda analityczna, wysyłamy GA4 event
-       * i po krótkiej chwili przechodzimy do WhatsApp.
-       */
-      window.setTimeout(continueToWhatsApp, 250);
     };
 
-    window.addEventListener("odkryjConsentUpdated", handleConsentUpdated);
-    document.addEventListener("click", handleWhatsAppClick, true);
+    window.addEventListener(
+      "odkryjConsentUpdated",
+      handleConsentUpdated
+    );
+
+    document.addEventListener(
+      "click",
+      handleWhatsAppClick,
+      true
+    );
 
     return () => {
-      window.removeEventListener("odkryjConsentUpdated", handleConsentUpdated);
-      document.removeEventListener("click", handleWhatsAppClick, true);
+      window.removeEventListener(
+        "odkryjConsentUpdated",
+        handleConsentUpdated
+      );
+
+      document.removeEventListener(
+        "click",
+        handleWhatsAppClick,
+        true
+      );
     };
   }, []);
 
