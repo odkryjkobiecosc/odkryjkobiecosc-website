@@ -1,44 +1,11 @@
 // components/FloatingWhatsApp.tsx
 
-"use client";
-
-declare global {
-  interface Window {
-    gtag?: (
-      command: "event",
-      eventName: "conversion",
-      parameters: {
-        send_to: string;
-        event_callback?: () => void;
-        event_timeout?: number;
-      }
-    ) => void;
-  }
-}
-
-const GOOGLE_ADS_WHATSAPP_CONVERSION_ID =
-  "AW-17974081291/VWGYCLKqqtIcEIvu2vpC";
-
 export default function FloatingWhatsApp() {
   const message = encodeURIComponent(
     "Dzień dobry, chciałabym umówić konsultację w sprawie sesji kobiecej."
   );
 
   const whatsappUrl = `https://wa.me/48666091909?text=${message}`;
-
-  const handleWhatsAppClick = () => {
-    if (typeof window === "undefined" || typeof window.gtag !== "function") {
-      return;
-    }
-
-    window.gtag("event", "conversion", {
-      send_to: GOOGLE_ADS_WHATSAPP_CONVERSION_ID,
-      event_callback: () => {
-        // Link otwiera się w nowej karcie, więc nie wykonujemy tutaj przekierowania.
-      },
-      event_timeout: 2000,
-    });
-  };
 
   return (
     <a
@@ -47,7 +14,6 @@ export default function FloatingWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Napisz do Marty na WhatsApp"
-      onClick={handleWhatsAppClick}
     >
       <span className="floatingWhatsAppPulse" />
 
