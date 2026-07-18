@@ -13,7 +13,8 @@ const SITE_URL = "https://www.odkryjkobiecosc.pl";
 const GOOGLE_ADS_ID = "AW-17974081291";
 const GA4_ID = "G-HRM14LHKYT";
 
-const pageTitle = "Odkryj Kobiecość | Profesjonalne sesje kobiece Trójmiasto";
+const pageTitle =
+  "Odkryj Kobiecość | Profesjonalne sesje kobiece Trójmiasto";
 
 const pageDescription =
   "Profesjonalna sesja kobieca, biznesowa i premium w Trójmieście. Doświadczenie, które pozwala zobaczyć siebie w bardziej pewnej, kobiecej i świadomej odsłonie.";
@@ -30,6 +31,7 @@ const structuredData = {
   email: "krajewskaphoto@gmail.com",
   telephone: "+48666091909",
   priceRange: "550-950 PLN",
+
   areaServed: [
     {
       "@type": "City",
@@ -48,12 +50,14 @@ const structuredData = {
       name: "Trójmiasto",
     },
   ],
+
   address: {
     "@type": "PostalAddress",
     addressLocality: "Gdańsk",
     addressRegion: "pomorskie",
     addressCountry: "PL",
   },
+
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
@@ -61,15 +65,18 @@ const structuredData = {
     telephone: "+48666091909",
     availableLanguage: ["pl"],
   },
+
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Pakiety sesji kobiecych",
+
     itemListElement: [
       {
         "@type": "Offer",
         name: "ESSENCE",
         price: "550",
         priceCurrency: "PLN",
+
         itemOffered: {
           "@type": "Service",
           name: "Sesja kobieca ESSENCE",
@@ -82,6 +89,7 @@ const structuredData = {
         name: "SIGNATURE",
         price: "800",
         priceCurrency: "PLN",
+
         itemOffered: {
           "@type": "Service",
           name: "Sesja kobieca SIGNATURE",
@@ -94,6 +102,7 @@ const structuredData = {
         name: "PRESTIGE",
         price: "950",
         priceCurrency: "PLN",
+
         itemOffered: {
           "@type": "Service",
           name: "Sesja kobieca PRESTIGE",
@@ -109,7 +118,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: pageTitle,
-
   description: pageDescription,
 
   applicationName: "Odkryj Kobiecość",
@@ -145,6 +153,7 @@ export const metadata: Metadata = {
     siteName: "Odkryj Kobiecość",
     title: pageTitle,
     description: pageDescription,
+
     images: [
       {
         url: "/opengraph-image",
@@ -170,6 +179,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
@@ -196,12 +206,18 @@ export default function RootLayout({
       <body>
         {children}
 
+        {/* Pływający przycisk WhatsApp */}
         <FloatingWhatsApp />
 
         {/* Baner zgód cookies */}
         <CookieConsent />
 
-        {/* Rejestruje każde kliknięcie w link WhatsApp jako konwersję Google Ads */}
+        {/*
+          Globalnie wykrywa kliknięcia we wszystkie linki WhatsApp:
+          wa.me
+          api.whatsapp.com
+          web.whatsapp.com
+        */}
         <GoogleAdsWhatsAppTracker />
 
         {/* Dane strukturalne dla Google */}
@@ -214,7 +230,11 @@ export default function RootLayout({
           }}
         />
 
-        {/* Consent Mode: domyślnie blokujemy zgody reklamowe/analityczne do czasu decyzji użytkownika */}
+        {/*
+          Consent Mode:
+          domyślnie blokujemy analitykę i reklamę
+          do czasu decyzji użytkownika.
+        */}
         <Script
           id="google-consent-default"
           strategy="beforeInteractive"
@@ -239,13 +259,14 @@ export default function RootLayout({
           }}
         />
 
-        {/* Jeden Google tag dla Google Ads + GA4 */}
+        {/* Główny Google tag dla Google Ads */}
         <Script
           id="google-tag"
           src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
           strategy="afterInteractive"
         />
 
+        {/* Konfiguracja Google Ads i GA4 */}
         <Script
           id="google-tag-config"
           strategy="afterInteractive"
