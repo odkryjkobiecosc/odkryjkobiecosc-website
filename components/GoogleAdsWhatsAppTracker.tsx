@@ -15,17 +15,7 @@ type ConsentChoice = {
 declare global {
   interface Window {
     dataLayer?: unknown[];
-
-    gtag?: (
-      command: "event",
-      eventName: string,
-      parameters?: {
-        send_to?: string;
-        event_callback?: () => void;
-        event_timeout?: number;
-        [key: string]: unknown;
-      }
-    ) => void;
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -54,32 +44,36 @@ function readConsent(): ConsentChoice | null {
   }
 
   try {
-    const savedConsent = localStorage.getItem(STORAGE_KEY);
+    const savedConsent = window.localStorage.getItem(STORAGE_KEY);
 
     if (!savedConsent) {
       return null;
     }
 
-    const parsedConsent = JSON.parse(savedConsent) as ConsentChoice;
+    const parsedConsent = JSON.parse(savedConsent) as Partial<ConsentChoice>;
 
     if (
-      parsedConsent?.necessary !== true ||
+      parsedConsent.necessary !== true ||
       typeof parsedConsent.analytics !== "boolean" ||
       typeof parsedConsent.marketing !== "boolean"
     ) {
       return null;
     }
 
-    return parsedConsent;
+    return parsedConsent as ConsentChoice;
   } catch {
     return null;
   }
 }
 
 function sendWhatsAppConversion(): void {
+  if (typeof window === "undefined") {
+    return;
+  }
+
   const consent = readConsent();
 
-  // Konwersję reklamową wysyłamy dopiero po zgodzie marketingowej.
+  // Konwersję Google Ads wysyłamy wyłącznie po zgodzie marketingowej.
   if (!consent?.marketing) {
     return;
   }
@@ -118,13 +112,10 @@ export default function GoogleAdsWhatsAppTracker() {
         return;
       }
 
-      /*
-        Ochrona przed podwójnym wysłaniem tego samego kliknięcia,
-        np. przy podwójnej obsłudze zdarzeń przez przeglądarkę.
-      */
       const now = Date.now();
       const previousClick = lastTrackedClickRef.current;
 
+      // Ochrona przed podwójnym naliczeniem tego samego kliknięcia.
       if (
         previousClick &&
         previousClick.href === link.href &&
@@ -141,14 +132,10 @@ export default function GoogleAdsWhatsAppTracker() {
       sendWhatsAppConversion();
     };
 
-    document.addEventListener("click", handleDocumentClick, {
-      capture: true,
-    });
+    document.addEventListener("click", handleDocumentClick, true);
 
     return () => {
-      document.removeEventListener("click", handleDocumentClick, {
-        capture: true,
-      });
+      document.removeEventListener("click", handleDocumentClick, true);
     };
   }, []);
 
