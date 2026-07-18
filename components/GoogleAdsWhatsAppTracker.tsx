@@ -15,14 +15,24 @@ type ConsentChoice = {
 declare global {
   interface Window {
     dataLayer?: unknown[];
-    gtag?: (...args: unknown[]) => void;
+
+    gtag?: (
+      command: "event",
+      eventName: string,
+      parameters?: {
+        send_to?: string;
+        event_callback?: () => void;
+        event_timeout?: number;
+        [key: string]: unknown;
+      }
+    ) => void;
   }
 }
 
 const STORAGE_KEY = "odkryj_cookie_consent_v1";
 
-const GOOGLE_ADS_CONVERSION_ID =
-  "AW-17974081291/hsCZCLLV-5IcEIvu2vpC";
+const GOOGLE_ADS_WHATSAPP_CONVERSION_ID =
+  "AW-17974081291/VWGYCLKqqtIcEIvu2vpC";
 
 function isWhatsAppLink(link: HTMLAnchorElement): boolean {
   try {
@@ -44,65 +54,54 @@ function readConsent(): ConsentChoice | null {
   }
 
   try {
-    const savedConsent = window.localStorage.getItem(STORAGE_KEY);
+    const savedConsent = localStorage.getItem(STORAGE_KEY);
 
     if (!savedConsent) {
       return null;
     }
 
-    const parsed = JSON.parse(savedConsent) as ConsentChoice;
+    const parsedConsent = JSON.parse(savedConsent) as ConsentChoice;
 
-    if (parsed.version !== "1.0") {
+    if (
+      parsedConsent?.necessary !== true ||
+      typeof parsedConsent.analytics !== "boolean" ||
+      typeof parsedConsent.marketing !== "boolean"
+    ) {
       return null;
     }
 
-    return parsed;
+    return parsedConsent;
   } catch {
     return null;
   }
 }
 
-function ensureGtag(): void {
-  if (typeof window === "undefined") {
+function sendWhatsAppConversion(): void {
+  const consent = readConsent();
+
+  // Konwersję reklamową wysyłamy dopiero po zgodzie marketingowej.
+  if (!consent?.marketing) {
     return;
   }
 
-  window.dataLayer = window.dataLayer || [];
-
-  if (!window.gtag) {
-    window.gtag = (...args: unknown[]) => {
-      window.dataLayer?.push(args);
-    };
+  if (typeof window.gtag !== "function") {
+    return;
   }
+
+  window.gtag("event", "conversion", {
+    send_to: GOOGLE_ADS_WHATSAPP_CONVERSION_ID,
+    event_timeout: 2000,
+  });
 }
 
 export default function GoogleAdsWhatsAppTracker() {
-  const analyticsConsentRef = useRef(false);
-  const marketingConsentRef = useRef(false);
+  const lastTrackedClickRef = useRef<{
+    href: string;
+    timestamp: number;
+  } | null>(null);
 
   useEffect(() => {
-    const savedConsent = readConsent();
-
-    analyticsConsentRef.current = savedConsent?.analytics === true;
-    marketingConsentRef.current = savedConsent?.marketing === true;
-
-    const handleConsentUpdated = (event: Event) => {
-      const customEvent = event as CustomEvent<ConsentChoice>;
-
-      analyticsConsentRef.current =
-        customEvent.detail?.version === "1.0" &&
-        customEvent.detail.analytics === true;
-
-      marketingConsentRef.current =
-        customEvent.detail?.version === "1.0" &&
-        customEvent.detail.marketing === true;
-    };
-
-    const handleWhatsAppClick = (event: MouseEvent) => {
-      if (event.defaultPrevented || event.button !== 0) {
-        return;
-      }
-
+    const handleDocumentClick = (event: MouseEvent) => {
       const target = event.target;
 
       if (!(target instanceof Element)) {
@@ -119,78 +118,37 @@ export default function GoogleAdsWhatsAppTracker() {
         return;
       }
 
-      const hasAnalyticsConsent = analyticsConsentRef.current;
-      const hasMarketingConsent = marketingConsentRef.current;
-
       /*
-       * Nie zatrzymujemy kliknięcia i nie otwieramy pustej karty.
-       * Dzięki temu Safari i iOS mogą od razu przekazać użytkownika
-       * do aplikacji WhatsApp bez ryzyka pozostania na about:blank.
-       */
+        Ochrona przed podwójnym wysłaniem tego samego kliknięcia,
+        np. przy podwójnej obsłudze zdarzeń przez przeglądarkę.
+      */
+      const now = Date.now();
+      const previousClick = lastTrackedClickRef.current;
 
-      if (!hasAnalyticsConsent && !hasMarketingConsent) {
+      if (
+        previousClick &&
+        previousClick.href === link.href &&
+        now - previousClick.timestamp < 1000
+      ) {
         return;
       }
 
-      ensureGtag();
+      lastTrackedClickRef.current = {
+        href: link.href,
+        timestamp: now,
+      };
 
-      if (typeof window.gtag !== "function") {
-        return;
-      }
-
-      const destinationUrl = link.href;
-
-      /*
-       * Zdarzenie GA4:
-       * wysyłamy wyłącznie po zgodzie analitycznej.
-       */
-      if (hasAnalyticsConsent) {
-        window.gtag("event", "whatsapp_click", {
-          event_category: "contact",
-          event_label: "WhatsApp",
-          link_url: destinationUrl,
-          page_location: window.location.href,
-          page_path: window.location.pathname,
-          transport_type: "beacon",
-        });
-      }
-
-      /*
-       * Konwersja Google Ads:
-       * wysyłamy wyłącznie po zgodzie marketingowej.
-       * Nie używamy event_callback ani opóźnionego przekierowania,
-       * ponieważ naturalne otwarcie WhatsApp ma pierwszeństwo.
-       */
-      if (hasMarketingConsent) {
-        window.gtag("event", "conversion", {
-          send_to: GOOGLE_ADS_CONVERSION_ID,
-          transport_type: "beacon",
-        });
-      }
+      sendWhatsAppConversion();
     };
 
-    window.addEventListener(
-      "odkryjConsentUpdated",
-      handleConsentUpdated
-    );
-
-    document.addEventListener(
-      "click",
-      handleWhatsAppClick,
-      true
-    );
+    document.addEventListener("click", handleDocumentClick, {
+      capture: true,
+    });
 
     return () => {
-      window.removeEventListener(
-        "odkryjConsentUpdated",
-        handleConsentUpdated
-      );
-
-      document.removeEventListener(
-        "click",
-        handleWhatsAppClick,
-        true
-      );
+      document.removeEventListener("click", handleDocumentClick, {
+        capture: true,
+      });
     };
   }, []);
 
