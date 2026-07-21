@@ -1,5 +1,7 @@
 // app/page.tsx
+
 import Image from "next/image";
+import Header from "../components/Header";
 
 import gallery01 from "../public/images/gallery/gallery-01.webp";
 import gallery02 from "../public/images/gallery/gallery-02.webp";
@@ -46,7 +48,7 @@ const packages = [
       "prowadzenie krok po kroku",
       "12 wyretuszowanych zdjęć w wersji kolorowej i czarno-białej",
       "prywatna galeria online",
-      "możliwość dokupienia ujęć (60zł/zdjęcie)",
+      "możliwość dokupienia ujęć (60 zł/zdjęcie)",
     ],
   },
   {
@@ -59,7 +61,7 @@ const packages = [
       "sesja kobieca lub biznesowa",
       "20 wyretuszowanych zdjęć w wersji kolorowej i czarno-białej",
       "prywatna galeria online",
-      "możliwość dokupienia ujęć (60zł/zdjęcie)",
+      "możliwość dokupienia ujęć (60 zł/zdjęcie)",
     ],
   },
   {
@@ -73,7 +75,7 @@ const packages = [
       "profesjonalne prowadzenie",
       "30 wyretuszowanych zdjęć w wersji kolorowej i czarno-białej",
       "prywatna galeria online",
-      "możliwość dokupienia ujęć (60zł/zdjęcie)",
+      "możliwość dokupienia ujęć (60 zł/zdjęcie)",
     ],
   },
 ];
@@ -204,20 +206,11 @@ const whatsappLink = `https://wa.me/48666091909?text=${whatsappMessage}`;
 export default function Home() {
   return (
     <main>
-      <nav className="nav">
-        <a className="brand" href="#top" aria-label="Odkryj Kobiecość">
-          <span>Odkryj</span>
-          <strong>Kobiecość</strong>
-        </a>
-        <div className="navLinks">
-          <a href="#portfolio">Portfolio</a>
-          <a href="#jak-wyglada-sesja">Proces</a>
-          <a href="#pakiety">Pakiety</a>
-          <a href="#opinie">Opinie</a>
-          <a href="#faq">FAQ</a>
-          <a href="#kontakt">Kontakt</a>
-        </div>
-      </nav>
+      <Header
+        poradnikiHref="/poradnik"
+        faqHref="#faq"
+        kontaktHref="#kontakt"
+      />
 
       <section id="top" className="hero section">
         <div className="mobileAnchorNav" aria-label="Szybka nawigacja">
@@ -229,20 +222,19 @@ export default function Home() {
 
         <div className="heroCopy">
           <p className="eyebrow">Sesje kobiece • biznesowe • premium</p>
+
           <h1>Nie odkładaj siebie na później.</h1>
+
           <p className="lead">
             Profesjonalna sesja kobieca w Trójmieście, która pozwala Ci
             zobaczyć siebie w bardziej pewnej, kobiecej i świadomej odsłonie.
           </p>
+
           <div className="heroActions">
-            <a
-              className="button primary"
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="button primary" href={whatsappLink}>
               Umów konsultację
             </a>
+
             <a className="button secondary" href="#portfolio">
               Zobacz zdjęcia
             </a>
@@ -260,8 +252,10 @@ export default function Home() {
               sizes="(max-width: 768px) 92vw, 48vw"
               style={imageCoverStyle}
             />
+
             <span>premium portrait</span>
           </div>
+
           <div className="floatingCard topCard">sesja kobieca</div>
           <div className="floatingCard bottomCard">metamorfoza</div>
         </div>
@@ -269,10 +263,13 @@ export default function Home() {
 
       <section className="problem section light">
         <div className="sectionNumber">01</div>
+
         <div>
           <p className="eyebrow">Zanim powstanie zdjęcie</p>
+
           <h2>Od miesięcy jesteś mamą, partnerką, pracownikiem.</h2>
         </div>
+
         <p className="sectionText">
           Dbasz o wszystkich dookoła. Organizujesz, pamiętasz, ogarniasz. A
           kiedy ostatnio zrobiłaś coś tylko dla siebie?
@@ -282,11 +279,13 @@ export default function Home() {
       <section className="dream section dark">
         <div className="dreamText">
           <p className="eyebrow lightText">Transformacja</p>
+
           <h2>
             Chcę, żebyś spojrzała na siebie i pomyślała: mogę wyglądać właśnie
             tak.
           </h2>
         </div>
+
         <div className="imageFrame wide">
           <Image
             src="/images/sections/transformation.webp"
@@ -296,6 +295,7 @@ export default function Home() {
             sizes="(max-width: 768px) 92vw, 52vw"
             style={imageCoverStyle}
           />
+
           <span>Zobacz siebie inaczej</span>
         </div>
       </section>
@@ -304,13 +304,16 @@ export default function Home() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow">Obawy</p>
+
             <h2>Nie musisz czuć się pewnie przed aparatem.</h2>
           </div>
+
           <p>
             Większość kobiet przychodzi z podobnymi myślami. Właśnie dlatego
             prowadzę Cię krok po kroku.
           </p>
         </div>
+
         <div className="fearGrid">
           {fears.map((fear) => (
             <div className="fearCard" key={fear}>
@@ -318,14 +321,17 @@ export default function Home() {
             </div>
           ))}
         </div>
+
         <p className="signatureLine">Od tego jestem ja.</p>
       </section>
 
       <section id="doswiadczenie" className="experience section light">
         <div>
           <p className="eyebrow">Dla Ciebie</p>
+
           <h2>To doświadczenie jest dla Ciebie, jeśli...</h2>
         </div>
+
         <ul className="premiumList">
           {experienceFor.map((item) => (
             <li key={item}>{item}</li>
@@ -336,8 +342,10 @@ export default function Home() {
       <section id="jak-wyglada-sesja" className="process section dark">
         <div>
           <p className="eyebrow lightText">Proces premium</p>
+
           <h2>Jak wygląda współpraca</h2>
         </div>
+
         <div className="timeline">
           {steps.map(([number, title]) => (
             <div className="timelineItem" key={number}>
@@ -350,6 +358,7 @@ export default function Home() {
 
       <section id="portfolio" className="gallery section">
         <p className="eyebrow">Portfolio</p>
+
         <h2>Kobiecość. Siła. Spokój. Pewność siebie.</h2>
 
         <div className="galleryGrid">
@@ -370,8 +379,10 @@ export default function Home() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow lightText">Pakiety</p>
+
             <h2>Wybierz doświadczenie dla siebie.</h2>
           </div>
+
           <p>
             Każdy pakiet obejmuje spokojne prowadzenie, przygotowanie i
             atmosferę, w której możesz poczuć się swobodnie.
@@ -383,20 +394,19 @@ export default function Home() {
             <article className="packageCard" key={item.name}>
               <div>
                 <p className="packageName">{item.name}</p>
+
                 <h3>{item.price}</h3>
+
                 <p className="packageText">{item.text}</p>
               </div>
+
               <ul>
                 {item.features.map((feature) => (
                   <li key={feature}>{feature}</li>
                 ))}
               </ul>
-              <a
-                className="button packageButton"
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+
+              <a className="button packageButton" href={whatsappLink}>
                 Zapytaj o termin
               </a>
             </article>
@@ -406,13 +416,18 @@ export default function Home() {
 
       <section id="opinie" className="stories section light">
         <p className="eyebrow">Opinie klientek</p>
+
         <h2>Kobiety, które zobaczyły siebie inaczej.</h2>
+
         <div className="storyGrid">
           {stories.map((story) => (
             <article className="storyCard" key={story.name}>
               <div className="stars">★★★★★</div>
+
               <p>„{story.text}”</p>
+
               <strong>{story.name}</strong>
+
               <span className="storySource">{story.source}</span>
             </article>
           ))}
@@ -430,17 +445,22 @@ export default function Home() {
               sizes="(max-width: 768px) 90vw, 34vw"
               style={imageCoverStyle}
             />
+
             <span>Marta</span>
           </div>
         </div>
+
         <div className="aboutCopy">
           <p className="eyebrow">O mnie</p>
+
           <h2>Marta Krajewska</h2>
+
           <p>
             W swoich sesjach stawiam na eleganckie kadry, spokojną atmosferę i
             prowadzenie krok po kroku, dzięki któremu możesz poczuć się
             swobodnie przed aparatem.
           </p>
+
           <p>
             Tworzę doświadczenie, dzięki któremu możesz zobaczyć siebie w
             bardziej kobiecej, pewnej i świadomej odsłonie.
@@ -450,6 +470,7 @@ export default function Home() {
 
       <section id="faq" className="faq section light">
         <p className="eyebrow">FAQ</p>
+
         <h2>Najczęstsze pytania przed sesją.</h2>
 
         <div className="faqGrid">
@@ -475,18 +496,19 @@ export default function Home() {
         </div>
 
         <p className="eyebrow lightText">Odkryj Kobiecość</p>
+
         <h2>
           Czasem jedna decyzja wystarczy, żeby zacząć patrzeć na siebie inaczej.
         </h2>
+
         <div className="heroActions center">
           <a
             className="button primary lightButton"
             href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
           >
             Napisz na WhatsApp
           </a>
+
           <a
             className="button secondary darkSecondary"
             href="mailto:krajewskaphoto@gmail.com"
