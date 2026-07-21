@@ -3,6 +3,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import Header from "../../components/Header";
+
 import gallery01 from "../../public/images/gallery/gallery-01.webp";
 import gallery03 from "../../public/images/gallery/gallery-03.webp";
 import gallery04 from "../../public/images/gallery/gallery-04.webp";
@@ -293,20 +295,11 @@ export default function SesjaWizerunkowaGdanskPage() {
         }}
       />
 
-      <nav className="nav">
-        <a className="brand" href="/" aria-label="Odkryj Kobiecość">
-          <span>Odkryj</span>
-          <strong>Kobiecość</strong>
-        </a>
-
-        <div className="navLinks">
-          <a href="#dla-kogo">Dla kogo</a>
-          <a href="#zastosowanie">Zastosowanie</a>
-          <a href="#proces">Proces</a>
-          <a href="#pakiety">Pakiety</a>
-          <a href="#kontakt">Kontakt</a>
-        </div>
-      </nav>
+      <Header
+        poradnikiHref="/poradnik"
+        faqHref="#faq"
+        kontaktHref="#kontakt"
+      />
 
       <section id="top" className="hero section">
         <div className="mobileAnchorNav" aria-label="Szybka nawigacja">
@@ -318,19 +311,16 @@ export default function SesjaWizerunkowaGdanskPage() {
 
         <div className="heroCopy">
           <p className="eyebrow">Sesja wizerunkowa Gdańsk</p>
+
           <h1>Sesja wizerunkowa Gdańsk</h1>
+
           <p className="lead">
             Profesjonalna sesja dla kobiet, które chcą pokazać swoją markę,
             kompetencje i osobowość w spójny, elegancki i naturalny sposób.
           </p>
 
           <div className="heroActions">
-            <a
-              className="button primary"
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="button primary" href={whatsappLink}>
               Zapytaj o termin
             </a>
 
@@ -351,6 +341,7 @@ export default function SesjaWizerunkowaGdanskPage() {
               sizes="(max-width: 768px) 92vw, 48vw"
               style={imageCoverStyle}
             />
+
             <span>wizerunek</span>
           </div>
 
@@ -364,7 +355,10 @@ export default function SesjaWizerunkowaGdanskPage() {
 
         <div>
           <p className="eyebrow">Wizerunek</p>
-          <h2>Zdjęcia wizerunkowe mają budować zaufanie jeszcze przed rozmową.</h2>
+
+          <h2>
+            Zdjęcia wizerunkowe mają budować zaufanie jeszcze przed rozmową.
+          </h2>
         </div>
 
         <p className="sectionText">
@@ -377,6 +371,7 @@ export default function SesjaWizerunkowaGdanskPage() {
       <section id="dla-kogo" className="experience section light">
         <div>
           <p className="eyebrow">Dla kogo</p>
+
           <h2>Dla kobiet, które chcą pokazać swój wizerunek świadomie.</h2>
         </div>
 
@@ -391,6 +386,7 @@ export default function SesjaWizerunkowaGdanskPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow">Zastosowanie</p>
+
             <h2>Jedna sesja może dać materiał do wielu miejsc.</h2>
           </div>
 
@@ -415,6 +411,7 @@ export default function SesjaWizerunkowaGdanskPage() {
       <section className="dream section dark">
         <div className="dreamText">
           <p className="eyebrow lightText">Efekt</p>
+
           <h2>
             Profesjonalnie, ale nie sztywno. Kobieco, ale nadal ekspercko.
             Naturalnie, ale z klasą.
@@ -430,6 +427,7 @@ export default function SesjaWizerunkowaGdanskPage() {
             sizes="(max-width: 768px) 92vw, 52vw"
             style={imageCoverStyle}
           />
+
           <span>wizerunek premium</span>
         </div>
       </section>
@@ -437,6 +435,7 @@ export default function SesjaWizerunkowaGdanskPage() {
       <section id="proces" className="process section dark">
         <div>
           <p className="eyebrow lightText">Proces</p>
+
           <h2>Jak wygląda sesja wizerunkowa?</h2>
         </div>
 
@@ -454,6 +453,7 @@ export default function SesjaWizerunkowaGdanskPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow lightText">Pakiety</p>
+
             <h2>Pakiety sesji wizerunkowej</h2>
           </div>
 
@@ -468,7 +468,9 @@ export default function SesjaWizerunkowaGdanskPage() {
             <article className="packageCard" key={item.name}>
               <div>
                 <p className="packageName">{item.name}</p>
+
                 <h3>{item.price}</h3>
+
                 <p className="packageText">{item.text}</p>
               </div>
 
@@ -478,12 +480,7 @@ export default function SesjaWizerunkowaGdanskPage() {
                 ))}
               </ul>
 
-              <a
-                className="button packageButton"
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a className="button packageButton" href={whatsappLink}>
                 Zapytaj o termin
               </a>
             </article>
@@ -493,6 +490,7 @@ export default function SesjaWizerunkowaGdanskPage() {
 
       <section id="portfolio" className="gallery section">
         <p className="eyebrow">Portfolio</p>
+
         <h2>Zdjęcia wizerunkowe, kobiece i biznesowe</h2>
 
         <div className="galleryGrid">
@@ -511,6 +509,7 @@ export default function SesjaWizerunkowaGdanskPage() {
 
       <section id="faq" className="faq section light">
         <p className="eyebrow">FAQ</p>
+
         <h2>Najczęstsze pytania o sesję wizerunkową w Gdańsku</h2>
 
         <div className="faqGrid">
@@ -525,15 +524,18 @@ export default function SesjaWizerunkowaGdanskPage() {
 
       <section className="stories section light">
         <p className="eyebrow">Powiązane strony</p>
+
         <h2>Zobacz też</h2>
 
         <div className="storyGrid">
           {relatedLinks.map((item) => (
             <article className="storyCard" key={item.href}>
               <p>{item.text}</p>
+
               <strong>
                 <a href={item.href}>{item.title}</a>
               </strong>
+
               <span className="storySource">Powiązana strona</span>
             </article>
           ))}
@@ -553,18 +555,14 @@ export default function SesjaWizerunkowaGdanskPage() {
         </div>
 
         <p className="eyebrow lightText">Sesja wizerunkowa Gdańsk</p>
+
         <h2>
           Jeśli chcesz, żeby Twój wizerunek pracował razem z Twoją marką,
           napisz do Marty.
         </h2>
 
         <div className="heroActions center">
-          <a
-            className="button primary lightButton"
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="button primary lightButton" href={whatsappLink}>
             Napisz na WhatsApp
           </a>
 
