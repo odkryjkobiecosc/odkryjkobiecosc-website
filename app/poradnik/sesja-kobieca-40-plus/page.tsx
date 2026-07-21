@@ -3,6 +3,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import Header from "../../../components/Header";
+
 import gallery01 from "../../../public/images/gallery/gallery-01.webp";
 import gallery03 from "../../../public/images/gallery/gallery-03.webp";
 import gallery04 from "../../../public/images/gallery/gallery-04.webp";
@@ -80,12 +82,14 @@ const sections = [
 
 const faqs = [
   {
-    question: "Czy sesja kobieca 40 plus jest dla mnie, jeśli nie czuję się pewnie?",
+    question:
+      "Czy sesja kobieca 40 plus jest dla mnie, jeśli nie czuję się pewnie?",
     answer:
       "Tak. Nie musisz przychodzić pewna siebie. Sesja jest prowadzona spokojnie, krok po kroku, bez presji i bez oczekiwania, że od razu będziesz wiedziała, jak pozować.",
   },
   {
-    question: "Czy sesja kobieca po 40 może wyglądać elegancko, a nie przesadnie?",
+    question:
+      "Czy sesja kobieca po 40 może wyglądać elegancko, a nie przesadnie?",
     answer:
       "Tak. Sesja może być bardzo subtelna, klasyczna, kobieca i elegancka. Nie musi być odważna ani sztucznie zmysłowa.",
   },
@@ -256,20 +260,11 @@ export default function SesjaKobieca40PlusPage() {
         }}
       />
 
-      <nav className="nav">
-        <a className="brand" href="/" aria-label="Odkryj Kobiecość">
-          <span>Odkryj</span>
-          <strong>Kobiecość</strong>
-        </a>
-
-        <div className="navLinks">
-          <a href="/sesja-kobieca-gdansk">Sesja kobieca</a>
-          <a href="#dojrzalosc">40 plus</a>
-          <a href="#poradnik">Poradnik</a>
-          <a href="#faq">FAQ</a>
-          <a href="#kontakt">Kontakt</a>
-        </div>
-      </nav>
+      <Header
+        poradnikiHref="/poradnik"
+        faqHref="#faq"
+        kontaktHref="#kontakt"
+      />
 
       <section id="top" className="hero section">
         <div className="mobileAnchorNav" aria-label="Szybka nawigacja">
@@ -281,7 +276,9 @@ export default function SesjaKobieca40PlusPage() {
 
         <div className="heroCopy">
           <p className="eyebrow">Sesja kobieca 40 plus • Gdańsk</p>
+
           <h1>Sesja kobieca 40 plus</h1>
+
           <p className="lead">
             Dla kobiet, które chcą zobaczyć siebie dojrzale, elegancko i
             kobieco — bez udawania młodszej wersji siebie i bez presji, że
@@ -289,12 +286,7 @@ export default function SesjaKobieca40PlusPage() {
           </p>
 
           <div className="heroActions">
-            <a
-              className="button primary"
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="button primary" href={whatsappLink}>
               Zapytaj o sesję
             </a>
 
@@ -315,6 +307,7 @@ export default function SesjaKobieca40PlusPage() {
               sizes="(max-width: 768px) 92vw, 48vw"
               style={imageCoverStyle}
             />
+
             <span>40 plus</span>
           </div>
 
@@ -328,6 +321,7 @@ export default function SesjaKobieca40PlusPage() {
 
         <div>
           <p className="eyebrow">Dojrzała kobiecość</p>
+
           <h2>Po 40. nie musisz znikać z kadru.</h2>
         </div>
 
@@ -341,6 +335,7 @@ export default function SesjaKobieca40PlusPage() {
       <section id="dojrzalosc" className="experience section light">
         <div>
           <p className="eyebrow">Najczęstsze myśli</p>
+
           <h2>Jeśli te obawy brzmią znajomo, nie jesteś wyjątkiem.</h2>
         </div>
 
@@ -355,6 +350,7 @@ export default function SesjaKobieca40PlusPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow">Co jest ważne</p>
+
             <h2>Dojrzała sesja kobieca wymaga wyczucia, nie schematu.</h2>
           </div>
 
@@ -380,6 +376,7 @@ export default function SesjaKobieca40PlusPage() {
 
       <section id="poradnik" className="faq section light">
         <p className="eyebrow">Poradnik</p>
+
         <h2>Sesja kobieca po 40 — jak o niej myśleć?</h2>
 
         <div className="faqGrid">
@@ -395,6 +392,7 @@ export default function SesjaKobieca40PlusPage() {
       <section className="dream section dark">
         <div className="dreamText">
           <p className="eyebrow lightText">Efekt</p>
+
           <h2>
             Chodzi o zdjęcia, na których nie udajesz kogoś innego. Widzisz
             siebie dojrzale, kobieco, spokojnie i z charakterem.
@@ -410,12 +408,14 @@ export default function SesjaKobieca40PlusPage() {
             sizes="(max-width: 768px) 92vw, 52vw"
             style={imageCoverStyle}
           />
+
           <span>dojrzała kobiecość</span>
         </div>
       </section>
 
       <section id="portfolio" className="gallery section">
         <p className="eyebrow">Klimat sesji</p>
+
         <h2>Elegancko, kobieco, bez sztuczności</h2>
 
         <div className="galleryGrid">
@@ -434,6 +434,7 @@ export default function SesjaKobieca40PlusPage() {
 
       <section id="faq" className="faq section light">
         <p className="eyebrow">FAQ</p>
+
         <h2>Najczęstsze pytania o sesję kobiecą 40 plus</h2>
 
         <div className="faqGrid">
@@ -448,15 +449,18 @@ export default function SesjaKobieca40PlusPage() {
 
       <section className="stories section light">
         <p className="eyebrow">Dalej</p>
+
         <h2>Powiązane strony i poradniki</h2>
 
         <div className="storyGrid">
           {relatedLinks.map((item) => (
             <article className="storyCard" key={item.href}>
               <p>{item.text}</p>
+
               <strong>
                 <a href={item.href}>{item.title}</a>
               </strong>
+
               <span className="storySource">Powiązana strona</span>
             </article>
           ))}
@@ -476,18 +480,14 @@ export default function SesjaKobieca40PlusPage() {
         </div>
 
         <p className="eyebrow lightText">Sesja kobieca 40 plus</p>
+
         <h2>
           Jeśli myślisz, że to już nie dla Ciebie, tym bardziej warto zacząć od
           rozmowy.
         </h2>
 
         <div className="heroActions center">
-          <a
-            className="button primary lightButton"
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="button primary lightButton" href={whatsappLink}>
             Napisz na WhatsApp
           </a>
 
