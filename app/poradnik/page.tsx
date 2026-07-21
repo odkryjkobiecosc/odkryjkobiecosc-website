@@ -61,11 +61,18 @@ const guidePages = [
     category: "Obawy",
   },
   {
+    title: "Sesja kobieca dla mamy",
+    description:
+      "Dla mam, które na co dzień dbają o wszystkich dookoła i chcą na nowo zobaczyć w sobie nie tylko mamę, ale również kobietę.",
+    href: "/poradnik/sesja-kobieca-dla-mamy",
+    category: "Dla mamy",
+  },
+  {
     title: "Sesja kobieca po ciąży",
     description:
       "Poradnik dla kobiet po ciąży i macierzyństwie, które chcą wrócić do siebie i swojej kobiecości.",
     href: "/poradnik/sesja-kobieca-po-ciazy",
-    category: "Macierzyństwo",
+    category: "Po ciąży",
   },
   {
     title: "Sesja kobieca 40 plus",
@@ -113,7 +120,8 @@ const startPoints = [
   "jeśli stresujesz się aparatem — zacznij od tekstu o pozowaniu",
   "jeśli zastanawiasz się nad ubraniami — przejdź do poradnika o stylizacjach",
   "jeśli interesuje Cię koszt — sprawdź stronę o cenie sesji kobiecej",
-  "jeśli jesteś po ciąży lub macierzyństwie — przeczytaj poradnik dla mam",
+  "jeśli jesteś mamą i potrzebujesz chwili dla siebie — przeczytaj poradnik dla mamy",
+  "jeśli jesteś po ciąży i trudno Ci zaakceptować zmiany w ciele — przejdź do poradnika po ciąży",
   "jeśli budujesz markę osobistą — sprawdź różnicę między sesją kobiecą a biznesową",
 ];
 
@@ -238,6 +246,8 @@ export const metadata: Metadata = {
     "sesja kobieca poradnik",
     "jak przygotować się do sesji kobiecej",
     "co ubrać na sesję kobiecą",
+    "sesja kobieca dla mamy",
+    "sesja kobieca po ciąży",
     "sesja kobieca Gdańsk poradnik",
     "sesja biznesowa Gdańsk poradnik",
     "fotograf kobiecy Gdańsk",
@@ -390,8 +400,8 @@ export default function PoradnikPage() {
           <p className="eyebrow lightText">Najważniejsze</p>
 
           <h2>
-            Nie musisz przyjść na sesję gotowa, pewna siebie i z idealnym planem.
-            Od tego jest rozmowa, przygotowanie i prowadzenie.
+            Nie musisz przyjść na sesję gotowa, pewna siebie i z idealnym
+            planem. Od tego jest rozmowa, przygotowanie i prowadzenie.
           </h2>
         </div>
 
@@ -486,10 +496,7 @@ export default function PoradnikPage() {
         </h2>
 
         <div className="heroActions center">
-          <a
-            className="button primary lightButton"
-            href={whatsappLink}
-          >
+          <a className="button primary lightButton" href={whatsappLink}>
             Napisz na WhatsApp
           </a>
 
