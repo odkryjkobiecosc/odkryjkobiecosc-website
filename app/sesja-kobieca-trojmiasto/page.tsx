@@ -3,6 +3,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import Header from "../../components/Header";
+
 import gallery01 from "../../public/images/gallery/gallery-01.webp";
 import gallery03 from "../../public/images/gallery/gallery-03.webp";
 import gallery04 from "../../public/images/gallery/gallery-04.webp";
@@ -311,20 +313,11 @@ export default function SesjaKobiecaTrojmiastoPage() {
         }}
       />
 
-      <nav className="nav">
-        <a className="brand" href="/" aria-label="Odkryj Kobiecość">
-          <span>Odkryj</span>
-          <strong>Kobiecość</strong>
-        </a>
-
-        <div className="navLinks">
-          <a href="#trojmiasto">Trójmiasto</a>
-          <a href="#dla-kogo">Dla kogo</a>
-          <a href="#proces">Proces</a>
-          <a href="#pakiety">Pakiety</a>
-          <a href="#kontakt">Kontakt</a>
-        </div>
-      </nav>
+      <Header
+        poradnikiHref="/poradnik"
+        faqHref="#faq"
+        kontaktHref="#kontakt"
+      />
 
       <section id="top" className="hero section">
         <div className="mobileAnchorNav" aria-label="Szybka nawigacja">
@@ -336,20 +329,17 @@ export default function SesjaKobiecaTrojmiastoPage() {
 
         <div className="heroCopy">
           <p className="eyebrow">Sesja kobieca • Trójmiasto</p>
+
           <h1>Sesja kobieca Trójmiasto</h1>
+
           <p className="lead">
             Profesjonalna sesja kobieca dla kobiet z Gdańska, Gdyni, Sopotu i
-            okolic. Spokojne prowadzenie, elegancki klimat i doświadczenie, które
-            pozwala zobaczyć siebie inaczej.
+            okolic. Spokojne prowadzenie, elegancki klimat i doświadczenie,
+            które pozwala zobaczyć siebie inaczej.
           </p>
 
           <div className="heroActions">
-            <a
-              className="button primary"
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="button primary" href={whatsappLink}>
               Zapytaj o termin
             </a>
 
@@ -370,6 +360,7 @@ export default function SesjaKobiecaTrojmiastoPage() {
               sizes="(max-width: 768px) 92vw, 48vw"
               style={imageCoverStyle}
             />
+
             <span>sesja kobieca Trójmiasto</span>
           </div>
 
@@ -383,20 +374,22 @@ export default function SesjaKobiecaTrojmiastoPage() {
 
         <div>
           <p className="eyebrow">Lokalnie</p>
+
           <h2>Sesja kobieca w Trójmieście — blisko, spokojnie, bez presji.</h2>
         </div>
 
         <p className="sectionText">
-          Jeśli szukasz sesji kobiecej w Gdańsku, Gdyni lub Sopocie, najważniejsze
-          nie jest tylko miejsce. Ważne jest doświadczenie: rozmowa, prowadzenie,
-          atmosfera i zdjęcia, w których możesz zobaczyć siebie z większą
-          pewnością.
+          Jeśli szukasz sesji kobiecej w Gdańsku, Gdyni lub Sopocie,
+          najważniejsze nie jest tylko miejsce. Ważne jest doświadczenie:
+          rozmowa, prowadzenie, atmosfera i zdjęcia, w których możesz zobaczyć
+          siebie z większą pewnością.
         </p>
       </section>
 
       <section id="trojmiasto" className="experience section light">
         <div>
           <p className="eyebrow">Obszar</p>
+
           <h2>Sesje kobiece dla kobiet z całego Trójmiasta.</h2>
         </div>
 
@@ -410,6 +403,7 @@ export default function SesjaKobiecaTrojmiastoPage() {
       <section id="dla-kogo" className="experience section light">
         <div>
           <p className="eyebrow">Dla kogo</p>
+
           <h2>Ta sesja jest dla Ciebie, jeśli...</h2>
         </div>
 
@@ -424,6 +418,7 @@ export default function SesjaKobiecaTrojmiastoPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow">Rodzaje sesji</p>
+
             <h2>Jedna marka, kilka kierunków kobiecego wizerunku.</h2>
           </div>
 
@@ -450,6 +445,7 @@ export default function SesjaKobiecaTrojmiastoPage() {
       <section className="dream section dark">
         <div className="dreamText">
           <p className="eyebrow lightText">Efekt</p>
+
           <h2>
             Chodzi o zdjęcia, przy których pomyślisz: nie wiedziałam, że mogę
             zobaczyć siebie właśnie tak.
@@ -465,6 +461,7 @@ export default function SesjaKobiecaTrojmiastoPage() {
             sizes="(max-width: 768px) 92vw, 52vw"
             style={imageCoverStyle}
           />
+
           <span>zobacz siebie inaczej</span>
         </div>
       </section>
@@ -472,6 +469,7 @@ export default function SesjaKobiecaTrojmiastoPage() {
       <section id="proces" className="process section dark">
         <div>
           <p className="eyebrow lightText">Proces</p>
+
           <h2>Jak wygląda sesja kobieca w Trójmieście?</h2>
         </div>
 
@@ -489,13 +487,14 @@ export default function SesjaKobiecaTrojmiastoPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow lightText">Pakiety</p>
+
             <h2>Cena sesji kobiecej w Trójmieście</h2>
           </div>
 
           <p>
-            Pakiety różnią się zakresem, liczbą zdjęć i charakterem sesji.
-            Jeśli nie wiesz, który będzie najlepszy, zacznij od krótkiej
-            wiadomości na WhatsApp.
+            Pakiety różnią się zakresem, liczbą zdjęć i charakterem sesji. Jeśli
+            nie wiesz, który będzie najlepszy, zacznij od krótkiej wiadomości
+            na WhatsApp.
           </p>
         </div>
 
@@ -504,7 +503,9 @@ export default function SesjaKobiecaTrojmiastoPage() {
             <article className="packageCard" key={item.name}>
               <div>
                 <p className="packageName">{item.name}</p>
+
                 <h3>{item.price}</h3>
+
                 <p className="packageText">{item.text}</p>
               </div>
 
@@ -514,12 +515,7 @@ export default function SesjaKobiecaTrojmiastoPage() {
                 ))}
               </ul>
 
-              <a
-                className="button packageButton"
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a className="button packageButton" href={whatsappLink}>
                 Zapytaj o termin
               </a>
             </article>
@@ -529,6 +525,7 @@ export default function SesjaKobiecaTrojmiastoPage() {
 
       <section id="portfolio" className="gallery section">
         <p className="eyebrow">Portfolio</p>
+
         <h2>Kobiecy, elegancki klimat zdjęć</h2>
 
         <div className="galleryGrid">
@@ -547,6 +544,7 @@ export default function SesjaKobiecaTrojmiastoPage() {
 
       <section id="faq" className="faq section light">
         <p className="eyebrow">FAQ</p>
+
         <h2>Najczęstsze pytania o sesję kobiecą w Trójmieście</h2>
 
         <div className="faqGrid">
@@ -561,15 +559,18 @@ export default function SesjaKobiecaTrojmiastoPage() {
 
       <section className="stories section light">
         <p className="eyebrow">Powiązane strony</p>
+
         <h2>Zobacz też</h2>
 
         <div className="storyGrid">
           {relatedLinks.map((item) => (
             <article className="storyCard" key={item.href}>
               <p>{item.text}</p>
+
               <strong>
                 <a href={item.href}>{item.title}</a>
               </strong>
+
               <span className="storySource">Powiązana strona</span>
             </article>
           ))}
@@ -589,15 +590,11 @@ export default function SesjaKobiecaTrojmiastoPage() {
         </div>
 
         <p className="eyebrow lightText">Sesja kobieca Trójmiasto</p>
+
         <h2>Jeśli szukasz sesji kobiecej w Trójmieście, napisz do Marty.</h2>
 
         <div className="heroActions center">
-          <a
-            className="button primary lightButton"
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="button primary lightButton" href={whatsappLink}>
             Napisz na WhatsApp
           </a>
 
