@@ -3,6 +3,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import Header from "@/components/Header";
+
 import gallery01 from "../../public/images/gallery/gallery-01.webp";
 import gallery03 from "../../public/images/gallery/gallery-03.webp";
 import gallery04 from "../../public/images/gallery/gallery-04.webp";
@@ -274,20 +276,11 @@ export default function PoradnikPage() {
         }}
       />
 
-      <nav className="nav">
-        <a className="brand" href="/" aria-label="Odkryj Kobiecość">
-          <span>Odkryj</span>
-          <strong>Kobiecość</strong>
-        </a>
-
-        <div className="navLinks">
-          <a href="/sesja-kobieca-gdansk">Sesja kobieca</a>
-          <a href="/sesja-biznesowa-gdansk">Biznesowa</a>
-          <a href="#poradniki">Poradniki</a>
-          <a href="#faq">FAQ</a>
-          <a href="#kontakt">Kontakt</a>
-        </div>
-      </nav>
+      <Header
+        poradnikiHref="#poradniki"
+        faqHref="#faq"
+        kontaktHref="#kontakt"
+      />
 
       <section id="top" className="hero section">
         <div className="mobileAnchorNav" aria-label="Szybka nawigacja">
@@ -299,7 +292,9 @@ export default function PoradnikPage() {
 
         <div className="heroCopy">
           <p className="eyebrow">Poradnik • sesja kobieca Gdańsk</p>
+
           <h1>Poradnik przed sesją kobiecą</h1>
+
           <p className="lead">
             Wszystko, co warto wiedzieć przed sesją kobiecą, biznesową lub
             wizerunkową: przygotowanie, stylizacje, cena, pozowanie, obawy i
@@ -307,12 +302,7 @@ export default function PoradnikPage() {
           </p>
 
           <div className="heroActions">
-            <a
-              className="button primary"
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="button primary" href={whatsappLink}>
               Zapytaj o sesję
             </a>
 
@@ -333,6 +323,7 @@ export default function PoradnikPage() {
               sizes="(max-width: 768px) 92vw, 48vw"
               style={imageCoverStyle}
             />
+
             <span>poradnik</span>
           </div>
 
@@ -346,6 +337,7 @@ export default function PoradnikPage() {
 
         <div>
           <p className="eyebrow">Cel poradnika</p>
+
           <h2>Masz wejść w sesję spokojniej, bez zgadywania i bez presji.</h2>
         </div>
 
@@ -358,6 +350,7 @@ export default function PoradnikPage() {
 
       <section id="poradniki" className="stories section light">
         <p className="eyebrow">Wszystkie poradniki</p>
+
         <h2>Wybierz temat, który jest teraz dla Ciebie najważniejszy.</h2>
 
         <div className="storyGrid">
@@ -369,7 +362,9 @@ export default function PoradnikPage() {
               aria-label={item.title}
             >
               <span className="storySource">{item.category}</span>
+
               <p>{item.description}</p>
+
               <strong>{item.title}</strong>
             </a>
           ))}
@@ -379,6 +374,7 @@ export default function PoradnikPage() {
       <section id="od-czego-zaczac" className="experience section light">
         <div>
           <p className="eyebrow">Od czego zacząć</p>
+
           <h2>Nie musisz czytać wszystkiego od razu.</h2>
         </div>
 
@@ -392,6 +388,7 @@ export default function PoradnikPage() {
       <section className="dream section dark">
         <div className="dreamText">
           <p className="eyebrow lightText">Najważniejsze</p>
+
           <h2>
             Nie musisz przyjść na sesję gotowa, pewna siebie i z idealnym planem.
             Od tego jest rozmowa, przygotowanie i prowadzenie.
@@ -407,12 +404,14 @@ export default function PoradnikPage() {
             sizes="(max-width: 768px) 92vw, 52vw"
             style={imageCoverStyle}
           />
+
           <span>spokojne przygotowanie</span>
         </div>
       </section>
 
       <section id="uslugi" className="stories section light">
         <p className="eyebrow">Usługi</p>
+
         <h2>Przejdź do strony sesji, jeśli chcesz zobaczyć ofertę.</h2>
 
         <div className="storyGrid">
@@ -424,7 +423,9 @@ export default function PoradnikPage() {
               aria-label={item.title}
             >
               <p>{item.text}</p>
+
               <strong>{item.title}</strong>
+
               <span className="storySource">Strona usługowa</span>
             </a>
           ))}
@@ -433,6 +434,7 @@ export default function PoradnikPage() {
 
       <section id="portfolio" className="gallery section">
         <p className="eyebrow">Klimat sesji</p>
+
         <h2>Kobieco, elegancko, z prowadzeniem krok po kroku</h2>
 
         <div className="galleryGrid">
@@ -451,6 +453,7 @@ export default function PoradnikPage() {
 
       <section id="faq" className="faq section light">
         <p className="eyebrow">FAQ</p>
+
         <h2>Najczęstsze pytania przed przejściem do sesji</h2>
 
         <div className="faqGrid">
@@ -476,6 +479,7 @@ export default function PoradnikPage() {
         </div>
 
         <p className="eyebrow lightText">Nie wiesz, od czego zacząć?</p>
+
         <h2>
           Napisz do Marty i krótko opisz, czego potrzebujesz. Dobierzecie
           kierunek sesji bez presji.
@@ -485,8 +489,6 @@ export default function PoradnikPage() {
           <a
             className="button primary lightButton"
             href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
           >
             Napisz na WhatsApp
           </a>
@@ -521,8 +523,12 @@ export default function PoradnikPage() {
           <nav className="footerNav" aria-label="Nawigacja w stopce">
             <a href="/">Strona główna</a>
             <a href="/sesja-kobieca-gdansk">Sesja kobieca Gdańsk</a>
-            <a href="/sesja-kobieca-trojmiasto">Sesja kobieca Trójmiasto</a>
-            <a href="/sesja-biznesowa-gdansk">Sesja biznesowa Gdańsk</a>
+            <a href="/sesja-kobieca-trojmiasto">
+              Sesja kobieca Trójmiasto
+            </a>
+            <a href="/sesja-biznesowa-gdansk">
+              Sesja biznesowa Gdańsk
+            </a>
             <a href="#kontakt">Kontakt</a>
           </nav>
         </div>
