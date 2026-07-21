@@ -1,0 +1,196 @@
+/* app/styles/12-header-brand.css */
+
+/* =========================================================
+   ODKRYJ KOBIECOŚĆ — WSPÓLNY HEADER I PODPIS MARKI
+   ========================================================= */
+
+.nav .brand {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex: 0 1 auto;
+  gap: 10px;
+
+  min-width: 0;
+  max-width: 100%;
+
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Główna nazwa: Odkryj Kobiecość */
+.nav .brand .brandTitle {
+  display: inline-flex;
+  align-items: baseline;
+  flex: 0 0 auto;
+  gap: 5px;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: inherit;
+  font-size: 17px;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+/*
+ * Nadpisanie wcześniejszych ogólnych reguł typu:
+ * .brand span { ... }
+ */
+.nav .brand .brandTitle > span {
+  display: inline;
+  margin: 0;
+  padding: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+  font-style: normal;
+  font-weight: 400;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: none;
+  opacity: 1;
+  transform: none;
+}
+
+.nav .brand .brandTitle > strong {
+  display: inline;
+  margin: 0;
+  padding: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+  font-style: normal;
+  font-weight: 700;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: none;
+  opacity: 1;
+  transform: none;
+}
+
+/* Podpis Marty */
+.nav .brand .brandSignature {
+  flex: 0 0 auto;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: var(--font-signature), cursive;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+
+  color: currentColor;
+  opacity: 0.6;
+
+  white-space: nowrap;
+  transform: translateY(2px) rotate(-1deg);
+  transform-origin: left center;
+}
+
+/* Domyślnie desktop */
+.nav .brand .brandSignatureDesktop {
+  display: inline-block;
+}
+
+.nav .brand .brandSignatureMobile,
+.nav .brand .brandSignatureCompact {
+  display: none;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .nav .brand {
+    gap: 8px;
+  }
+
+  .nav .brand .brandTitle {
+    font-size: 16px;
+  }
+
+  .nav .brand .brandSignature {
+    font-size: 18px;
+  }
+}
+
+/* =========================================================
+   TELEFON — pełna nazwa Photography, gdy się mieści
+   ========================================================= */
+
+@media (max-width: 980px) {
+  .nav .brand {
+    gap: 7px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .nav .brand .brandTitle {
+    font-size: clamp(14px, 4vw, 16px);
+  }
+
+  .nav .brand .brandSignatureDesktop {
+    display: none;
+  }
+
+  .nav .brand .brandSignatureMobile {
+    display: inline-block;
+    font-size: clamp(15px, 4.2vw, 18px);
+  }
+
+  .nav .brand .brandSignatureCompact {
+    display: none;
+  }
+}
+
+/* =========================================================
+   MNIEJSZY TELEFON — skrócona wersja Photo
+   ========================================================= */
+
+@media (max-width: 430px) {
+  .nav .brand {
+    gap: 5px;
+  }
+
+  .nav .brand .brandTitle {
+    font-size: 14px;
+  }
+
+  .nav .brand .brandSignatureDesktop,
+  .nav .brand .brandSignatureMobile {
+    display: none;
+  }
+
+  .nav .brand .brandSignatureCompact {
+    display: inline-block;
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   BARDZO MAŁY TELEFON
+   ========================================================= */
+
+@media (max-width: 360px) {
+  .nav .brand {
+    gap: 4px;
+  }
+
+  .nav .brand .brandTitle {
+    font-size: 13px;
+  }
+
+  .nav .brand .brandSignatureCompact {
+    font-size: 14px;
+  }
+}
