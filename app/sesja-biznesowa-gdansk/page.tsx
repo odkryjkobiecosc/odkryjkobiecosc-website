@@ -3,6 +3,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import Header from "../../components/Header";
+
 import gallery01 from "../../public/images/gallery/gallery-01.webp";
 import gallery02 from "../../public/images/gallery/gallery-02.webp";
 import gallery05 from "../../public/images/gallery/gallery-05.webp";
@@ -107,7 +109,8 @@ const packages = [
 
 const faqs = [
   {
-    question: "Czy sesja biznesowa w Gdańsku może wyglądać kobieco i naturalnie?",
+    question:
+      "Czy sesja biznesowa w Gdańsku może wyglądać kobieco i naturalnie?",
     answer:
       "Tak. Sesja biznesowa nie musi oznaczać sztywnego portretu na białym tle. Może być elegancka, kobieca, spokojna i nadal profesjonalna.",
   },
@@ -288,20 +291,11 @@ export default function SesjaBiznesowaGdanskPage() {
         }}
       />
 
-      <nav className="nav">
-        <a className="brand" href="/" aria-label="Odkryj Kobiecość">
-          <span>Odkryj</span>
-          <strong>Kobiecość</strong>
-        </a>
-
-        <div className="navLinks">
-          <a href="#dla-kogo">Dla kogo</a>
-          <a href="#zastosowanie">Zastosowanie</a>
-          <a href="#proces">Proces</a>
-          <a href="#pakiety">Pakiety</a>
-          <a href="#kontakt">Kontakt</a>
-        </div>
-      </nav>
+      <Header
+        poradnikiHref="/poradnik"
+        faqHref="#faq"
+        kontaktHref="#kontakt"
+      />
 
       <section id="top" className="hero section">
         <div className="mobileAnchorNav" aria-label="Szybka nawigacja">
@@ -312,8 +306,12 @@ export default function SesjaBiznesowaGdanskPage() {
         </div>
 
         <div className="heroCopy">
-          <p className="eyebrow">Sesja biznesowa Gdańsk • wizerunek premium</p>
+          <p className="eyebrow">
+            Sesja biznesowa Gdańsk • wizerunek premium
+          </p>
+
           <h1>Sesja biznesowa Gdańsk</h1>
+
           <p className="lead">
             Profesjonalna sesja biznesowa i wizerunkowa dla kobiet, które chcą
             pokazać swoją markę z klasą — kompetentnie, naturalnie i bez
@@ -321,12 +319,7 @@ export default function SesjaBiznesowaGdanskPage() {
           </p>
 
           <div className="heroActions">
-            <a
-              className="button primary"
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="button primary" href={whatsappLink}>
               Zapytaj o termin
             </a>
 
@@ -347,6 +340,7 @@ export default function SesjaBiznesowaGdanskPage() {
               sizes="(max-width: 768px) 92vw, 48vw"
               style={imageCoverStyle}
             />
+
             <span>sesja biznesowa</span>
           </div>
 
@@ -360,6 +354,7 @@ export default function SesjaBiznesowaGdanskPage() {
 
         <div>
           <p className="eyebrow">Wizerunek</p>
+
           <h2>Profesjonalne zdjęcie nie musi być sztywne.</h2>
         </div>
 
@@ -373,6 +368,7 @@ export default function SesjaBiznesowaGdanskPage() {
       <section id="dla-kogo" className="experience section light">
         <div>
           <p className="eyebrow">Dla kogo</p>
+
           <h2>Dla kobiet, które chcą pokazać swoją markę profesjonalnie.</h2>
         </div>
 
@@ -387,13 +383,16 @@ export default function SesjaBiznesowaGdanskPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow">Gdzie wykorzystasz zdjęcia</p>
-            <h2>Jedna sesja może pracować dla Twojej marki przez wiele miesięcy.</h2>
+
+            <h2>
+              Jedna sesja może pracować dla Twojej marki przez wiele miesięcy.
+            </h2>
           </div>
 
           <p>
             Zdjęcia z sesji biznesowej możesz wykorzystać w miejscach, gdzie
-            klientka albo klient po raz pierwszy ocenia Twoją wiarygodność:
-            w Google, na stronie, w social mediach i w ofercie.
+            klientka albo klient po raz pierwszy ocenia Twoją wiarygodność: w
+            Google, na stronie, w social mediach i w ofercie.
           </p>
         </div>
 
@@ -413,6 +412,7 @@ export default function SesjaBiznesowaGdanskPage() {
       <section className="dream section dark">
         <div className="dreamText">
           <p className="eyebrow lightText">Cel sesji</p>
+
           <h2>
             Masz wyglądać jak ekspertka, ale nadal jak Ty. Profesjonalnie,
             kobieco, spokojnie i z charakterem.
@@ -428,6 +428,7 @@ export default function SesjaBiznesowaGdanskPage() {
             sizes="(max-width: 768px) 92vw, 52vw"
             style={imageCoverStyle}
           />
+
           <span>wizerunek premium</span>
         </div>
       </section>
@@ -436,6 +437,7 @@ export default function SesjaBiznesowaGdanskPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow">Najczęstsze obawy</p>
+
             <h2>Nie musisz wiedzieć, jak wyglądać „profesjonalnie”.</h2>
           </div>
 
@@ -462,6 +464,7 @@ export default function SesjaBiznesowaGdanskPage() {
       <section id="proces" className="process section dark">
         <div>
           <p className="eyebrow lightText">Jak wygląda sesja</p>
+
           <h2>Proces sesji biznesowej w Gdańsku</h2>
         </div>
 
@@ -479,6 +482,7 @@ export default function SesjaBiznesowaGdanskPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow lightText">Cena sesji biznesowej</p>
+
             <h2>Pakiety sesji biznesowej i wizerunkowej</h2>
           </div>
 
@@ -494,7 +498,9 @@ export default function SesjaBiznesowaGdanskPage() {
             <article className="packageCard" key={item.name}>
               <div>
                 <p className="packageName">{item.name}</p>
+
                 <h3>{item.price}</h3>
+
                 <p className="packageText">{item.text}</p>
               </div>
 
@@ -504,12 +510,7 @@ export default function SesjaBiznesowaGdanskPage() {
                 ))}
               </ul>
 
-              <a
-                className="button packageButton"
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a className="button packageButton" href={whatsappLink}>
                 Zapytaj o termin
               </a>
             </article>
@@ -519,6 +520,7 @@ export default function SesjaBiznesowaGdanskPage() {
 
       <section id="portfolio" className="gallery section">
         <p className="eyebrow">Portfolio</p>
+
         <h2>Zdjęcia biznesowe, kobiece i wizerunkowe</h2>
 
         <div className="galleryGrid">
@@ -546,18 +548,22 @@ export default function SesjaBiznesowaGdanskPage() {
               sizes="(max-width: 768px) 90vw, 34vw"
               style={imageCoverStyle}
             />
+
             <span>Marta</span>
           </div>
         </div>
 
         <div className="aboutCopy">
           <p className="eyebrow">Fotograf biznesowy Gdańsk</p>
+
           <h2>Marta Krajewska Photo</h2>
+
           <p>
             Marta tworzy sesje kobiece, biznesowe i wizerunkowe w Trójmieście.
             W sesjach dla marek osobistych łączy elegancki portret, spokojną
             atmosferę i prowadzenie krok po kroku.
           </p>
+
           <p>
             Dzięki temu zdjęcia mogą być profesjonalne, ale nie bezosobowe.
             Mają pokazywać Ciebie, Twoją energię, styl i poziom usług, które
@@ -568,6 +574,7 @@ export default function SesjaBiznesowaGdanskPage() {
 
       <section id="faq" className="faq section light">
         <p className="eyebrow">FAQ</p>
+
         <h2>Najczęstsze pytania o sesję biznesową w Gdańsku</h2>
 
         <div className="faqGrid">
@@ -582,6 +589,7 @@ export default function SesjaBiznesowaGdanskPage() {
 
       <section className="stories section light">
         <p className="eyebrow">Powiązane tematy</p>
+
         <h2>Sesja biznesowa może być częścią większego wizerunku.</h2>
 
         <div className="storyGrid">
@@ -590,9 +598,11 @@ export default function SesjaBiznesowaGdanskPage() {
               Jeśli chcesz bardziej kobiecej odsłony sesji, zobacz stronę
               przygotowaną pod sesję kobiecą w Gdańsku.
             </p>
+
             <strong>
               <a href="/sesja-kobieca-gdansk">Sesja kobieca Gdańsk</a>
             </strong>
+
             <span className="storySource">Podstrona SEO</span>
           </article>
 
@@ -601,9 +611,11 @@ export default function SesjaBiznesowaGdanskPage() {
               Zobacz główny landing Odkryj Kobiecość i pełny klimat marki
               stworzonej wokół sesji premium dla kobiet.
             </p>
+
             <strong>
               <a href="/">Odkryj Kobiecość</a>
             </strong>
+
             <span className="storySource">Strona główna</span>
           </article>
 
@@ -612,11 +624,11 @@ export default function SesjaBiznesowaGdanskPage() {
               Najszybsza droga do ustalenia terminu to wiadomość na WhatsApp z
               informacją, gdzie chcesz wykorzystać zdjęcia.
             </p>
+
             <strong>
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                Napisz do Marty
-              </a>
+              <a href={whatsappLink}>Napisz do Marty</a>
             </strong>
+
             <span className="storySource">Kontakt</span>
           </article>
         </div>
@@ -635,18 +647,14 @@ export default function SesjaBiznesowaGdanskPage() {
         </div>
 
         <p className="eyebrow lightText">Sesja biznesowa Gdańsk</p>
+
         <h2>
           Jeśli chcesz, żeby Twój wizerunek pracował razem z Twoją marką,
           napisz do Marty.
         </h2>
 
         <div className="heroActions center">
-          <a
-            className="button primary lightButton"
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="button primary lightButton" href={whatsappLink}>
             Napisz na WhatsApp
           </a>
 
