@@ -11,3 +11,9 @@
 @import "./styles/09-cookies.css";
 @import "./styles/10-whatsapp.css";
 @import "./styles/11-responsive.css";
+
+/*
+ * Musi być ostatni, ponieważ nadpisuje wcześniejsze
+ * style .brand i .brand span.
+ */
+@import "./styles/12-header-brand.css";
