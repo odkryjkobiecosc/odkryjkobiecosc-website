@@ -3,6 +3,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import Header from "../../../components/Header";
+
 import gallery01 from "../../../public/images/gallery/gallery-01.webp";
 import gallery03 from "../../../public/images/gallery/gallery-03.webp";
 import gallery04 from "../../../public/images/gallery/gallery-04.webp";
@@ -263,20 +265,11 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
         }}
       />
 
-      <nav className="nav">
-        <a className="brand" href="/" aria-label="Odkryj Kobiecość">
-          <span>Odkryj</span>
-          <strong>Kobiecość</strong>
-        </a>
-
-        <div className="navLinks">
-          <a href="/sesja-kobieca-gdansk">Kobieca</a>
-          <a href="/sesja-biznesowa-gdansk">Biznesowa</a>
-          <a href="#roznice">Różnice</a>
-          <a href="#faq">FAQ</a>
-          <a href="#kontakt">Kontakt</a>
-        </div>
-      </nav>
+      <Header
+        poradnikiHref="/poradnik"
+        faqHref="#faq"
+        kontaktHref="#kontakt"
+      />
 
       <section id="top" className="hero section">
         <div className="mobileAnchorNav" aria-label="Szybka nawigacja">
@@ -288,7 +281,9 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
 
         <div className="heroCopy">
           <p className="eyebrow">Poradnik • sesja kobieca i biznesowa</p>
+
           <h1>Sesja kobieca a sesja biznesowa — czym się różnią?</h1>
+
           <p className="lead">
             Obie mogą być eleganckie, profesjonalne i kobiece. Różnica jest w
             celu: jedna bardziej opowiada o Tobie jako kobiecie, druga o Twoim
@@ -296,12 +291,7 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
           </p>
 
           <div className="heroActions">
-            <a
-              className="button primary"
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="button primary" href={whatsappLink}>
               Zapytaj, co wybrać
             </a>
 
@@ -322,6 +312,7 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
               sizes="(max-width: 768px) 92vw, 48vw"
               style={imageCoverStyle}
             />
+
             <span>kobiece + biznesowe</span>
           </div>
 
@@ -335,7 +326,11 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
 
         <div>
           <p className="eyebrow">Najkrócej</p>
-          <h2>Sesja kobieca jest bardziej osobista. Sesja biznesowa bardziej strategiczna.</h2>
+
+          <h2>
+            Sesja kobieca jest bardziej osobista. Sesja biznesowa bardziej
+            strategiczna.
+          </h2>
         </div>
 
         <p className="sectionText">
@@ -348,6 +343,7 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
       <section id="roznice" className="experience section light">
         <div>
           <p className="eyebrow">Sesja kobieca</p>
+
           <h2>Kiedy wybrać sesję kobiecą?</h2>
         </div>
 
@@ -361,6 +357,7 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
       <section className="experience section light">
         <div>
           <p className="eyebrow">Sesja biznesowa</p>
+
           <h2>Kiedy wybrać sesję biznesową lub wizerunkową?</h2>
         </div>
 
@@ -375,6 +372,7 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow">Połączenie</p>
+
             <h2>Najlepszym wyborem często jest sesja kobieco-wizerunkowa.</h2>
           </div>
 
@@ -400,6 +398,7 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
 
       <section id="poradnik" className="faq section light">
         <p className="eyebrow">Poradnik</p>
+
         <h2>Jak zdecydować, który typ sesji wybrać?</h2>
 
         <div className="faqGrid">
@@ -415,6 +414,7 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
       <section className="dream section dark">
         <div className="dreamText">
           <p className="eyebrow lightText">Efekt</p>
+
           <h2>
             Możesz mieć zdjęcia, które pokazują kompetencje, ale nadal są
             kobiece, spokojne i zgodne z Tobą.
@@ -430,12 +430,14 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
             sizes="(max-width: 768px) 92vw, 52vw"
             style={imageCoverStyle}
           />
+
           <span>kobiece i profesjonalne</span>
         </div>
       </section>
 
       <section id="portfolio" className="gallery section">
         <p className="eyebrow">Portfolio</p>
+
         <h2>Kadry kobiece, biznesowe i wizerunkowe</h2>
 
         <div className="galleryGrid">
@@ -454,6 +456,7 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
 
       <section id="faq" className="faq section light">
         <p className="eyebrow">FAQ</p>
+
         <h2>Najczęstsze pytania o sesję kobiecą i biznesową</h2>
 
         <div className="faqGrid">
@@ -468,15 +471,18 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
 
       <section className="stories section light">
         <p className="eyebrow">Dalej</p>
+
         <h2>Powiązane strony</h2>
 
         <div className="storyGrid">
           {relatedLinks.map((item) => (
             <article className="storyCard" key={item.href}>
               <p>{item.text}</p>
+
               <strong>
                 <a href={item.href}>{item.title}</a>
               </strong>
+
               <span className="storySource">Powiązana strona</span>
             </article>
           ))}
@@ -496,18 +502,14 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
         </div>
 
         <p className="eyebrow lightText">Sesja kobieca czy biznesowa?</p>
+
         <h2>
           Jeśli nie wiesz, który kierunek będzie lepszy, napisz do Marty i
           zacznij od krótkiej rozmowy.
         </h2>
 
         <div className="heroActions center">
-          <a
-            className="button primary lightButton"
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="button primary lightButton" href={whatsappLink}>
             Napisz na WhatsApp
           </a>
 
@@ -541,9 +543,7 @@ export default function SesjaKobiecaABiznesowaRoznicePage() {
             <a href="/">Strona główna</a>
             <a href="/sesja-kobieca-gdansk">Sesja kobieca Gdańsk</a>
             <a href="/sesja-biznesowa-gdansk">Sesja biznesowa Gdańsk</a>
-            <a href="/poradnik/sesja-kobieca-czy-warto">
-              Czy warto?
-            </a>
+            <a href="/poradnik/sesja-kobieca-czy-warto">Czy warto?</a>
             <a href="#kontakt">Kontakt</a>
           </nav>
         </div>
