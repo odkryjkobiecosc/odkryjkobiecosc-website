@@ -3,7 +3,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
-import Header from "@/components/Header";
+import Header from "../../components/Header";
 
 import gallery01 from "../../public/images/gallery/gallery-01.webp";
 import gallery03 from "../../public/images/gallery/gallery-03.webp";
