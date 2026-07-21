@@ -3,6 +3,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import Header from "../../../components/Header";
+
 import gallery01 from "../../../public/images/gallery/gallery-01.webp";
 import gallery03 from "../../../public/images/gallery/gallery-03.webp";
 import gallery04 from "../../../public/images/gallery/gallery-04.webp";
@@ -298,20 +300,11 @@ export default function SesjaKobiecaCenaGdanskPage() {
         }}
       />
 
-      <nav className="nav">
-        <a className="brand" href="/" aria-label="Odkryj Kobiecość">
-          <span>Odkryj</span>
-          <strong>Kobiecość</strong>
-        </a>
-
-        <div className="navLinks">
-          <a href="/sesja-kobieca-gdansk">Sesja kobieca</a>
-          <a href="#cennik">Cennik</a>
-          <a href="#co-wplywa-na-cene">Cena</a>
-          <a href="#faq">FAQ</a>
-          <a href="#kontakt">Kontakt</a>
-        </div>
-      </nav>
+      <Header
+        poradnikiHref="/poradnik"
+        faqHref="#faq"
+        kontaktHref="#kontakt"
+      />
 
       <section id="top" className="hero section">
         <div className="mobileAnchorNav" aria-label="Szybka nawigacja">
@@ -323,7 +316,9 @@ export default function SesjaKobiecaCenaGdanskPage() {
 
         <div className="heroCopy">
           <p className="eyebrow">Cena sesji kobiecej • Gdańsk</p>
+
           <h1>Sesja kobieca cena Gdańsk</h1>
+
           <p className="lead">
             Ile kosztuje profesjonalna sesja kobieca, co obejmuje cena i jak
             wybrać pakiet, który pasuje do Twojego celu: kobiecego, biznesowego
@@ -331,12 +326,7 @@ export default function SesjaKobiecaCenaGdanskPage() {
           </p>
 
           <div className="heroActions">
-            <a
-              className="button primary"
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="button primary" href={whatsappLink}>
               Zapytaj o pakiet
             </a>
 
@@ -357,6 +347,7 @@ export default function SesjaKobiecaCenaGdanskPage() {
               sizes="(max-width: 768px) 92vw, 48vw"
               style={imageCoverStyle}
             />
+
             <span>cena sesji</span>
           </div>
 
@@ -370,7 +361,11 @@ export default function SesjaKobiecaCenaGdanskPage() {
 
         <div>
           <p className="eyebrow">Nie tylko koszt</p>
-          <h2>Cena sesji kobiecej to cena całego doświadczenia, nie samego zdjęcia.</h2>
+
+          <h2>
+            Cena sesji kobiecej to cena całego doświadczenia, nie samego
+            zdjęcia.
+          </h2>
         </div>
 
         <p className="sectionText">
@@ -384,12 +379,13 @@ export default function SesjaKobiecaCenaGdanskPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow lightText">Cennik</p>
+
             <h2>Pakiety sesji kobiecej w Gdańsku</h2>
           </div>
 
           <p>
-            Pakiety różnią się zakresem, liczbą zdjęć i charakterem sesji.
-            Jeśli nie wiesz, który wybrać, najprościej napisać do Marty i krótko
+            Pakiety różnią się zakresem, liczbą zdjęć i charakterem sesji. Jeśli
+            nie wiesz, który wybrać, najprościej napisać do Marty i krótko
             opisać, czego potrzebujesz.
           </p>
         </div>
@@ -399,7 +395,9 @@ export default function SesjaKobiecaCenaGdanskPage() {
             <article className="packageCard" key={item.name}>
               <div>
                 <p className="packageName">{item.name}</p>
+
                 <h3>{item.price}</h3>
+
                 <p className="packageText">{item.lead}</p>
               </div>
 
@@ -409,12 +407,7 @@ export default function SesjaKobiecaCenaGdanskPage() {
                 ))}
               </ul>
 
-              <a
-                className="button packageButton"
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a className="button packageButton" href={whatsappLink}>
                 Zapytaj o termin
               </a>
             </article>
@@ -425,6 +418,7 @@ export default function SesjaKobiecaCenaGdanskPage() {
       <section id="co-wplywa-na-cene" className="experience section light">
         <div>
           <p className="eyebrow">Co wpływa na cenę</p>
+
           <h2>Dlaczego sesje kobiece mają różne ceny?</h2>
         </div>
 
@@ -439,6 +433,7 @@ export default function SesjaKobiecaCenaGdanskPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow">Na co uważać</p>
+
             <h2>Nie porównuj tylko ceny. Porównuj cały proces.</h2>
           </div>
 
@@ -457,11 +452,14 @@ export default function SesjaKobiecaCenaGdanskPage() {
           ))}
         </div>
 
-        <p className="signatureLine">Najtańszy wybór nie zawsze jest najbezpieczniejszy.</p>
+        <p className="signatureLine">
+          Najtańszy wybór nie zawsze jest najbezpieczniejszy.
+        </p>
       </section>
 
       <section className="faq section light">
         <p className="eyebrow">Wyjaśnienie</p>
+
         <h2>Ile naprawdę kosztuje dobra sesja kobieca?</h2>
 
         <div className="faqGrid">
@@ -477,6 +475,7 @@ export default function SesjaKobiecaCenaGdanskPage() {
       <section className="dream section dark">
         <div className="dreamText">
           <p className="eyebrow lightText">Wartość</p>
+
           <h2>
             Dobra sesja kobieca zostaje z Tobą dłużej niż sam dzień zdjęć.
             Przypomina, że możesz zobaczyć siebie inaczej.
@@ -492,12 +491,14 @@ export default function SesjaKobiecaCenaGdanskPage() {
             sizes="(max-width: 768px) 92vw, 52vw"
             style={imageCoverStyle}
           />
+
           <span>wartość doświadczenia</span>
         </div>
       </section>
 
       <section id="portfolio" className="gallery section">
         <p className="eyebrow">Portfolio</p>
+
         <h2>Kobiecy, elegancki klimat sesji</h2>
 
         <div className="galleryGrid">
@@ -516,6 +517,7 @@ export default function SesjaKobiecaCenaGdanskPage() {
 
       <section id="faq" className="faq section light">
         <p className="eyebrow">FAQ</p>
+
         <h2>Najczęstsze pytania o cenę sesji kobiecej</h2>
 
         <div className="faqGrid">
@@ -530,15 +532,18 @@ export default function SesjaKobiecaCenaGdanskPage() {
 
       <section className="stories section light">
         <p className="eyebrow">Dalej</p>
+
         <h2>Powiązane strony</h2>
 
         <div className="storyGrid">
           {relatedLinks.map((item) => (
             <article className="storyCard" key={item.href}>
               <p>{item.text}</p>
+
               <strong>
                 <a href={item.href}>{item.title}</a>
               </strong>
+
               <span className="storySource">Powiązana strona</span>
             </article>
           ))}
@@ -558,15 +563,11 @@ export default function SesjaKobiecaCenaGdanskPage() {
         </div>
 
         <p className="eyebrow lightText">Sesja kobieca Gdańsk</p>
+
         <h2>Jeśli chcesz dobrać pakiet do siebie, napisz do Marty.</h2>
 
         <div className="heroActions center">
-          <a
-            className="button primary lightButton"
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="button primary lightButton" href={whatsappLink}>
             Napisz na WhatsApp
           </a>
 
