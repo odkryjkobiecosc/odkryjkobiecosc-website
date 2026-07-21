@@ -3,6 +3,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import Header from "../../components/Header";
+
 import gallery01 from "../../public/images/gallery/gallery-01.webp";
 import gallery03 from "../../public/images/gallery/gallery-03.webp";
 import gallery04 from "../../public/images/gallery/gallery-04.webp";
@@ -98,7 +100,8 @@ const packages = [
 
 const faqs = [
   {
-    question: "Czy sesja kobieca w Gdańsku jest dla mnie, jeśli nie umiem pozować?",
+    question:
+      "Czy sesja kobieca w Gdańsku jest dla mnie, jeśli nie umiem pozować?",
     answer:
       "Tak. Nie musisz mieć doświadczenia przed aparatem. Podczas sesji Marta prowadzi Cię krok po kroku — od ustawienia sylwetki, przez dłonie, spojrzenie i mimikę.",
   },
@@ -279,20 +282,11 @@ export default function SesjaKobiecaGdanskPage() {
         }}
       />
 
-      <nav className="nav">
-        <a className="brand" href="/" aria-label="Odkryj Kobiecość">
-          <span>Odkryj</span>
-          <strong>Kobiecość</strong>
-        </a>
-
-        <div className="navLinks">
-          <a href="#dla-kogo">Dla kogo</a>
-          <a href="#proces">Proces</a>
-          <a href="#pakiety">Pakiety</a>
-          <a href="#faq">FAQ</a>
-          <a href="#kontakt">Kontakt</a>
-        </div>
-      </nav>
+      <Header
+        poradnikiHref="/poradnik"
+        faqHref="#faq"
+        kontaktHref="#kontakt"
+      />
 
       <section id="top" className="hero section">
         <div className="mobileAnchorNav" aria-label="Szybka nawigacja">
@@ -304,20 +298,17 @@ export default function SesjaKobiecaGdanskPage() {
 
         <div className="heroCopy">
           <p className="eyebrow">Sesja kobieca Gdańsk • Trójmiasto</p>
+
           <h1>Sesja kobieca Gdańsk</h1>
+
           <p className="lead">
             Profesjonalna sesja kobieca dla kobiet, które chcą zobaczyć siebie
-            w bardziej pewnej, spokojnej i kobiecej odsłonie — bez presji,
-            bez doświadczenia przed aparatem, z prowadzeniem krok po kroku.
+            w bardziej pewnej, spokojnej i kobiecej odsłonie — bez presji, bez
+            doświadczenia przed aparatem, z prowadzeniem krok po kroku.
           </p>
 
           <div className="heroActions">
-            <a
-              className="button primary"
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="button primary" href={whatsappLink}>
               Zapytaj o termin
             </a>
 
@@ -338,6 +329,7 @@ export default function SesjaKobiecaGdanskPage() {
               sizes="(max-width: 768px) 92vw, 48vw"
               style={imageCoverStyle}
             />
+
             <span>sesja kobieca Gdańsk</span>
           </div>
 
@@ -351,7 +343,10 @@ export default function SesjaKobiecaGdanskPage() {
 
         <div>
           <p className="eyebrow">Nie tylko zdjęcia</p>
-          <h2>Sesja kobieca to moment, w którym nie musisz niczego udowadniać.</h2>
+
+          <h2>
+            Sesja kobieca to moment, w którym nie musisz niczego udowadniać.
+          </h2>
         </div>
 
         <p className="sectionText">
@@ -364,6 +359,7 @@ export default function SesjaKobiecaGdanskPage() {
       <section id="dla-kogo" className="experience section light">
         <div>
           <p className="eyebrow">Dla kogo</p>
+
           <h2>Dla kobiet, które za długo odkładały siebie na później.</h2>
         </div>
 
@@ -378,6 +374,7 @@ export default function SesjaKobiecaGdanskPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow">Najczęstsze obawy</p>
+
             <h2>Nie musisz przyjść pewna siebie. Od tego zaczniemy.</h2>
           </div>
 
@@ -402,6 +399,7 @@ export default function SesjaKobiecaGdanskPage() {
       <section className="dream section dark">
         <div className="dreamText">
           <p className="eyebrow lightText">Efekt</p>
+
           <h2>
             Chodzi o to, żebyś zobaczyła siebie nie jako „niefotogeniczną”,
             tylko jako kobietę, która może wyglądać właśnie tak.
@@ -417,6 +415,7 @@ export default function SesjaKobiecaGdanskPage() {
             sizes="(max-width: 768px) 92vw, 52vw"
             style={imageCoverStyle}
           />
+
           <span>zobacz siebie inaczej</span>
         </div>
       </section>
@@ -424,6 +423,7 @@ export default function SesjaKobiecaGdanskPage() {
       <section id="proces" className="process section dark">
         <div>
           <p className="eyebrow lightText">Jak wygląda sesja</p>
+
           <h2>Proces sesji kobiecej w Gdańsku</h2>
         </div>
 
@@ -441,6 +441,7 @@ export default function SesjaKobiecaGdanskPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow lightText">Cena sesji kobiecej</p>
+
             <h2>Pakiety sesji kobiecej</h2>
           </div>
 
@@ -456,7 +457,9 @@ export default function SesjaKobiecaGdanskPage() {
             <article className="packageCard" key={item.name}>
               <div>
                 <p className="packageName">{item.name}</p>
+
                 <h3>{item.price}</h3>
+
                 <p className="packageText">{item.text}</p>
               </div>
 
@@ -466,12 +469,7 @@ export default function SesjaKobiecaGdanskPage() {
                 ))}
               </ul>
 
-              <a
-                className="button packageButton"
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a className="button packageButton" href={whatsappLink}>
                 Zapytaj o termin
               </a>
             </article>
@@ -481,6 +479,7 @@ export default function SesjaKobiecaGdanskPage() {
 
       <section id="portfolio" className="gallery section">
         <p className="eyebrow">Portfolio</p>
+
         <h2>Przykładowe kadry z sesji kobiecych</h2>
 
         <div className="galleryGrid">
@@ -508,28 +507,33 @@ export default function SesjaKobiecaGdanskPage() {
               sizes="(max-width: 768px) 90vw, 34vw"
               style={imageCoverStyle}
             />
+
             <span>Marta</span>
           </div>
         </div>
 
         <div className="aboutCopy">
           <p className="eyebrow">Fotograf kobiecy Gdańsk</p>
+
           <h2>Marta Krajewska Photo</h2>
+
           <p>
             Marta tworzy sesje kobiece, biznesowe i wizerunkowe w Trójmieście.
             W pracy stawia na spokojną atmosferę, eleganckie kadry i takie
             prowadzenie, żebyś nie musiała wiedzieć, co robić przed aparatem.
           </p>
+
           <p>
             Celem sesji nie jest tylko ładne zdjęcie. Celem jest doświadczenie,
-            po którym możesz spojrzeć na siebie z większą łagodnością,
-            pewnością i spokojem.
+            po którym możesz spojrzeć na siebie z większą łagodnością, pewnością
+            i spokojem.
           </p>
         </div>
       </section>
 
       <section id="faq" className="faq section light">
         <p className="eyebrow">FAQ</p>
+
         <h2>Najczęstsze pytania o sesję kobiecą w Gdańsku</h2>
 
         <div className="faqGrid">
@@ -544,6 +548,7 @@ export default function SesjaKobiecaGdanskPage() {
 
       <section className="stories section light">
         <p className="eyebrow">Powiązane tematy</p>
+
         <h2>Więcej o sesjach kobiecych</h2>
 
         <div className="storyGrid">
@@ -552,9 +557,11 @@ export default function SesjaKobiecaGdanskPage() {
               Zobacz główny landing Odkryj Kobiecość i pełny klimat sesji
               premium.
             </p>
+
             <strong>
               <a href="/">Odkryj Kobiecość</a>
             </strong>
+
             <span className="storySource">Strona główna</span>
           </article>
 
@@ -563,9 +570,11 @@ export default function SesjaKobiecaGdanskPage() {
               Jeśli potrzebujesz zdjęć do marki osobistej, możesz połączyć
               sesję kobiecą z wizerunkową.
             </p>
+
             <strong>
               <a href="/#pakiety">Sesja kobieca + wizerunkowa</a>
             </strong>
+
             <span className="storySource">Pakiety</span>
           </article>
 
@@ -574,11 +583,11 @@ export default function SesjaKobiecaGdanskPage() {
               Najszybsza droga do terminu to wiadomość na WhatsApp z krótką
               informacją, jakiej sesji szukasz.
             </p>
+
             <strong>
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                Napisz do Marty
-              </a>
+              <a href={whatsappLink}>Napisz do Marty</a>
             </strong>
+
             <span className="storySource">Kontakt</span>
           </article>
         </div>
@@ -597,14 +606,13 @@ export default function SesjaKobiecaGdanskPage() {
         </div>
 
         <p className="eyebrow lightText">Sesja kobieca Gdańsk</p>
+
         <h2>Jeśli czujesz, że to jest moment dla Ciebie, napisz do Marty.</h2>
 
         <div className="heroActions center">
           <a
             className="button primary lightButton"
             href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
           >
             Napisz na WhatsApp
           </a>
