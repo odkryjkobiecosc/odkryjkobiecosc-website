@@ -3,6 +3,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import Header from "../../../components/Header";
+
 import gallery01 from "../../../public/images/gallery/gallery-01.webp";
 import gallery03 from "../../../public/images/gallery/gallery-03.webp";
 import gallery04 from "../../../public/images/gallery/gallery-04.webp";
@@ -62,7 +64,8 @@ const doubts = [
 
 const sections = [
   {
-    title: "1. Sesja kobieca jest warta rozważenia, jeśli od dawna odkładasz siebie na później",
+    title:
+      "1. Sesja kobieca jest warta rozważenia, jeśli od dawna odkładasz siebie na później",
     text: "Wiele kobiet przez lata robi wszystko dla innych: dzieci, partnera, pracy, domu, klientów. Sesja kobieca może być pierwszym od dawna momentem, w którym robisz coś nie dlatego, że musisz, tylko dlatego, że chcesz zobaczyć siebie inaczej.",
   },
   {
@@ -78,7 +81,8 @@ const sections = [
     text: "Sesja kobieca może łączyć się z wizerunkową. To dobry wybór dla kobiet, które chcą wyglądać profesjonalnie, ale nie chłodno. Zdjęcia mogą pracować na LinkedIn, stronie internetowej, social mediach, ofercie i materiałach eksperckich.",
   },
   {
-    title: "5. Warto, jeśli chcesz przeżyć doświadczenie, a nie tylko odebrać pliki",
+    title:
+      "5. Warto, jeśli chcesz przeżyć doświadczenie, a nie tylko odebrać pliki",
     text: "Dobra sesja kobieca to nie tylko moment robienia zdjęć. To rozmowa, przygotowanie, wybór stylu, spokojne prowadzenie, atmosfera i późniejszy moment, w którym widzisz gotowe kadry. Wartość jest często większa niż sama liczba zdjęć.",
   },
   {
@@ -99,7 +103,8 @@ const faqs = [
       "Nie. Bardzo wiele kobiet przychodzi z niepewnością, stresem i obawą. Sesja może właśnie pomóc zobaczyć siebie w bardziej łagodny i pewny sposób.",
   },
   {
-    question: "Czy sesja kobieca ma sens, jeśli nie lubię siebie na zdjęciach?",
+    question:
+      "Czy sesja kobieca ma sens, jeśli nie lubię siebie na zdjęciach?",
     answer:
       "Tak. Profesjonalna sesja różni się od przypadkowych zdjęć. Znaczenie mają światło, kadrowanie, prowadzenie, stylizacja i atmosfera.",
   },
@@ -265,20 +270,11 @@ export default function SesjaKobiecaCzyWartoPage() {
         }}
       />
 
-      <nav className="nav">
-        <a className="brand" href="/" aria-label="Odkryj Kobiecość">
-          <span>Odkryj</span>
-          <strong>Kobiecość</strong>
-        </a>
-
-        <div className="navLinks">
-          <a href="/sesja-kobieca-gdansk">Sesja kobieca</a>
-          <a href="#czy-warto">Czy warto</a>
-          <a href="#poradnik">Poradnik</a>
-          <a href="#faq">FAQ</a>
-          <a href="#kontakt">Kontakt</a>
-        </div>
-      </nav>
+      <Header
+        poradnikiHref="/poradnik"
+        faqHref="#faq"
+        kontaktHref="#kontakt"
+      />
 
       <section id="top" className="hero section">
         <div className="mobileAnchorNav" aria-label="Szybka nawigacja">
@@ -290,7 +286,9 @@ export default function SesjaKobiecaCzyWartoPage() {
 
         <div className="heroCopy">
           <p className="eyebrow">Poradnik • sesja kobieca</p>
+
           <h1>Sesja kobieca — czy warto?</h1>
+
           <p className="lead">
             Jeśli zastanawiasz się, czy sesja kobieca jest dla Ciebie, zacznij
             od najważniejszego: nie chodzi tylko o zdjęcia. Chodzi o to, jak
@@ -298,12 +296,7 @@ export default function SesjaKobiecaCzyWartoPage() {
           </p>
 
           <div className="heroActions">
-            <a
-              className="button primary"
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="button primary" href={whatsappLink}>
               Zapytaj o sesję
             </a>
 
@@ -324,6 +317,7 @@ export default function SesjaKobiecaCzyWartoPage() {
               sizes="(max-width: 768px) 92vw, 48vw"
               style={imageCoverStyle}
             />
+
             <span>czy warto?</span>
           </div>
 
@@ -337,7 +331,11 @@ export default function SesjaKobiecaCzyWartoPage() {
 
         <div>
           <p className="eyebrow">Odpowiedź</p>
-          <h2>Warto, jeśli chcesz przestać patrzeć na siebie tylko przez codzienność.</h2>
+
+          <h2>
+            Warto, jeśli chcesz przestać patrzeć na siebie tylko przez
+            codzienność.
+          </h2>
         </div>
 
         <p className="sectionText">
@@ -350,6 +348,7 @@ export default function SesjaKobiecaCzyWartoPage() {
       <section id="czy-warto" className="experience section light">
         <div>
           <p className="eyebrow">Kiedy warto</p>
+
           <h2>Sesja kobieca może być dobrym wyborem, jeśli...</h2>
         </div>
 
@@ -364,14 +363,15 @@ export default function SesjaKobiecaCzyWartoPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow">Najczęstsze wątpliwości</p>
+
             <h2>To normalne, że przed decyzją pojawiają się obawy.</h2>
           </div>
 
           <p>
             Sesja kobieca jest osobistym doświadczeniem. Dlatego wiele kobiet
             przed zapisaniem się zastanawia się, czy będzie umiało pozować, czy
-            dobrze wyjdzie na zdjęciach i czy w ogóle „wypada” zrobić coś takiego
-            dla siebie.
+            dobrze wyjdzie na zdjęciach i czy w ogóle „wypada” zrobić coś
+            takiego dla siebie.
           </p>
         </div>
 
@@ -390,6 +390,7 @@ export default function SesjaKobiecaCzyWartoPage() {
 
       <section id="poradnik" className="faq section light">
         <p className="eyebrow">Poradnik</p>
+
         <h2>Kiedy sesja kobieca naprawdę ma sens?</h2>
 
         <div className="faqGrid">
@@ -405,9 +406,10 @@ export default function SesjaKobiecaCzyWartoPage() {
       <section className="dream section dark">
         <div className="dreamText">
           <p className="eyebrow lightText">Wartość</p>
+
           <h2>
-            Zdjęcia są efektem. Ale prawdziwa wartość często zaczyna się w chwili,
-            kiedy pierwszy raz widzisz siebie inaczej.
+            Zdjęcia są efektem. Ale prawdziwa wartość często zaczyna się w
+            chwili, kiedy pierwszy raz widzisz siebie inaczej.
           </h2>
         </div>
 
@@ -420,6 +422,7 @@ export default function SesjaKobiecaCzyWartoPage() {
             sizes="(max-width: 768px) 92vw, 52vw"
             style={imageCoverStyle}
           />
+
           <span>zobaczyć siebie inaczej</span>
         </div>
       </section>
@@ -427,6 +430,7 @@ export default function SesjaKobiecaCzyWartoPage() {
       <section id="kiedy" className="experience section light">
         <div>
           <p className="eyebrow">Dobry moment</p>
+
           <h2>Kiedy szczególnie warto zrobić sesję kobiecą?</h2>
         </div>
 
@@ -439,6 +443,7 @@ export default function SesjaKobiecaCzyWartoPage() {
 
       <section id="portfolio" className="gallery section">
         <p className="eyebrow">Klimat sesji</p>
+
         <h2>Kobieco, elegancko, z prowadzeniem</h2>
 
         <div className="galleryGrid">
@@ -457,6 +462,7 @@ export default function SesjaKobiecaCzyWartoPage() {
 
       <section id="faq" className="faq section light">
         <p className="eyebrow">FAQ</p>
+
         <h2>Najczęstsze pytania przed decyzją o sesji kobiecej</h2>
 
         <div className="faqGrid">
@@ -471,15 +477,18 @@ export default function SesjaKobiecaCzyWartoPage() {
 
       <section className="stories section light">
         <p className="eyebrow">Dalej</p>
+
         <h2>Powiązane strony i poradniki</h2>
 
         <div className="storyGrid">
           {relatedLinks.map((item) => (
             <article className="storyCard" key={item.href}>
               <p>{item.text}</p>
+
               <strong>
                 <a href={item.href}>{item.title}</a>
               </strong>
+
               <span className="storySource">Powiązana strona</span>
             </article>
           ))}
@@ -499,18 +508,14 @@ export default function SesjaKobiecaCzyWartoPage() {
         </div>
 
         <p className="eyebrow lightText">Sesja kobieca Gdańsk</p>
+
         <h2>
           Jeśli pytasz „czy warto?”, zacznij od rozmowy. Bez zobowiązań i bez
           presji.
         </h2>
 
         <div className="heroActions center">
-          <a
-            className="button primary lightButton"
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="button primary lightButton" href={whatsappLink}>
             Napisz na WhatsApp
           </a>
 
@@ -544,12 +549,15 @@ export default function SesjaKobiecaCzyWartoPage() {
           <nav className="footerNav" aria-label="Nawigacja w stopce">
             <a href="/">Strona główna</a>
             <a href="/sesja-kobieca-gdansk">Sesja kobieca Gdańsk</a>
+
             <a href="/poradnik/nie-umiem-pozowac-sesja-kobieca">
               Nie umiem pozować
             </a>
+
             <a href="/poradnik/sesja-kobieca-cena-gdansk">
               Cena sesji kobiecej
             </a>
+
             <a href="#kontakt">Kontakt</a>
           </nav>
         </div>
