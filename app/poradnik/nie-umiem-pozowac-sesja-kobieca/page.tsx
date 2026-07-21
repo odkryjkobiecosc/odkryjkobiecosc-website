@@ -3,6 +3,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import Header from "../../../components/Header";
+
 import gallery01 from "../../../public/images/gallery/gallery-01.webp";
 import gallery03 from "../../../public/images/gallery/gallery-03.webp";
 import gallery04 from "../../../public/images/gallery/gallery-04.webp";
@@ -90,7 +92,8 @@ const faqs = [
       "Stres jest normalny. Sesja jest prowadzona spokojnie, bez presji i bez oczekiwania, że od razu będziesz czuła się pewnie. Zwykle napięcie spada po kilku pierwszych minutach.",
   },
   {
-    question: "Czy sesja kobieca jest dla kobiet, które nie lubią siebie na zdjęciach?",
+    question:
+      "Czy sesja kobieca jest dla kobiet, które nie lubią siebie na zdjęciach?",
     answer:
       "Tak. Właśnie dlatego tak ważne jest prowadzenie, światło, kadrowanie i atmosfera. Profesjonalna sesja różni się od przypadkowych zdjęć robionych telefonem.",
   },
@@ -256,20 +259,11 @@ export default function NieUmiemPozowacSesjaKobiecaPage() {
         }}
       />
 
-      <nav className="nav">
-        <a className="brand" href="/" aria-label="Odkryj Kobiecość">
-          <span>Odkryj</span>
-          <strong>Kobiecość</strong>
-        </a>
-
-        <div className="navLinks">
-          <a href="/sesja-kobieca-gdansk">Sesja kobieca</a>
-          <a href="#obawy">Obawy</a>
-          <a href="#poradnik">Poradnik</a>
-          <a href="#faq">FAQ</a>
-          <a href="#kontakt">Kontakt</a>
-        </div>
-      </nav>
+      <Header
+        poradnikiHref="/poradnik"
+        faqHref="#faq"
+        kontaktHref="#kontakt"
+      />
 
       <section id="top" className="hero section">
         <div className="mobileAnchorNav" aria-label="Szybka nawigacja">
@@ -281,7 +275,9 @@ export default function NieUmiemPozowacSesjaKobiecaPage() {
 
         <div className="heroCopy">
           <p className="eyebrow">Sesja kobieca bez doświadczenia</p>
+
           <h1>Nie umiem pozować do sesji kobiecej. Czy to problem?</h1>
+
           <p className="lead">
             Nie. Właśnie dlatego sesja kobieca powinna być prowadzona krok po
             kroku. Nie musisz wiedzieć, co zrobić z rękami, jak stanąć ani gdzie
@@ -289,12 +285,7 @@ export default function NieUmiemPozowacSesjaKobiecaPage() {
           </p>
 
           <div className="heroActions">
-            <a
-              className="button primary"
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="button primary" href={whatsappLink}>
               Zapytaj o sesję
             </a>
 
@@ -315,6 +306,7 @@ export default function NieUmiemPozowacSesjaKobiecaPage() {
               sizes="(max-width: 768px) 92vw, 48vw"
               style={imageCoverStyle}
             />
+
             <span>bez doświadczenia</span>
           </div>
 
@@ -328,6 +320,7 @@ export default function NieUmiemPozowacSesjaKobiecaPage() {
 
         <div>
           <p className="eyebrow">Najważniejsze</p>
+
           <h2>Na sesję nie przychodzisz po to, żeby umieć pozować.</h2>
         </div>
 
@@ -341,6 +334,7 @@ export default function NieUmiemPozowacSesjaKobiecaPage() {
       <section id="obawy" className="experience section light">
         <div>
           <p className="eyebrow">Najczęstsze myśli przed sesją</p>
+
           <h2>Większość kobiet zaczyna od podobnych obaw.</h2>
         </div>
 
@@ -355,6 +349,7 @@ export default function NieUmiemPozowacSesjaKobiecaPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow">Co pomaga</p>
+
             <h2>Dobra sesja zdejmuje z Ciebie obowiązek zgadywania.</h2>
           </div>
 
@@ -373,11 +368,14 @@ export default function NieUmiemPozowacSesjaKobiecaPage() {
           ))}
         </div>
 
-        <p className="signatureLine">Nie musisz być gotowa. Wystarczy, że przyjdziesz.</p>
+        <p className="signatureLine">
+          Nie musisz być gotowa. Wystarczy, że przyjdziesz.
+        </p>
       </section>
 
       <section id="poradnik" className="faq section light">
         <p className="eyebrow">Poradnik</p>
+
         <h2>Jak wygląda sesja, jeśli nie umiesz pozować?</h2>
 
         <div className="faqGrid">
@@ -393,6 +391,7 @@ export default function NieUmiemPozowacSesjaKobiecaPage() {
       <section className="dream section dark">
         <div className="dreamText">
           <p className="eyebrow lightText">Efekt</p>
+
           <h2>
             To nie Ty masz wiedzieć, jak wyglądać dobrze na zdjęciu. To sesja ma
             być poprowadzona tak, żebyś mogła zobaczyć siebie inaczej.
@@ -408,12 +407,14 @@ export default function NieUmiemPozowacSesjaKobiecaPage() {
             sizes="(max-width: 768px) 92vw, 52vw"
             style={imageCoverStyle}
           />
+
           <span>prowadzenie krok po kroku</span>
         </div>
       </section>
 
       <section id="portfolio" className="gallery section">
         <p className="eyebrow">Klimat sesji</p>
+
         <h2>Naturalnie, kobieco, bez sztucznego pozowania</h2>
 
         <div className="galleryGrid">
@@ -432,6 +433,7 @@ export default function NieUmiemPozowacSesjaKobiecaPage() {
 
       <section id="faq" className="faq section light">
         <p className="eyebrow">FAQ</p>
+
         <h2>Najczęstsze pytania kobiet, które boją się pozowania</h2>
 
         <div className="faqGrid">
@@ -446,15 +448,18 @@ export default function NieUmiemPozowacSesjaKobiecaPage() {
 
       <section className="stories section light">
         <p className="eyebrow">Dalej</p>
+
         <h2>Powiązane strony i poradniki</h2>
 
         <div className="storyGrid">
           {relatedLinks.map((item) => (
             <article className="storyCard" key={item.href}>
               <p>{item.text}</p>
+
               <strong>
                 <a href={item.href}>{item.title}</a>
               </strong>
+
               <span className="storySource">Powiązana strona</span>
             </article>
           ))}
@@ -474,18 +479,14 @@ export default function NieUmiemPozowacSesjaKobiecaPage() {
         </div>
 
         <p className="eyebrow lightText">Sesja kobieca Gdańsk</p>
+
         <h2>
           Jeśli jedyne, co Cię zatrzymuje, to myśl „nie umiem pozować” — napisz
           do Marty.
         </h2>
 
         <div className="heroActions center">
-          <a
-            className="button primary lightButton"
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="button primary lightButton" href={whatsappLink}>
             Napisz na WhatsApp
           </a>
 
