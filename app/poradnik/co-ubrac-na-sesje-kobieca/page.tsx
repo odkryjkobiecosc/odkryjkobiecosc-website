@@ -3,6 +3,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import Header from "../../../components/Header";
+
 import gallery01 from "../../../public/images/gallery/gallery-01.webp";
 import gallery03 from "../../../public/images/gallery/gallery-03.webp";
 import gallery04 from "../../../public/images/gallery/gallery-04.webp";
@@ -256,20 +258,11 @@ export default function CoUbracNaSesjeKobiecaPage() {
         }}
       />
 
-      <nav className="nav">
-        <a className="brand" href="/" aria-label="Odkryj Kobiecość">
-          <span>Odkryj</span>
-          <strong>Kobiecość</strong>
-        </a>
-
-        <div className="navLinks">
-          <a href="/sesja-kobieca-gdansk">Sesja kobieca</a>
-          <a href="#pomysly">Pomysły</a>
-          <a href="#poradnik">Poradnik</a>
-          <a href="#faq">FAQ</a>
-          <a href="#kontakt">Kontakt</a>
-        </div>
-      </nav>
+      <Header
+        poradnikiHref="/poradnik"
+        faqHref="#faq"
+        kontaktHref="#kontakt"
+      />
 
       <section id="top" className="hero section">
         <div className="mobileAnchorNav" aria-label="Szybka nawigacja">
@@ -281,7 +274,9 @@ export default function CoUbracNaSesjeKobiecaPage() {
 
         <div className="heroCopy">
           <p className="eyebrow">Poradnik • stylizacje do sesji kobiecej</p>
+
           <h1>Co ubrać na sesję kobiecą?</h1>
+
           <p className="lead">
             Stylizacja do sesji kobiecej nie ma Cię przebrać. Ma pomóc pokazać
             Ciebie: spokojnie, kobieco, elegancko i w zgodzie z tym, jak chcesz
@@ -289,12 +284,7 @@ export default function CoUbracNaSesjeKobiecaPage() {
           </p>
 
           <div className="heroActions">
-            <a
-              className="button primary"
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="button primary" href={whatsappLink}>
               Zapytaj o sesję
             </a>
 
@@ -315,6 +305,7 @@ export default function CoUbracNaSesjeKobiecaPage() {
               sizes="(max-width: 768px) 92vw, 48vw"
               style={imageCoverStyle}
             />
+
             <span>stylizacje</span>
           </div>
 
@@ -328,6 +319,7 @@ export default function CoUbracNaSesjeKobiecaPage() {
 
         <div>
           <p className="eyebrow">Najważniejsza zasada</p>
+
           <h2>Nie wybieraj stylizacji, w której czujesz się przebrana.</h2>
         </div>
 
@@ -341,6 +333,7 @@ export default function CoUbracNaSesjeKobiecaPage() {
       <section id="pomysly" className="experience section light">
         <div>
           <p className="eyebrow">Pomysły</p>
+
           <h2>Co warto zabrać na sesję kobiecą?</h2>
         </div>
 
@@ -355,7 +348,10 @@ export default function CoUbracNaSesjeKobiecaPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow">Czego unikać</p>
-            <h2>Najczęściej przeszkadzają rzeczy, które zabierają uwagę z Ciebie.</h2>
+
+            <h2>
+              Najczęściej przeszkadzają rzeczy, które zabierają uwagę z Ciebie.
+            </h2>
           </div>
 
           <p>
@@ -380,6 +376,7 @@ export default function CoUbracNaSesjeKobiecaPage() {
 
       <section id="poradnik" className="faq section light">
         <p className="eyebrow">Poradnik krok po kroku</p>
+
         <h2>Jak dobrać stylizacje do sesji kobiecej?</h2>
 
         <div className="faqGrid">
@@ -395,6 +392,7 @@ export default function CoUbracNaSesjeKobiecaPage() {
       <section className="dream section dark">
         <div className="dreamText">
           <p className="eyebrow lightText">Efekt</p>
+
           <h2>
             Dobra stylizacja nie ma udawać kogoś innego. Ma pomóc Ci zobaczyć
             siebie w mocniejszej, spokojniejszej albo bardziej kobiecej wersji.
@@ -410,12 +408,14 @@ export default function CoUbracNaSesjeKobiecaPage() {
             sizes="(max-width: 768px) 92vw, 52vw"
             style={imageCoverStyle}
           />
+
           <span>spójny klimat</span>
         </div>
       </section>
 
       <section id="portfolio" className="gallery section">
         <p className="eyebrow">Inspiracje</p>
+
         <h2>Elegancki, kobiecy klimat sesji</h2>
 
         <div className="galleryGrid">
@@ -434,6 +434,7 @@ export default function CoUbracNaSesjeKobiecaPage() {
 
       <section id="faq" className="faq section light">
         <p className="eyebrow">FAQ</p>
+
         <h2>Najczęstsze pytania o stylizacje do sesji kobiecej</h2>
 
         <div className="faqGrid">
@@ -448,15 +449,18 @@ export default function CoUbracNaSesjeKobiecaPage() {
 
       <section className="stories section light">
         <p className="eyebrow">Dalej</p>
+
         <h2>Powiązane strony i poradniki</h2>
 
         <div className="storyGrid">
           {relatedLinks.map((item) => (
             <article className="storyCard" key={item.href}>
               <p>{item.text}</p>
+
               <strong>
                 <a href={item.href}>{item.title}</a>
               </strong>
+
               <span className="storySource">Powiązana strona</span>
             </article>
           ))}
@@ -476,15 +480,14 @@ export default function CoUbracNaSesjeKobiecaPage() {
         </div>
 
         <p className="eyebrow lightText">Sesja kobieca Gdańsk</p>
-        <h2>Nie musisz wiedzieć, co ubrać. Wystarczy, że napiszesz i zaczniemy od rozmowy.</h2>
+
+        <h2>
+          Nie musisz wiedzieć, co ubrać. Wystarczy, że napiszesz i zaczniemy od
+          rozmowy.
+        </h2>
 
         <div className="heroActions center">
-          <a
-            className="button primary lightButton"
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="button primary lightButton" href={whatsappLink}>
             Napisz na WhatsApp
           </a>
 
