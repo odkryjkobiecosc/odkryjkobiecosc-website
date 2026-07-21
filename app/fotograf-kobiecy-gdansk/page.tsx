@@ -3,6 +3,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import Header from "../../components/Header";
+
 import gallery01 from "../../public/images/gallery/gallery-01.webp";
 import gallery03 from "../../public/images/gallery/gallery-03.webp";
 import gallery04 from "../../public/images/gallery/gallery-04.webp";
@@ -297,20 +299,11 @@ export default function FotografKobiecyGdanskPage() {
         }}
       />
 
-      <nav className="nav">
-        <a className="brand" href="/" aria-label="Odkryj Kobiecość">
-          <span>Odkryj</span>
-          <strong>Kobiecość</strong>
-        </a>
-
-        <div className="navLinks">
-          <a href="#marta">Marta</a>
-          <a href="#sesje">Sesje</a>
-          <a href="#proces">Proces</a>
-          <a href="#pakiety">Pakiety</a>
-          <a href="#kontakt">Kontakt</a>
-        </div>
-      </nav>
+      <Header
+        poradnikiHref="/poradnik"
+        faqHref="#faq"
+        kontaktHref="#kontakt"
+      />
 
       <section id="top" className="hero section">
         <div className="mobileAnchorNav" aria-label="Szybka nawigacja">
@@ -322,19 +315,16 @@ export default function FotografKobiecyGdanskPage() {
 
         <div className="heroCopy">
           <p className="eyebrow">Fotograf kobiecy Gdańsk</p>
+
           <h1>Fotograf kobiecy Gdańsk</h1>
+
           <p className="lead">
             Sesje kobiece, biznesowe i wizerunkowe dla kobiet, które chcą
             zobaczyć siebie spokojnie, elegancko i bez presji przed aparatem.
           </p>
 
           <div className="heroActions">
-            <a
-              className="button primary"
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="button primary" href={whatsappLink}>
               Zapytaj o sesję
             </a>
 
@@ -355,6 +345,7 @@ export default function FotografKobiecyGdanskPage() {
               sizes="(max-width: 768px) 92vw, 48vw"
               style={imageCoverStyle}
             />
+
             <span>fotograf kobiecy</span>
           </div>
 
@@ -368,6 +359,7 @@ export default function FotografKobiecyGdanskPage() {
 
         <div>
           <p className="eyebrow">Marta Krajewska Photo</p>
+
           <h2>Fotograf kobiecy to nie tylko osoba od zdjęć.</h2>
         </div>
 
@@ -381,6 +373,7 @@ export default function FotografKobiecyGdanskPage() {
       <section className="experience section light">
         <div>
           <p className="eyebrow">Dlaczego Marta</p>
+
           <h2>Co jest ważne przy wyborze fotografa kobiecego?</h2>
         </div>
 
@@ -395,6 +388,7 @@ export default function FotografKobiecyGdanskPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow">Rodzaje sesji</p>
+
             <h2>Sesje kobiece, biznesowe i wizerunkowe w jednym miejscu.</h2>
           </div>
 
@@ -422,7 +416,10 @@ export default function FotografKobiecyGdanskPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow">Obawy</p>
-            <h2>Dobry fotograf kobiecy odpowiada na obawy zanim padnie pytanie.</h2>
+
+            <h2>
+              Dobry fotograf kobiecy odpowiada na obawy zanim padnie pytanie.
+            </h2>
           </div>
 
           <p>
@@ -446,6 +443,7 @@ export default function FotografKobiecyGdanskPage() {
       <section className="dream section dark">
         <div className="dreamText">
           <p className="eyebrow lightText">Efekt</p>
+
           <h2>
             Chodzi o moment, w którym patrzysz na zdjęcia i myślisz: nie
             wiedziałam, że mogę wyglądać właśnie tak.
@@ -461,6 +459,7 @@ export default function FotografKobiecyGdanskPage() {
             sizes="(max-width: 768px) 92vw, 52vw"
             style={imageCoverStyle}
           />
+
           <span>zobaczyć siebie inaczej</span>
         </div>
       </section>
@@ -468,6 +467,7 @@ export default function FotografKobiecyGdanskPage() {
       <section id="proces" className="process section dark">
         <div>
           <p className="eyebrow lightText">Proces</p>
+
           <h2>Jak wygląda współpraca z fotografem kobiecym?</h2>
         </div>
 
@@ -485,6 +485,7 @@ export default function FotografKobiecyGdanskPage() {
         <div className="splitHeader">
           <div>
             <p className="eyebrow lightText">Pakiety</p>
+
             <h2>Pakiety sesji kobiecych w Gdańsku</h2>
           </div>
 
@@ -499,7 +500,9 @@ export default function FotografKobiecyGdanskPage() {
             <article className="packageCard" key={item.name}>
               <div>
                 <p className="packageName">{item.name}</p>
+
                 <h3>{item.price}</h3>
+
                 <p className="packageText">{item.text}</p>
               </div>
 
@@ -509,12 +512,7 @@ export default function FotografKobiecyGdanskPage() {
                 ))}
               </ul>
 
-              <a
-                className="button packageButton"
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a className="button packageButton" href={whatsappLink}>
                 Zapytaj o termin
               </a>
             </article>
@@ -524,6 +522,7 @@ export default function FotografKobiecyGdanskPage() {
 
       <section id="portfolio" className="gallery section">
         <p className="eyebrow">Portfolio</p>
+
         <h2>Kobiecy, spokojny i elegancki styl zdjęć</h2>
 
         <div className="galleryGrid">
@@ -542,6 +541,7 @@ export default function FotografKobiecyGdanskPage() {
 
       <section id="faq" className="faq section light">
         <p className="eyebrow">FAQ</p>
+
         <h2>Najczęstsze pytania o fotografa kobiecego w Gdańsku</h2>
 
         <div className="faqGrid">
@@ -556,15 +556,18 @@ export default function FotografKobiecyGdanskPage() {
 
       <section className="stories section light">
         <p className="eyebrow">Powiązane strony</p>
+
         <h2>Zobacz też</h2>
 
         <div className="storyGrid">
           {relatedLinks.map((item) => (
             <article className="storyCard" key={item.href}>
               <p>{item.text}</p>
+
               <strong>
                 <a href={item.href}>{item.title}</a>
               </strong>
+
               <span className="storySource">Powiązana strona</span>
             </article>
           ))}
@@ -584,18 +587,14 @@ export default function FotografKobiecyGdanskPage() {
         </div>
 
         <p className="eyebrow lightText">Fotograf kobiecy Gdańsk</p>
+
         <h2>
           Jeśli szukasz fotografki, która poprowadzi Cię spokojnie przez całą
           sesję, napisz do Marty.
         </h2>
 
         <div className="heroActions center">
-          <a
-            className="button primary lightButton"
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="button primary lightButton" href={whatsappLink}>
             Napisz na WhatsApp
           </a>
 
@@ -629,7 +628,9 @@ export default function FotografKobiecyGdanskPage() {
           <nav className="footerNav" aria-label="Nawigacja w stopce">
             <a href="/">Strona główna</a>
             <a href="/sesja-kobieca-gdansk">Sesja kobieca Gdańsk</a>
-            <a href="/sesja-wizerunkowa-gdansk">Sesja wizerunkowa Gdańsk</a>
+            <a href="/sesja-wizerunkowa-gdansk">
+              Sesja wizerunkowa Gdańsk
+            </a>
             <a href="/poradnik">Poradnik</a>
             <a href="#kontakt">Kontakt</a>
           </nav>
