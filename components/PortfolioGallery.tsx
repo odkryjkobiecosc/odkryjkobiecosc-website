@@ -1,3 +1,5 @@
+// components/PortfolioGallery.tsx
+
 "use client";
 
 import { useRef, useState } from "react";
@@ -44,7 +46,12 @@ export default function PortfolioGallery({
 
   return (
     <>
-      <div ref={galleryRef} className="galleryGrid">
+      <div
+        ref={galleryRef}
+        className={`galleryGrid ${
+          expanded ? "galleryGridExpanded" : "galleryGridCollapsed"
+        }`}
+      >
         {visibleImages.map((item, index) => (
           <div className={item.className} key={item.image.src}>
             <Image
