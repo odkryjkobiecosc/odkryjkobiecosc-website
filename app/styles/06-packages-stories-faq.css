@@ -1,3 +1,5 @@
+/* app/styles/06-packages-stories-faq.css */
+
 /* Pakiety */
 
 .packages h2 {
@@ -17,29 +19,39 @@
 
 .packageCard {
   min-height: 700px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   padding: 34px;
+
   border: 1px solid rgba(255, 255, 255, 0.14);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.07),
-    rgba(255, 255, 255, 0.03)
-  );
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.07),
+      rgba(255, 255, 255, 0.03)
+    );
+
   border-radius: 34px;
 }
 
 .packageName {
   margin-bottom: 28px;
+
   font-family: Arial, sans-serif;
+
   color: var(--champagne);
+
   font-size: 12px;
   letter-spacing: 0.22em;
 }
 
 .packageText {
   color: rgba(255, 255, 255, 0.68);
+
   font-size: 18px;
   line-height: 1.5;
 }
@@ -47,14 +59,100 @@
 .packageCard ul {
   margin: 34px 0;
   padding-left: 18px;
+
   color: rgba(255, 255, 255, 0.78);
+
   font-family: Arial, sans-serif;
   line-height: 1.9;
 }
 
+/* CTA pakietów */
+
 .packageButton {
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  position: relative;
+  isolation: isolate;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(216, 185, 135, 0.42);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(216, 185, 135, 0.05),
+      rgba(255, 255, 255, 0.025)
+    );
+
   color: var(--paper);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.015),
+    0 14px 34px rgba(0, 0, 0, 0.08);
+
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.packageButton::before {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  top: -90%;
+  left: -45%;
+
+  width: 32%;
+  height: 280%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.85),
+      transparent
+    );
+
+  transform: rotate(18deg);
+
+  opacity: 0;
+
+  transition:
+    left 0.8s ease,
+    opacity 0.25s ease;
+}
+
+.packageButton:hover {
+  color: #151313;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e3c99e,
+      #f5e8d1
+    );
+
+  border-color: rgba(234, 207, 163, 0.96);
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 18px 46px rgba(216, 185, 135, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.packageButton:hover::before {
+  left: 125%;
+  opacity: 1;
+}
+
+.packageButton:focus-visible {
+  outline: 2px solid var(--champagne);
+  outline-offset: 4px;
 }
 
 /* Opinie / kafelki */
@@ -71,9 +169,13 @@
 
 .storyCard {
   padding: 34px;
+
   border-radius: 30px;
+
   background: var(--paper);
+
   border: 1px solid var(--line);
+
   transition:
     transform 0.22s ease,
     border-color 0.22s ease,
@@ -82,6 +184,7 @@
 
 .storyCard p {
   color: var(--ink);
+
   font-size: 23px;
   line-height: 1.35;
 }
@@ -103,8 +206,10 @@
 .storyCardLink {
   display: flex;
   flex-direction: column;
+
   color: inherit;
   text-decoration: none;
+
   cursor: pointer;
 }
 
@@ -114,13 +219,17 @@
 
 .storyCardLink strong {
   color: var(--ink);
+
   transition: color 0.22s ease;
 }
 
 .storyCardLink:hover {
   transform: translateY(-4px);
+
   border-color: rgba(216, 185, 135, 0.42);
-  box-shadow: 0 24px 80px rgba(21, 19, 19, 0.08);
+
+  box-shadow:
+    0 24px 80px rgba(21, 19, 19, 0.08);
 }
 
 .storyCardLink:hover strong {
@@ -134,18 +243,26 @@
 
 .stars {
   margin-bottom: 24px;
+
   color: var(--champagne);
+
   letter-spacing: 0.08em;
 }
 
 .storySource {
   display: block;
+
   margin-top: 8px;
+
   font-family: Arial, sans-serif;
+
   color: var(--muted);
+
   font-size: 11px;
   font-weight: 700;
+
   letter-spacing: 0.14em;
+
   text-transform: uppercase;
 }
 
@@ -157,28 +274,223 @@
 
 .faqGrid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
   gap: 18px;
 }
 
 .faqItem {
   padding: 34px;
+
   border-radius: 30px;
+
   background: rgba(255, 255, 255, 0.46);
+
   border: 1px solid var(--line);
-  box-shadow: 0 20px 70px rgba(21, 19, 19, 0.04);
+
+  box-shadow:
+    0 20px 70px rgba(21, 19, 19, 0.04);
 }
 
-.faqItem h3 {
-  margin-bottom: 18px;
+.faqQuestion {
+  width: 100%;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: var(--ink);
+
+  text-align: left;
+
+  font: inherit;
+
+  cursor: default;
+}
+
+.faqQuestion > span:first-child {
   font-size: clamp(27px, 2.8vw, 42px);
   line-height: 1.05;
   letter-spacing: -0.045em;
 }
 
-.faqItem p {
+.faqToggleIcon {
+  display: none;
+}
+
+.faqAnswer {
+  margin-top: 18px;
+}
+
+.faqAnswer[hidden] {
+  display: block !important;
+}
+
+.faqAnswer p {
   margin: 0;
+
   color: var(--muted);
+
   font-size: 20px;
   line-height: 1.45;
+}
+
+/* Mobile */
+
+@media (max-width: 560px) {
+  /*
+   * Więcej oddechu między kartami pakietów
+   * a zewnętrzną krawędzią sekcji.
+   */
+  .packages {
+    padding-left: 12px;
+    padding-right: 12px;
+
+    box-sizing: border-box;
+  }
+
+  .packages .packageGrid {
+    gap: 22px;
+  }
+
+  .packageCard {
+    width: 100%;
+
+    min-height: auto;
+
+    padding: 28px 24px;
+
+    border-radius: 28px;
+
+    box-sizing: border-box;
+  }
+
+  /*
+   * Na telefonie hover praktycznie nie istnieje,
+   * dlatego CTA już w stanie podstawowym
+   * dostaje subtelny champagne tint.
+   */
+  .packageButton {
+    min-height: 56px;
+
+    border-color: rgba(216, 185, 135, 0.64);
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(216, 185, 135, 0.14),
+        rgba(255, 255, 255, 0.05)
+      );
+
+    box-shadow:
+      0 15px 38px rgba(216, 185, 135, 0.08);
+  }
+
+  /*
+   * FAQ mobile accordion
+   */
+  .faqGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .faqItem {
+    padding: 0;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    transition:
+      background 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .faqItem.isOpen {
+    background: rgba(255, 255, 255, 0.68);
+
+    border-color: rgba(216, 185, 135, 0.42);
+
+    box-shadow:
+      0 24px 70px rgba(21, 19, 19, 0.06);
+  }
+
+  .faqQuestion {
+    min-height: 88px;
+
+    align-items: center;
+
+    padding: 22px 22px;
+
+    cursor: pointer;
+  }
+
+  .faqQuestion > span:first-child {
+    font-size: clamp(24px, 7vw, 31px);
+    line-height: 1.05;
+  }
+
+  .faqToggleIcon {
+    flex: 0 0 40px;
+
+    width: 40px;
+    height: 40px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(21, 19, 19, 0.13);
+
+    border-radius: 50%;
+
+    color: var(--ink);
+
+    background: rgba(255, 255, 255, 0.42);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 24px;
+    font-weight: 300;
+
+    line-height: 1;
+  }
+
+  .faqAnswer {
+    margin-top: 0;
+
+    padding:
+      0
+      22px
+      24px;
+  }
+
+  .faqAnswer[hidden] {
+    display: none !important;
+  }
+
+  .faqAnswer p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .packageButton,
+  .packageButton::before,
+  .faqItem {
+    transition: none;
+  }
 }
