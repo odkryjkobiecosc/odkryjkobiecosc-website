@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Header from "../components/Header";
+import PortfolioGallery from "../components/PortfolioGallery";
+import EmailButton from "../components/EmailButton";
 
 import gallery01 from "../public/images/gallery/gallery-01.webp";
 import gallery02 from "../public/images/gallery/gallery-02.webp";
@@ -13,6 +15,36 @@ import gallery07 from "../public/images/gallery/gallery-07.webp";
 import gallery08 from "../public/images/gallery/gallery-08.webp";
 import gallery09 from "../public/images/gallery/gallery-09.webp";
 import gallery10 from "../public/images/gallery/gallery-10.webp";
+import gallery11 from "../public/images/gallery/gallery-11.webp";
+import gallery12 from "../public/images/gallery/gallery-12.webp";
+import gallery13 from "../public/images/gallery/gallery-13.webp";
+import gallery14 from "../public/images/gallery/gallery-14.webp";
+import gallery15 from "../public/images/gallery/gallery-15.webp";
+import gallery16 from "../public/images/gallery/gallery-16.webp";
+import gallery17 from "../public/images/gallery/gallery-17.webp";
+import gallery18 from "../public/images/gallery/gallery-18.webp";
+import gallery19 from "../public/images/gallery/gallery-19.webp";
+import gallery20 from "../public/images/gallery/gallery-20.webp";
+import gallery21 from "../public/images/gallery/gallery-21.webp";
+import gallery22 from "../public/images/gallery/gallery-22.webp";
+import gallery23 from "../public/images/gallery/gallery-23.webp";
+import gallery24 from "../public/images/gallery/gallery-24.webp";
+import gallery25 from "../public/images/gallery/gallery-25.webp";
+import gallery26 from "../public/images/gallery/gallery-26.webp";
+import gallery27 from "../public/images/gallery/gallery-27.webp";
+import gallery28 from "../public/images/gallery/gallery-28.webp";
+import gallery29 from "../public/images/gallery/gallery-29.webp";
+import gallery30 from "../public/images/gallery/gallery-30.webp";
+import gallery31 from "../public/images/gallery/gallery-31.webp";
+import gallery32 from "../public/images/gallery/gallery-32.webp";
+import gallery33 from "../public/images/gallery/gallery-33.webp";
+import gallery34 from "../public/images/gallery/gallery-34.webp";
+import gallery35 from "../public/images/gallery/gallery-35.webp";
+import gallery36 from "../public/images/gallery/gallery-36.webp";
+import gallery37 from "../public/images/gallery/gallery-37.webp";
+import gallery38 from "../public/images/gallery/gallery-38.webp";
+import gallery39 from "../public/images/gallery/gallery-39.webp";
+import gallery40 from "../public/images/gallery/gallery-40.webp";
 
 const fears = [
   "Nie umiem pozować",
@@ -126,67 +158,77 @@ const faqs = [
   },
 ];
 
-const rawGalleryImages = [
-  {
-    image: gallery01,
-    alt: "Sesja kobieca premium w Gdańsku - elegancki kadr poziomy",
-    layout: "galleryWide",
-  },
-  {
-    image: gallery02,
-    alt: "Sesja kobieca w Trójmieście - kobiecy portret studyjny",
-    layout: "gallerySmall",
-  },
-  {
-    image: gallery03,
-    alt: "Kobiecy portret beauty w eleganckim klimacie",
-    layout: "galleryTall",
-  },
-  {
-    image: gallery04,
-    alt: "Sesja kobieca z prowadzeniem krok po kroku",
-    layout: "galleryPortrait",
-  },
-  {
-    image: gallery05,
-    alt: "Sesja kobieca premium - spokojny editorial",
-    layout: "galleryWide",
-  },
-  {
-    image: gallery06,
-    alt: "Portret kobiecy w ciemnym klimacie",
-    layout: "galleryPortrait",
-  },
-  {
-    image: gallery07,
-    alt: "Profesjonalna sesja kobieca w Gdańsku",
-    layout: "galleryPortrait",
-  },
-  {
-    image: gallery08,
-    alt: "Sesja kobieca - kobiecość, siła i spokój",
-    layout: "galleryPortrait",
-  },
-  {
-    image: gallery09,
-    alt: "Sesja biznesowa kobieca w Trójmieście",
-    layout: "galleryPortrait",
-  },
-  {
-    image: gallery10,
-    alt: "Portret kobiecy premium",
-    layout: "galleryTall",
-  },
+const gallerySources = [
+  gallery01,
+  gallery02,
+  gallery03,
+  gallery04,
+  gallery05,
+  gallery06,
+  gallery07,
+  gallery08,
+  gallery09,
+  gallery10,
+  gallery11,
+  gallery12,
+  gallery13,
+  gallery14,
+  gallery15,
+  gallery16,
+  gallery17,
+  gallery18,
+  gallery19,
+  gallery20,
+  gallery21,
+  gallery22,
+  gallery23,
+  gallery24,
+  gallery25,
+  gallery26,
+  gallery27,
+  gallery28,
+  gallery29,
+  gallery30,
+  gallery31,
+  gallery32,
+  gallery33,
+  gallery34,
+  gallery35,
+  gallery36,
+  gallery37,
+  gallery38,
+  gallery39,
+  gallery40,
 ];
 
-const galleryImages = rawGalleryImages.map((item) => {
-  const orientation =
-    item.image.width > item.image.height ? "landscape" : "portrait";
+const galleryImages = gallerySources.map((image, index) => {
+  const isLandscape = image.width > image.height;
+
+  let layout = "galleryPortrait";
+
+  if (isLandscape) {
+    layout = index % 3 === 0 ? "galleryWide" : "gallerySmall";
+  } else {
+    const portraitPattern = [
+      "galleryPortrait",
+      "galleryTall",
+      "galleryPortrait",
+      "gallerySmall",
+    ];
+
+    layout = portraitPattern[index % portraitPattern.length];
+  }
+
+  const orientation = isLandscape ? "landscape" : "portrait";
 
   return {
-    ...item,
+    image,
+    alt: `Sesja kobieca premium w Gdańsku i Trójmieście – portfolio ${
+      index + 1
+    }`,
+    layout,
     orientation,
-    className: `photoCard ${orientation} ${item.layout}`,
+    className: `photoCard ${orientation} ${layout}`,
   };
 });
 
@@ -361,18 +403,7 @@ export default function Home() {
 
         <h2>Kobiecość. Siła. Spokój. Pewność siebie.</h2>
 
-        <div className="galleryGrid">
-          {galleryImages.map((item) => (
-            <div className={item.className} key={item.image.src}>
-              <Image
-                src={item.image}
-                alt={item.alt}
-                sizes="(max-width: 560px) 92vw, (max-width: 980px) 45vw, (max-width: 1280px) 31vw, 24vw"
-                className="galleryImage"
-              />
-            </div>
-          ))}
-        </div>
+        <PortfolioGallery images={galleryImages} />
       </section>
 
       <section id="pakiety" className="packages section dark">
@@ -509,19 +540,20 @@ export default function Home() {
             Napisz na WhatsApp
           </a>
 
-          <a
-            className="button secondary darkSecondary"
-            href="mailto:krajewskaphoto@gmail.com"
-          >
+          <EmailButton className="button secondary darkSecondary">
             Napisz e-mail
-          </a>
+          </EmailButton>
         </div>
       </section>
 
       <footer className="footer">
         <div className="footerMain">
           <div className="footerBrandBlock">
-            <a className="footerBrand" href="#top" aria-label="Odkryj Kobiecość">
+            <a
+              className="footerBrand"
+              href="#top"
+              aria-label="Odkryj Kobiecość"
+            >
               <span>Odkryj</span>
               <strong>Kobiecość</strong>
             </a>
@@ -559,10 +591,6 @@ export default function Home() {
             >
               Zmień ustawienia cookies
             </button>
-
-            <a href="mailto:krajewskaphoto@gmail.com">
-              krajewskaphoto@gmail.com
-            </a>
           </div>
         </div>
       </footer>
