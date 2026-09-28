@@ -267,7 +267,7 @@ export default function Home() {
         <div className="heroCopy">
           <p className="eyebrow">Sesje kobiece • biznesowe • premium</p>
 
-          <h1>Nie odkładaj siebie na później.</h1>
+          <h1>Nie odkładaj siebie na później</h1>
 
           <p className="lead">
             Profesjonalna sesja kobieca w Trójmieście, która pozwala Ci
@@ -408,7 +408,7 @@ export default function Home() {
       <section id="portfolio" className="gallery section">
         <p className="eyebrow">Portfolio</p>
 
-        <h2>Kobiecość. Siła. Spokój. Pewność siebie.</h2>
+        <h2>Kobiecość. Siła. Spokój. Pewność siebie</h2>
 
         <PortfolioGallery images={galleryImages} />
       </section>
@@ -418,7 +418,7 @@ export default function Home() {
           <div>
             <p className="eyebrow lightText">Pakiety</p>
 
-            <h2>Wybierz doświadczenie dla siebie.</h2>
+            <h2>Wybierz doświadczenie dla siebie</h2>
           </div>
 
           <p>
@@ -455,7 +455,7 @@ export default function Home() {
       <section id="opinie" className="stories section light">
         <p className="eyebrow">Opinie klientek</p>
 
-        <h2>Kobiety, które zobaczyły siebie inaczej.</h2>
+        <h2>Kobiety, które zobaczyły siebie inaczej</h2>
 
         <div className="storyGrid">
           {stories.map((story) => (
@@ -509,7 +509,7 @@ export default function Home() {
       <section id="faq" className="faq section light">
         <p className="eyebrow">FAQ</p>
 
-        <h2>Najczęstsze pytania przed sesją.</h2>
+        <h2>Najczęstsze pytania przed sesją</h2>
 
         <FaqAccordion items={faqs} />
       </section>
