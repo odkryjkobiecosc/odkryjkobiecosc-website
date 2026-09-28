@@ -39,6 +39,7 @@
 .typewriterVisible {
   position: absolute;
   inset: 0 auto auto 0;
+
   display: block;
   width: 100%;
 }
@@ -83,6 +84,7 @@
   width: 100%;
   min-height: 560px;
   aspect-ratio: 16 / 11;
+
   border-radius: 26px;
 }
 
@@ -95,16 +97,14 @@
   margin-bottom: 58px;
 }
 
-/*
- * OBAWY
- *
- * Na desktopie zostają cztery elementy w jednym rzędzie.
- * Na tabletach / telefonach przechodzą w układ 2 × 2.
- */
+/* OBAWY */
 
 .fearGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
   gap: 18px;
 }
 
@@ -118,7 +118,10 @@
 
   overflow: hidden;
 
-  padding: 30px 28px 28px;
+  padding:
+    30px
+    28px
+    28px;
 
   border:
     1px solid rgba(216, 185, 135, 0.3);
@@ -147,11 +150,6 @@
     box-shadow 0.3s ease;
 }
 
-/*
- * Dekoracyjny cudzysłów pokazuje,
- * że są to myśli klientek.
- */
-
 .fearCard::before {
   content: "“";
 
@@ -162,7 +160,10 @@
 
   color: rgba(216, 185, 135, 0.66);
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
   font-size: 48px;
   line-height: 1;
@@ -173,7 +174,8 @@
 .fearCard:hover {
   transform: translateY(-5px);
 
-  border-color: rgba(216, 185, 135, 0.58);
+  border-color:
+    rgba(216, 185, 135, 0.58);
 
   background:
     radial-gradient(
@@ -187,37 +189,163 @@
     0 26px 70px rgba(21, 19, 19, 0.08);
 }
 
-.signatureLine {
-  margin: 42px 0 0;
+/* Banner zamykający sekcję Obawy */
 
-  font-size: clamp(36px, 5vw, 78px);
-  line-height: 1;
+.signatureLine {
+  position: relative;
+  isolation: isolate;
+
+  overflow: hidden;
+
+  min-height: 280px;
+
+  margin: 30px 0 0;
+
+  padding:
+    34px
+    36px
+    30px;
+
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: center;
+
+  border:
+    1px solid rgba(216, 185, 135, 0.3);
+
+  border-radius: 34px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(12, 11, 10, 0.06) 0%,
+      rgba(12, 11, 10, 0.18) 38%,
+      rgba(12, 11, 10, 0.7) 100%
+    ),
+    radial-gradient(
+      circle at 72% 22%,
+      rgba(216, 185, 135, 0.16),
+      transparent 28%
+    ),
+    url("/images/sections/obawy-signature.webp");
+
+  background-repeat: no-repeat;
+
+  background-size: cover;
+
+  /*
+   * Zdjęcie ma modelkę nisko po prawej.
+   * To ustawienie pokazuje sylwetkę,
+   * ale nadal zostawia oddech nad nią.
+   */
+  background-position: center 72%;
+
+  color: var(--paper);
+
+  text-align: center;
+
+  font-size:
+    clamp(38px, 5vw, 74px);
+
+  line-height: 0.98;
+
   letter-spacing: -0.055em;
+
+  text-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.42);
+
+  box-shadow:
+    0 28px 82px rgba(21, 19, 19, 0.09);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.signatureLine::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.12),
+      transparent 36%,
+      rgba(0, 0, 0, 0.06)
+    );
+
+  pointer-events: none;
+}
+
+.signatureLine::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08),
+      transparent 34%
+    );
+
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .signatureLine:hover {
+    transform: translateY(-4px);
+
+    border-color:
+      rgba(216, 185, 135, 0.5);
+
+    box-shadow:
+      0 34px 92px rgba(21, 19, 19, 0.13);
+  }
 }
 
 /* Doświadczenie */
 
 .experience {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+
+  grid-template-columns:
+    0.9fr 1.1fr;
+
   gap: 70px;
 }
 
 .premiumList {
   list-style: none;
+
   padding: 0;
+
   margin: 0;
 
-  border-top: 1px solid var(--line);
+  border-top:
+    1px solid var(--line);
 }
 
 .premiumList li {
   padding: 26px 0;
 
-  border-bottom: 1px solid var(--line);
+  border-bottom:
+    1px solid var(--line);
 
-  font-size: clamp(24px, 3vw, 46px);
+  font-size:
+    clamp(24px, 3vw, 46px);
+
   line-height: 1.05;
+
   letter-spacing: -0.045em;
 }
 
@@ -225,7 +353,10 @@
 
 .process {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+
+  grid-template-columns:
+    0.8fr 1.2fr;
+
   gap: 70px;
 }
 
@@ -249,7 +380,11 @@
 
   gap: 24px;
 
-  padding: 0 0 54px 34px;
+  padding:
+    0
+    0
+    54px
+    34px;
 }
 
 .timelineItem::before {
@@ -263,15 +398,19 @@
   width: 11px;
   height: 11px;
 
-  background: var(--champagne);
+  background:
+    var(--champagne);
 
   border-radius: 50%;
 }
 
 .timelineItem span {
-  font-family: Arial, sans-serif;
+  font-family:
+    Arial,
+    sans-serif;
 
-  color: var(--champagne);
+  color:
+    var(--champagne);
 
   letter-spacing: 0.2em;
 }
@@ -281,8 +420,11 @@
 
   margin: 0;
 
-  font-size: clamp(25px, 3.1vw, 48px);
+  font-size:
+    clamp(25px, 3.1vw, 48px);
+
   line-height: 1.05;
+
   letter-spacing: -0.045em;
 
   overflow-wrap: break-word;
@@ -293,7 +435,8 @@
 .about {
   display: grid;
 
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns:
+    0.8fr 1.2fr;
 
   gap: 70px;
 
@@ -329,7 +472,9 @@
   content: "";
 
   position: absolute;
+
   inset: 0;
+
   z-index: 1;
 
   background:
@@ -349,12 +494,15 @@
 
 .finalCtaVisual {
   position: absolute;
+
   inset: 0;
+
   z-index: 0;
 
   opacity: 0.46;
 
   border: 0;
+
   border-radius: 0;
 
   box-shadow: none;
@@ -364,6 +512,7 @@
 .finalCta > h2,
 .finalCta > .heroActions {
   position: relative;
+
   z-index: 2;
 }
 
@@ -371,13 +520,7 @@
   margin-inline: auto;
 }
 
-/*
- * Tablet / mobile — Obawy 2 × 2
- *
- * Używamy .fears .fearGrid, więc selektor jest
- * silniejszy od późniejszego .fearGrid z
- * 11-responsive.css.
- */
+/* Tablet / mobile */
 
 @media (max-width: 980px) {
   .fears .fearGrid {
@@ -400,7 +543,8 @@
 
     text-align: left;
 
-    font-size: clamp(20px, 4.7vw, 25px);
+    font-size:
+      clamp(20px, 4.7vw, 25px);
 
     border-radius: 24px;
   }
@@ -411,16 +555,18 @@
 
     font-size: 42px;
   }
+
+  .signatureLine {
+    min-height: 230px;
+
+    background-position:
+      center 74%;
+  }
 }
 
 /* Telefon */
 
 @media (max-width: 560px) {
-  /*
-   * Nagłówek procesu wyśrodkowany.
-   * Sama lista kroków pozostaje normalnie wyrównana.
-   */
-
   .process > div:first-child {
     width: 100%;
 
@@ -444,13 +590,6 @@
     text-align: left;
   }
 
-  /*
-   * OBAWY
-   *
-   * 2 kolumny × 2 rzędy.
-   * Mniejsze kafle, żeby nie zajmowały pół strony.
-   */
-
   .fears .fearGrid {
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
@@ -473,8 +612,11 @@
 
     text-align: left;
 
-    font-size: clamp(17px, 4.7vw, 21px);
+    font-size:
+      clamp(17px, 4.7vw, 21px);
+
     line-height: 1.08;
+
     letter-spacing: -0.035em;
   }
 
@@ -486,24 +628,33 @@
   }
 
   /*
-   * "Od tego jestem ja" jest domknięciem,
-   * a nie kolejnym głównym nagłówkiem.
+   * Baner ma być zauważalny,
+   * ale nie tak wysoki jak osobna sekcja.
    */
-
   .fears .signatureLine {
-    max-width: 92%;
+    max-width: 100%;
+
+    min-height: 190px;
 
     margin:
-      24px
+      20px
       auto
       0;
 
     padding:
+      22px
       18px
-      14px;
+      18px;
+
+    border-radius: 28px;
+
+    background-position:
+      center 78%;
 
     font-size:
-      clamp(32px, 9vw, 42px);
+      clamp(34px, 9vw, 42px);
+
+    line-height: 1;
 
     text-align: center;
   }
@@ -514,7 +665,8 @@
     animation: none;
   }
 
-  .fearCard {
+  .fearCard,
+  .signatureLine {
     transition: none;
   }
 }
