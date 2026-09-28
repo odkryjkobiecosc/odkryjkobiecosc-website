@@ -262,6 +262,34 @@
   margin-inline: auto;
 }
 
+/* Mobile */
+
+@media (max-width: 560px) {
+  /*
+   * Nagłówek procesu wyśrodkowany.
+   * Sama lista kroków pozostaje normalnie wyrównana.
+   */
+  .process > div:first-child {
+    width: 100%;
+    text-align: center;
+  }
+
+  .process > div:first-child .eyebrow {
+    text-align: center;
+  }
+
+  .process > div:first-child h2 {
+    max-width: 92%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .process .timeline {
+    text-align: left;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .typewriterCursor {
     animation: none;
