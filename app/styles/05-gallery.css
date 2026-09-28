@@ -1,3 +1,5 @@
+/* app/styles/05-gallery.css */
+
 /* Galeria */
 
 .gallery h2 {
@@ -5,6 +7,66 @@
 }
 
 .galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 8px;
+  grid-auto-flow: dense;
+  gap: 18px;
+  align-items: stretch;
+}
+
+/*
+ * Pierwsze 15 zdjęć.
+ *
+ * Na desktopie używamy układu kolumnowego typu masonry.
+ * Dzięki temu przy ograniczonej liczbie zdjęć nie powstają
+ * duże puste pola wynikające z grid-row: span.
+ */
+.galleryGrid.galleryGridCollapsed {
+  display: block;
+  columns: 4;
+  column-gap: 18px;
+}
+
+.galleryGridCollapsed .photoCard {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 18px;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+
+  grid-column: auto;
+  grid-row: auto;
+
+  aspect-ratio: auto;
+}
+
+.galleryGridCollapsed .photoCard.galleryWide,
+.galleryGridCollapsed .photoCard.gallerySmall,
+.galleryGridCollapsed .photoCard.galleryPortrait,
+.galleryGridCollapsed .photoCard.galleryTall,
+.galleryGridCollapsed .photoCard.featured,
+.galleryGridCollapsed .photoCard.portrait,
+.galleryGridCollapsed .photoCard.landscape,
+.galleryGridCollapsed .photoCard.featured.portrait,
+.galleryGridCollapsed .photoCard.featured.landscape {
+  grid-column: auto;
+  grid-row: auto;
+  aspect-ratio: auto;
+}
+
+.galleryGridCollapsed .galleryImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/*
+ * Po rozwinięciu wracamy do istniejącego grida.
+ * Ten układ działa dobrze przy pełnych 40 zdjęciach.
+ */
+.galleryGrid.galleryGridExpanded {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-auto-rows: 8px;
@@ -21,6 +83,7 @@
   border: 1px solid rgba(21, 19, 19, 0.1);
   background: #151313;
   box-shadow: 0 22px 70px rgba(21, 19, 19, 0.08);
+
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease,
@@ -81,6 +144,7 @@
   object-position: center center;
   display: block;
   transform: scale(1.001);
+
   transition:
     transform 0.75s ease,
     filter 0.75s ease;
@@ -90,6 +154,88 @@
   transform: scale(1.055);
   filter: contrast(1.04) saturate(1.04);
 }
+
+/*
+ * Dla collapsed nadpisujemy wysokość zdjęcia po regule powyżej.
+ * Zdjęcie zachowuje wtedy swoją naturalną proporcję.
+ */
+.galleryGridCollapsed .photoCard .galleryImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Mniejszy desktop / tablet poziomy */
+
+@media (max-width: 1280px) {
+  .galleryGrid.galleryGridCollapsed {
+    columns: 3;
+    column-gap: 16px;
+  }
+
+  .galleryGridCollapsed .photoCard {
+    margin-bottom: 16px;
+  }
+}
+
+/*
+ * Od 980 px wracamy do normalnego grida.
+ * Dzięki temu zachowujemy działający już układ mobile.
+ */
+@media (max-width: 980px) {
+  .galleryGrid.galleryGridCollapsed {
+    display: grid;
+    columns: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: auto;
+    gap: 16px;
+  }
+
+  .galleryGridCollapsed .photoCard {
+    display: block;
+    width: auto;
+    margin: 0;
+  }
+
+  .galleryGridCollapsed .photoCard.galleryWide,
+  .galleryGridCollapsed .photoCard.landscape,
+  .galleryGridCollapsed .photoCard.featured.landscape {
+    aspect-ratio: 16 / 10;
+  }
+
+  .galleryGridCollapsed .photoCard.gallerySmall {
+    aspect-ratio: 4 / 3;
+  }
+
+  .galleryGridCollapsed .photoCard.galleryPortrait,
+  .galleryGridCollapsed .photoCard.portrait,
+  .galleryGridCollapsed .photoCard.featured.portrait {
+    aspect-ratio: 4 / 5;
+  }
+
+  .galleryGridCollapsed .photoCard.galleryTall {
+    aspect-ratio: 3 / 4.6;
+  }
+
+  .galleryGridCollapsed .photoCard .galleryImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Telefon */
+
+@media (max-width: 560px) {
+  .galleryGrid.galleryGridCollapsed {
+    display: grid;
+    columns: auto;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 14px;
+  }
+}
+
 /* Przycisk rozwijania galerii */
 
 .galleryMoreWrap {
@@ -102,13 +248,16 @@
 .galleryMoreButton {
   position: relative;
   isolation: isolate;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 14px;
+
   min-width: 270px;
   min-height: 58px;
   padding: 0 34px;
+
   overflow: hidden;
 
   border: 1px solid rgba(216, 185, 135, 0.6);
@@ -144,10 +293,13 @@
 
 .galleryMoreButton::before {
   content: "";
+
   position: absolute;
   z-index: -1;
+
   top: -80%;
   left: -40%;
+
   width: 34%;
   height: 260%;
 
@@ -159,12 +311,15 @@
   );
 
   transform: rotate(18deg);
+
   animation: galleryButtonShine 4.8s ease-in-out infinite;
 }
 
 .galleryMoreButton:hover {
   transform: translateY(-3px);
+
   border-color: rgba(216, 185, 135, 0.95);
+
   box-shadow:
     0 24px 58px rgba(21, 19, 19, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
@@ -176,8 +331,10 @@
 
 .galleryMoreArrow {
   display: inline-block;
+
   font-size: 17px;
   line-height: 1;
+
   transition: transform 0.3s ease;
 }
 
