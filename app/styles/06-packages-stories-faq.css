@@ -26,7 +26,7 @@
 
   padding: 34px;
 
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(216, 185, 135, 0.22);
 
   background:
     linear-gradient(
@@ -36,6 +36,25 @@
     );
 
   border-radius: 34px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025),
+    0 20px 60px rgba(0, 0, 0, 0.08);
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.packageCard:hover {
+  border-color: rgba(216, 185, 135, 0.46);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 24px 70px rgba(0, 0, 0, 0.12);
+
+  transform: translateY(-3px);
 }
 
 .packageName {
@@ -349,51 +368,69 @@
 
 @media (max-width: 560px) {
   /*
-   * Więcej oddechu między kartami pakietów
-   * a zewnętrzną krawędzią sekcji.
+   * Cała zawartość sekcji pakietów zostaje odsunięta
+   * od lewej i prawej krawędzi ciemnego tła.
    */
-  .packages {
-    padding-left: 12px;
-    padding-right: 12px;
+  .packages .splitHeader,
+  .packages .packageGrid {
+    width: calc(100% - 28px);
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    box-sizing: border-box;
+  .packages .splitHeader {
+    margin-bottom: 34px;
   }
 
   .packages .packageGrid {
-    gap: 22px;
+    gap: 26px;
   }
 
+  /*
+   * Karta jest teraz wyraźnie wewnątrz sekcji,
+   * a champagne border oddziela ją od czarnego tła.
+   */
   .packageCard {
     width: 100%;
-
+    min-width: 0;
     min-height: auto;
 
     padding: 28px 24px;
 
+    box-sizing: border-box;
+
+    border: 1px solid rgba(216, 185, 135, 0.42);
     border-radius: 28px;
 
-    box-sizing: border-box;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.03),
+      0 18px 48px rgba(0, 0, 0, 0.12);
+  }
+
+  .packageCard:hover {
+    transform: none;
   }
 
   /*
-   * Na telefonie hover praktycznie nie istnieje,
-   * dlatego CTA już w stanie podstawowym
-   * dostaje subtelny champagne tint.
+   * CTA na telefonie pozostaje jasne i mocno widoczne.
    */
   .packageButton {
     min-height: 56px;
 
-    border-color: rgba(216, 185, 135, 0.64);
+    border-color: rgba(216, 185, 135, 0.9);
 
     background:
       linear-gradient(
         135deg,
-        rgba(216, 185, 135, 0.14),
-        rgba(255, 255, 255, 0.05)
+        #e4c99c,
+        #f4e4c8
       );
 
+    color: #151313;
+
     box-shadow:
-      0 15px 38px rgba(216, 185, 135, 0.08);
+      0 16px 40px rgba(216, 185, 135, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.78);
   }
 
   /*
@@ -427,25 +464,32 @@
   }
 
   .faqQuestion {
-    min-height: 88px;
+    min-height: 76px;
 
     align-items: center;
 
-    padding: 22px 22px;
+    padding: 18px 20px;
+
+    gap: 14px;
 
     cursor: pointer;
   }
 
+  /*
+   * Było za duże.
+   * Teraz nagłówek jest wyraźny, ale dużo spokojniejszy.
+   */
   .faqQuestion > span:first-child {
-    font-size: clamp(24px, 7vw, 31px);
-    line-height: 1.05;
+    font-size: clamp(21px, 5.6vw, 25px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
   }
 
   .faqToggleIcon {
-    flex: 0 0 40px;
+    flex: 0 0 38px;
 
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
 
     display: inline-flex;
 
@@ -462,7 +506,7 @@
 
     font-family: Arial, sans-serif;
 
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 300;
 
     line-height: 1;
@@ -473,8 +517,8 @@
 
     padding:
       0
-      22px
-      24px;
+      20px
+      22px;
   }
 
   .faqAnswer[hidden] {
@@ -482,12 +526,13 @@
   }
 
   .faqAnswer p {
-    font-size: 18px;
-    line-height: 1.5;
+    font-size: 17px;
+    line-height: 1.52;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .packageCard,
   .packageButton,
   .packageButton::before,
   .faqItem {
