@@ -25,81 +25,124 @@
   justify-content: center;
 }
 
-/*
- * CTA HERO
- * Subtelny efekt premium po najechaniu.
- */
+/* HERO CTA */
 
 .hero .heroActions .button {
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  transform: translateZ(0);
 
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease,
-    background 0.3s ease,
-    color 0.3s ease;
+    transform 0.32s ease,
+    box-shadow 0.32s ease,
+    border-color 0.32s ease,
+    background 0.32s ease,
+    color 0.32s ease;
 }
+
+/* miękki glow wewnątrz przycisku */
+
+.hero .heroActions .button::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -2;
+
+  opacity: 0;
+
+  background:
+    radial-gradient(
+      circle at 18% 50%,
+      rgba(255, 255, 255, 0.24),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 82% 18%,
+      rgba(216, 185, 135, 0.24),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(216, 185, 135, 0.18),
+      transparent 46%,
+      rgba(255, 255, 255, 0.1)
+    );
+
+  transition: opacity 0.32s ease;
+}
+
+/* przechodzący błysk */
 
 .hero .heroActions .button::after {
   content: "";
-
   position: absolute;
+
+  top: -120%;
+  left: -58%;
+
+  width: 40%;
+  height: 340%;
+
   z-index: -1;
-
-  top: -100%;
-  left: -45%;
-
-  width: 30%;
-  height: 300%;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.82),
-    transparent
-  );
-
-  transform: rotate(18deg);
 
   opacity: 0;
 
   pointer-events: none;
 
+  transform: rotate(18deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.98),
+      rgba(255, 255, 255, 0.42),
+      transparent
+    );
+
   transition:
-    left 0.85s ease,
-    opacity 0.18s ease;
+    left 0.9s ease,
+    opacity 0.2s ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .hero .heroActions .button:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 
-    border-color: rgba(216, 185, 135, 0.78);
+    border-color: rgba(216, 185, 135, 0.9);
 
     box-shadow:
-      0 18px 48px rgba(21, 19, 19, 0.12),
-      0 0 0 1px rgba(216, 185, 135, 0.08);
+      0 22px 58px rgba(21, 19, 19, 0.15),
+      0 0 0 1px rgba(216, 185, 135, 0.12),
+      0 0 34px rgba(216, 185, 135, 0.13);
+  }
+
+  .hero .heroActions .button:hover::before {
+    opacity: 1;
   }
 
   .hero .heroActions .button:hover::after {
-    left: 125%;
+    left: 130%;
     opacity: 1;
   }
 
   .hero .heroActions .primary:hover {
     box-shadow:
-      0 20px 52px rgba(21, 19, 19, 0.18),
-      0 0 28px rgba(216, 185, 135, 0.13);
+      0 24px 62px rgba(21, 19, 19, 0.2),
+      0 0 40px rgba(216, 185, 135, 0.16);
   }
 
   .hero .heroActions .secondary:hover {
-    background: rgba(216, 185, 135, 0.13);
+    background:
+      linear-gradient(
+        135deg,
+        rgba(216, 185, 135, 0.16),
+        rgba(255, 255, 255, 0.7)
+      );
 
     box-shadow:
-      0 18px 48px rgba(216, 185, 135, 0.12);
+      0 22px 54px rgba(216, 185, 135, 0.12);
   }
 }
 
@@ -118,6 +161,7 @@
 .finalCtaVisual {
   position: relative;
   overflow: hidden;
+
   border: 1px solid rgba(255, 255, 255, 0.26);
 
   background:
@@ -157,8 +201,10 @@
 .photoCard::after,
 .finalCtaVisual::after {
   content: "";
+
   position: absolute;
   inset: 0;
+
   pointer-events: none;
 
   background:
@@ -177,8 +223,10 @@
 .portraitPlaceholder span,
 .imageFrame span {
   position: absolute;
+
   left: 28px;
   bottom: 26px;
+
   z-index: 2;
 
   font-family: Arial, sans-serif;
@@ -187,23 +235,27 @@
 
   font-size: 11px;
   letter-spacing: 0.18em;
+
   text-transform: uppercase;
 }
 
 .tall {
   width: min(100%, 660px);
   min-height: 680px;
+
   border-radius: 180px 180px 12px 12px;
 }
 
 .small {
   width: min(460px, 100%);
   aspect-ratio: 4 / 5.35;
+
   border-radius: 12px 160px 12px 12px;
 }
 
 .floatingCard {
   position: absolute;
+
   z-index: 3;
 
   padding: 18px 22px;
@@ -211,6 +263,7 @@
   background: rgba(251, 248, 243, 0.86);
 
   border: 1px solid rgba(255, 255, 255, 0.58);
+
   border-radius: 999px;
 
   backdrop-filter: blur(16px);
@@ -220,9 +273,11 @@
 
   font-size: 12px;
   letter-spacing: 0.16em;
+
   text-transform: uppercase;
 
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.12);
 }
 
 .topCard {
@@ -235,11 +290,7 @@
   bottom: 110px;
 }
 
-/*
- * Telefon
- * H1 jest już wyśrodkowany w responsive.css.
- * Tutaj wyrównujemy do niego również eyebrow i lead.
- */
+/* Mobile */
 
 @media (max-width: 560px) {
   .hero .heroCopy {
@@ -248,29 +299,31 @@
 
   .hero .heroCopy > .eyebrow {
     width: 100%;
+
     margin-left: auto;
     margin-right: auto;
+
     text-align: center;
   }
 
   .hero .heroCopy > .lead {
     max-width: 94%;
+
     margin-left: auto;
     margin-right: auto;
+
     text-align: center;
   }
 
-  /*
-   * Same CTA pozostają pełnej szerokości,
-   * ale dostają delikatny champagne detal.
-   */
   .hero .heroActions .secondary {
-    border-color: rgba(216, 185, 135, 0.34);
+    border-color:
+      rgba(216, 185, 135, 0.38);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero .heroActions .button,
+  .hero .heroActions .button::before,
   .hero .heroActions .button::after {
     transition: none;
   }
