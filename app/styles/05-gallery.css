@@ -6,83 +6,58 @@
   margin-bottom: 70px;
 }
 
-.galleryGrid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-rows: 8px;
-  grid-auto-flow: dense;
-  gap: 18px;
-  align-items: stretch;
-}
-
 /*
- * Pierwsze 15 zdjęć.
+ * Desktop:
+ * prawdziwy układ masonry oparty o CSS columns.
  *
- * Na desktopie używamy układu kolumnowego typu masonry.
- * Dzięki temu przy ograniczonej liczbie zdjęć nie powstają
- * duże puste pola wynikające z grid-row: span.
+ * Działa identycznie przed i po kliknięciu
+ * "Pokaż więcej zdjęć", dzięki czemu nie ma
+ * dziur ani przeskoku do starego układu Grid.
  */
-.galleryGrid.galleryGridCollapsed {
+.galleryGrid,
+.galleryGrid.galleryGridCollapsed,
+.galleryGrid.galleryGridExpanded {
   display: block;
   columns: 4;
   column-gap: 18px;
+  width: 100%;
 }
 
-.galleryGridCollapsed .photoCard {
+.photoCard,
+.galleryGridCollapsed .photoCard,
+.galleryGridExpanded .photoCard {
+  position: relative;
+
   display: inline-block;
   width: 100%;
+  height: auto;
+
   margin: 0 0 18px;
+
+  overflow: hidden;
+
   break-inside: avoid;
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
 
-  grid-column: auto;
-  grid-row: auto;
-
-  aspect-ratio: auto;
-}
-
-.galleryGridCollapsed .photoCard.galleryWide,
-.galleryGridCollapsed .photoCard.gallerySmall,
-.galleryGridCollapsed .photoCard.galleryPortrait,
-.galleryGridCollapsed .photoCard.galleryTall,
-.galleryGridCollapsed .photoCard.featured,
-.galleryGridCollapsed .photoCard.portrait,
-.galleryGridCollapsed .photoCard.landscape,
-.galleryGridCollapsed .photoCard.featured.portrait,
-.galleryGridCollapsed .photoCard.featured.landscape {
-  grid-column: auto;
-  grid-row: auto;
-  aspect-ratio: auto;
-}
-
-.galleryGridCollapsed .galleryImage {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-/*
- * Po rozwinięciu wracamy do istniejącego grida.
- * Ten układ działa dobrze przy pełnych 40 zdjęciach.
- */
-.galleryGrid.galleryGridExpanded {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-rows: 8px;
-  grid-auto-flow: dense;
-  gap: 18px;
-  align-items: stretch;
-}
-
-.photoCard {
-  position: relative;
-  overflow: hidden;
-  min-height: auto;
   border-radius: 18px;
   border: 1px solid rgba(21, 19, 19, 0.1);
+
   background: #151313;
+
   box-shadow: 0 22px 70px rgba(21, 19, 19, 0.08);
+
+  /*
+   * Kasujemy stare ustawienia Grid.
+   */
+  grid-column: auto;
+  grid-row: auto;
+
+  /*
+   * Na desktopie zdjęcie zachowuje
+   * swoje naturalne proporcje.
+   */
+  aspect-ratio: auto;
 
   transition:
     transform 0.35s ease,
@@ -90,59 +65,36 @@
     border-color 0.35s ease;
 }
 
-.photoCard.galleryWide {
-  grid-column: span 2;
-  grid-row: span 17;
-}
-
-.photoCard.gallerySmall {
-  grid-column: span 1;
-  grid-row: span 10;
-}
-
-.photoCard.galleryPortrait {
-  grid-column: span 1;
-  grid-row: span 18;
-}
-
-.photoCard.galleryTall {
-  grid-column: span 1;
-  grid-row: span 23;
-}
-
-.photoCard.portrait {
-  aspect-ratio: auto;
-}
-
-.photoCard.landscape {
-  aspect-ratio: auto;
-}
-
-.photoCard.featured {
-  grid-column: span 2;
-  grid-row: span 22;
-}
-
-.photoCard.featured.portrait {
-  aspect-ratio: auto;
-}
-
+/*
+ * Wszystkie stare klasy rozmiaru nadal mogą
+ * istnieć w page.tsx, ale desktop masonry
+ * nie używa już grid-row/grid-column.
+ */
+.photoCard.galleryWide,
+.photoCard.gallerySmall,
+.photoCard.galleryPortrait,
+.photoCard.galleryTall,
+.photoCard.featured,
+.photoCard.portrait,
+.photoCard.landscape,
+.photoCard.featured.portrait,
 .photoCard.featured.landscape {
+  grid-column: auto;
+  grid-row: auto;
   aspect-ratio: auto;
 }
 
-.photoCard:hover {
-  transform: translateY(-6px);
-  border-color: rgba(216, 185, 135, 0.48);
-  box-shadow: 0 34px 92px rgba(21, 19, 19, 0.18);
-}
-
-.photoCard .galleryImage {
+.photoCard .galleryImage,
+.galleryGridCollapsed .photoCard .galleryImage,
+.galleryGridExpanded .photoCard .galleryImage {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+
+  object-fit: contain;
   object-position: center center;
+
   display: block;
+
   transform: scale(1.001);
 
   transition:
@@ -150,89 +102,133 @@
     filter 0.75s ease;
 }
 
+.photoCard:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(216, 185, 135, 0.48);
+
+  box-shadow: 0 34px 92px rgba(21, 19, 19, 0.18);
+}
+
 .photoCard:hover .galleryImage {
-  transform: scale(1.055);
+  transform: scale(1.035);
   filter: contrast(1.04) saturate(1.04);
 }
 
 /*
- * Dla collapsed nadpisujemy wysokość zdjęcia po regule powyżej.
- * Zdjęcie zachowuje wtedy swoją naturalną proporcję.
+ * Mniejszy desktop / tablet poziomy:
+ * 3 kolumny masonry.
  */
-.galleryGridCollapsed .photoCard .galleryImage {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-/* Mniejszy desktop / tablet poziomy */
-
 @media (max-width: 1280px) {
-  .galleryGrid.galleryGridCollapsed {
+  .galleryGrid,
+  .galleryGrid.galleryGridCollapsed,
+  .galleryGrid.galleryGridExpanded {
     columns: 3;
     column-gap: 16px;
   }
 
-  .galleryGridCollapsed .photoCard {
+  .photoCard,
+  .galleryGridCollapsed .photoCard,
+  .galleryGridExpanded .photoCard {
     margin-bottom: 16px;
   }
 }
 
 /*
- * Od 980 px wracamy do normalnego grida.
- * Dzięki temu zachowujemy działający już układ mobile.
+ * Tablet / telefon:
+ * wracamy do zwykłego Grid.
+ *
+ * To zachowuje obecny, dobrze działający
+ * układ na telefonie.
  */
 @media (max-width: 980px) {
-  .galleryGrid.galleryGridCollapsed {
+  .galleryGrid,
+  .galleryGrid.galleryGridCollapsed,
+  .galleryGrid.galleryGridExpanded {
     display: grid;
+
     columns: auto;
+
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-rows: auto;
+
     gap: 16px;
   }
 
-  .galleryGridCollapsed .photoCard {
+  .photoCard,
+  .galleryGridCollapsed .photoCard,
+  .galleryGridExpanded .photoCard {
     display: block;
+
     width: auto;
     margin: 0;
+
+    grid-column: auto;
+    grid-row: auto;
+
+    break-inside: auto;
   }
 
-  .galleryGridCollapsed .photoCard.galleryWide,
-  .galleryGridCollapsed .photoCard.landscape,
-  .galleryGridCollapsed .photoCard.featured.landscape {
+  .photoCard.galleryWide,
+  .photoCard.landscape,
+  .photoCard.featured.landscape {
     aspect-ratio: 16 / 10;
   }
 
-  .galleryGridCollapsed .photoCard.gallerySmall {
+  .photoCard.gallerySmall {
     aspect-ratio: 4 / 3;
   }
 
-  .galleryGridCollapsed .photoCard.galleryPortrait,
-  .galleryGridCollapsed .photoCard.portrait,
-  .galleryGridCollapsed .photoCard.featured.portrait {
+  .photoCard.galleryPortrait,
+  .photoCard.portrait,
+  .photoCard.featured.portrait {
     aspect-ratio: 4 / 5;
   }
 
-  .galleryGridCollapsed .photoCard.galleryTall {
+  .photoCard.galleryTall {
     aspect-ratio: 3 / 4.6;
   }
 
-  .galleryGridCollapsed .photoCard .galleryImage {
+  .photoCard .galleryImage,
+  .galleryGridCollapsed .photoCard .galleryImage,
+  .galleryGridExpanded .photoCard .galleryImage {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
+    object-position: center center;
   }
 }
 
 /* Telefon */
 
 @media (max-width: 560px) {
-  .galleryGrid.galleryGridCollapsed {
+  .galleryGrid,
+  .galleryGrid.galleryGridCollapsed,
+  .galleryGrid.galleryGridExpanded {
     display: grid;
+
     columns: auto;
+
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
+
     gap: 14px;
+  }
+
+  .photoCard,
+  .galleryGridCollapsed .photoCard,
+  .galleryGridExpanded .photoCard {
+    margin: 0;
+    border-radius: 16px;
+  }
+
+  .photoCard:hover {
+    transform: translateY(-3px);
+  }
+
+  .photoCard:hover .galleryImage {
+    transform: scale(1.025);
   }
 }
 
@@ -241,8 +237,17 @@
 .galleryMoreWrap {
   display: flex;
   justify-content: center;
+
   width: 100%;
+
   margin-top: 46px;
+
+  /*
+   * Ważne przy CSS columns:
+   * przycisk znajduje się poza .galleryGrid,
+   * więc zawsze będzie pod całą galerią.
+   */
+  clear: both;
 }
 
 .galleryMoreButton {
@@ -252,10 +257,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   gap: 14px;
 
   min-width: 270px;
   min-height: 58px;
+
   padding: 0 34px;
 
   overflow: hidden;
@@ -277,6 +284,7 @@
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.16em;
+
   text-transform: uppercase;
 
   cursor: pointer;
