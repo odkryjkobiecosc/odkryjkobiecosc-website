@@ -90,3 +90,109 @@
   transform: scale(1.055);
   filter: contrast(1.04) saturate(1.04);
 }
+/* Przycisk rozwijania galerii */
+
+.galleryMoreWrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 46px;
+}
+
+.galleryMoreButton {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-width: 270px;
+  min-height: 58px;
+  padding: 0 34px;
+  overflow: hidden;
+
+  border: 1px solid rgba(216, 185, 135, 0.6);
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(216, 185, 135, 0.22),
+      rgba(255, 255, 255, 0.88)
+    ),
+    #f8f4ed;
+
+  color: #151313;
+
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 18px 46px rgba(21, 19, 19, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.galleryMoreButton::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -80%;
+  left: -40%;
+  width: 34%;
+  height: 260%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.82),
+    transparent
+  );
+
+  transform: rotate(18deg);
+  animation: galleryButtonShine 4.8s ease-in-out infinite;
+}
+
+.galleryMoreButton:hover {
+  transform: translateY(-3px);
+  border-color: rgba(216, 185, 135, 0.95);
+  box-shadow:
+    0 24px 58px rgba(21, 19, 19, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.galleryMoreButton:active {
+  transform: translateY(-1px);
+}
+
+.galleryMoreArrow {
+  display: inline-block;
+  font-size: 17px;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.galleryMoreArrow.isExpanded {
+  transform: rotate(180deg);
+}
+
+@keyframes galleryButtonShine {
+  0%,
+  68% {
+    left: -40%;
+  }
+
+  88%,
+  100% {
+    left: 125%;
+  }
+}
