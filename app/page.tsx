@@ -4,6 +4,8 @@ import Image from "next/image";
 import Header from "../components/Header";
 import PortfolioGallery from "../components/PortfolioGallery";
 import EmailButton from "../components/EmailButton";
+import TypewriterText from "../components/TypewriterText";
+import FaqAccordion from "../components/FaqAccordion";
 
 import gallery01 from "../public/images/gallery/gallery-01.webp";
 import gallery02 from "../public/images/gallery/gallery-02.webp";
@@ -309,7 +311,12 @@ export default function Home() {
         <div>
           <p className="eyebrow">Zanim powstanie zdjęcie</p>
 
-          <h2>Od miesięcy jesteś mamą, partnerką, pracownikiem.</h2>
+          <h2>
+            <TypewriterText
+              text="Od miesięcy jesteś mamą, partnerką, pracownikiem."
+              speed={42}
+            />
+          </h2>
         </div>
 
         <p className="sectionText">
@@ -504,14 +511,7 @@ export default function Home() {
 
         <h2>Najczęstsze pytania przed sesją.</h2>
 
-        <div className="faqGrid">
-          {faqs.map((item) => (
-            <article className="faqItem" key={item.question}>
-              <h3>{item.question}</h3>
-              <p>{item.answer}</p>
-            </article>
-          ))}
-        </div>
+        <FaqAccordion items={faqs} />
       </section>
 
       <section id="kontakt" className="finalCta section dark">
@@ -533,10 +533,7 @@ export default function Home() {
         </h2>
 
         <div className="heroActions center">
-          <a
-            className="button primary lightButton"
-            href={whatsappLink}
-          >
+          <a className="button primary lightButton" href={whatsappLink}>
             Napisz na WhatsApp
           </a>
 
