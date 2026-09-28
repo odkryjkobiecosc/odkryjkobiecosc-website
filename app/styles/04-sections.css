@@ -45,10 +45,15 @@
 
 .typewriterCursor {
   display: inline-block;
+
   margin-left: 0.04em;
+
   color: var(--champagne);
+
   font-weight: 400;
-  animation: typewriterCursorBlink 0.75s step-end infinite;
+
+  animation:
+    typewriterCursorBlink 0.75s step-end infinite;
 }
 
 @keyframes typewriterCursorBlink {
@@ -86,43 +91,111 @@
   grid-template-columns: 1fr 0.72fr;
   gap: 48px;
   align-items: end;
+
   margin-bottom: 58px;
 }
 
+/*
+ * OBAWY
+ *
+ * Na desktopie zostają cztery elementy w jednym rzędzie.
+ * Na tabletach / telefonach przechodzą w układ 2 × 2.
+ */
+
 .fearGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
 .fearCard {
+  position: relative;
+
   min-height: 170px;
-  padding: 28px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.42);
-  border-radius: 28px;
+
   display: flex;
-  align-items: end;
+  align-items: flex-end;
+
+  overflow: hidden;
+
+  padding: 30px 28px 28px;
+
+  border:
+    1px solid rgba(216, 185, 135, 0.3);
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(216, 185, 135, 0.13),
+      transparent 56%
+    ),
+    rgba(255, 255, 255, 0.42);
+
+  border-radius: 28px;
+
   font-size: 26px;
   line-height: 1.1;
   letter-spacing: -0.04em;
 
+  box-shadow:
+    0 18px 54px rgba(21, 19, 19, 0.035);
+
   transition:
-    transform 0.25s ease,
-    background 0.25s ease;
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/*
+ * Dekoracyjny cudzysłów pokazuje,
+ * że są to myśli klientek.
+ */
+
+.fearCard::before {
+  content: "“";
+
+  position: absolute;
+
+  top: 13px;
+  left: 20px;
+
+  color: rgba(216, 185, 135, 0.66);
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 48px;
+  line-height: 1;
+
+  pointer-events: none;
 }
 
 .fearCard:hover {
   transform: translateY(-5px);
-  background: var(--white);
+
+  border-color: rgba(216, 185, 135, 0.58);
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(216, 185, 135, 0.2),
+      transparent 58%
+    ),
+    var(--white);
+
+  box-shadow:
+    0 26px 70px rgba(21, 19, 19, 0.08);
 }
 
 .signatureLine {
   margin: 42px 0 0;
+
   font-size: clamp(36px, 5vw, 78px);
   line-height: 1;
   letter-spacing: -0.055em;
 }
+
+/* Doświadczenie */
 
 .experience {
   display: grid;
@@ -134,16 +207,21 @@
   list-style: none;
   padding: 0;
   margin: 0;
+
   border-top: 1px solid var(--line);
 }
 
 .premiumList li {
   padding: 26px 0;
+
   border-bottom: 1px solid var(--line);
+
   font-size: clamp(24px, 3vw, 46px);
   line-height: 1.05;
   letter-spacing: -0.045em;
 }
+
+/* Proces */
 
 .process {
   display: grid;
@@ -157,47 +235,68 @@
 }
 
 .timeline {
-  border-left: 1px solid rgba(255, 255, 255, 0.24);
+  border-left:
+    1px solid rgba(255, 255, 255, 0.24);
 }
 
 .timelineItem {
   position: relative;
+
   display: grid;
-  grid-template-columns: 90px minmax(0, 1fr);
+
+  grid-template-columns:
+    90px minmax(0, 1fr);
+
   gap: 24px;
+
   padding: 0 0 54px 34px;
 }
 
 .timelineItem::before {
   content: "";
+
   position: absolute;
+
   left: -6px;
   top: 4px;
+
   width: 11px;
   height: 11px;
+
   background: var(--champagne);
+
   border-radius: 50%;
 }
 
 .timelineItem span {
   font-family: Arial, sans-serif;
+
   color: var(--champagne);
+
   letter-spacing: 0.2em;
 }
 
 .timelineItem p {
   min-width: 0;
+
   margin: 0;
+
   font-size: clamp(25px, 3.1vw, 48px);
   line-height: 1.05;
   letter-spacing: -0.045em;
+
   overflow-wrap: break-word;
 }
 
+/* O mnie */
+
 .about {
   display: grid;
+
   grid-template-columns: 0.8fr 1.2fr;
+
   gap: 70px;
+
   align-items: center;
 }
 
@@ -210,11 +309,17 @@
   max-width: 760px;
 }
 
+/* Final CTA */
+
 .finalCta {
   position: relative;
+
   overflow: hidden;
+
   text-align: center;
+
   min-height: 640px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -222,6 +327,7 @@
 
 .finalCta::before {
   content: "";
+
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -245,9 +351,12 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+
   opacity: 0.46;
+
   border: 0;
   border-radius: 0;
+
   box-shadow: none;
 }
 
@@ -262,15 +371,59 @@
   margin-inline: auto;
 }
 
-/* Mobile */
+/*
+ * Tablet / mobile — Obawy 2 × 2
+ *
+ * Używamy .fears .fearGrid, więc selektor jest
+ * silniejszy od późniejszego .fearGrid z
+ * 11-responsive.css.
+ */
+
+@media (max-width: 980px) {
+  .fears .fearGrid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+  }
+
+  .fears .fearCard {
+    min-height: 138px;
+
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    padding:
+      42px
+      20px
+      22px;
+
+    text-align: left;
+
+    font-size: clamp(20px, 4.7vw, 25px);
+
+    border-radius: 24px;
+  }
+
+  .fears .fearCard::before {
+    top: 13px;
+    left: 18px;
+
+    font-size: 42px;
+  }
+}
+
+/* Telefon */
 
 @media (max-width: 560px) {
   /*
    * Nagłówek procesu wyśrodkowany.
    * Sama lista kroków pozostaje normalnie wyrównana.
    */
+
   .process > div:first-child {
     width: 100%;
+
     text-align: center;
   }
 
@@ -280,18 +433,88 @@
 
   .process > div:first-child h2 {
     max-width: 92%;
+
     margin-left: auto;
     margin-right: auto;
+
     text-align: center;
   }
 
   .process .timeline {
     text-align: left;
   }
+
+  /*
+   * OBAWY
+   *
+   * 2 kolumny × 2 rzędy.
+   * Mniejsze kafle, żeby nie zajmowały pół strony.
+   */
+
+  .fears .fearGrid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  .fears .fearCard {
+    min-height: 118px;
+
+    padding:
+      38px
+      14px
+      16px;
+
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    border-radius: 22px;
+
+    text-align: left;
+
+    font-size: clamp(17px, 4.7vw, 21px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+
+  .fears .fearCard::before {
+    top: 10px;
+    left: 14px;
+
+    font-size: 38px;
+  }
+
+  /*
+   * "Od tego jestem ja" jest domknięciem,
+   * a nie kolejnym głównym nagłówkiem.
+   */
+
+  .fears .signatureLine {
+    max-width: 92%;
+
+    margin:
+      24px
+      auto
+      0;
+
+    padding:
+      18px
+      14px;
+
+    font-size:
+      clamp(32px, 9vw, 42px);
+
+    text-align: center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .typewriterCursor {
     animation: none;
+  }
+
+  .fearCard {
+    transition: none;
   }
 }
