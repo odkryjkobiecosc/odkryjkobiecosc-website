@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 
 type GalleryItem = {
@@ -19,19 +19,34 @@ export default function PortfolioGallery({
   images,
 }: PortfolioGalleryProps) {
   const [expanded, setExpanded] = useState(false);
+  const galleryRef = useRef<HTMLDivElement>(null);
 
   const visibleImages = expanded
     ? images
     : images.slice(0, INITIAL_VISIBLE);
 
+  const handleToggle = () => {
+    if (expanded) {
+      setExpanded(false);
+
+      requestAnimationFrame(() => {
+        galleryRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+
+      return;
+    }
+
+    setExpanded(true);
+  };
+
   return (
     <>
-      <div className="galleryGrid">
+      <div ref={galleryRef} className="galleryGrid">
         {visibleImages.map((item, index) => (
-          <div
-            className={item.className}
-            key={`${item.image.src}-${index}`}
-          >
+          <div className={item.className} key={item.image.src}>
             <Image
               src={item.image}
               alt={item.alt}
@@ -48,8 +63,9 @@ export default function PortfolioGallery({
           <button
             type="button"
             className="galleryMoreButton"
-            onClick={() => setExpanded((current) => !current)}
+            onClick={handleToggle}
             aria-expanded={expanded}
+            aria-controls="portfolio"
           >
             <span>
               {expanded ? "Pokaż mniej" : "Pokaż więcej zdjęć"}
