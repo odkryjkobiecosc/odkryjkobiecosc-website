@@ -6,6 +6,7 @@ import PortfolioGallery from "../components/PortfolioGallery";
 import EmailButton from "../components/EmailButton";
 import TypewriterText from "../components/TypewriterText";
 import FaqAccordion from "../components/FaqAccordion";
+import StaggeredList from "../components/StaggeredList";
 
 import gallery01 from "../public/images/gallery/gallery-01.webp";
 import gallery02 from "../public/images/gallery/gallery-02.webp";
@@ -381,11 +382,7 @@ export default function Home() {
           <h2>To doświadczenie jest dla Ciebie, jeśli...</h2>
         </div>
 
-        <ul className="premiumList">
-          {experienceFor.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        <StaggeredList items={experienceFor} />
       </section>
 
       <section id="jak-wyglada-sesja" className="process section dark">
