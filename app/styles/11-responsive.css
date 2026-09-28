@@ -242,7 +242,11 @@
     padding: 22px 18px;
     border-radius: 999px;
     background:
-      linear-gradient(135deg, rgba(216, 185, 135, 0.22), rgba(255, 255, 255, 0.5)),
+      linear-gradient(
+        135deg,
+        rgba(216, 185, 135, 0.22),
+        rgba(255, 255, 255, 0.5)
+      ),
       rgba(255, 255, 255, 0.34);
     border: 1px solid rgba(216, 185, 135, 0.34);
     text-align: center;
@@ -833,6 +837,19 @@
   .footerBottom p {
     font-size: 11px;
   }
+
+  .galleryMoreWrap {
+    margin-top: 32px;
+  }
+
+  .galleryMoreButton {
+    width: min(100%, 310px);
+    min-width: 0;
+    min-height: 54px;
+    padding: 0 24px;
+    font-size: 10px;
+    letter-spacing: 0.13em;
+  }
 }
 
 /* Floating WhatsApp mobile */
@@ -872,7 +889,12 @@
 
   .photoCard,
   .galleryImage,
+  .galleryMoreButton,
   .cookieButton {
     transition: none;
+  }
+
+  .galleryMoreButton::before {
+    animation: none;
   }
 }
