@@ -1,3 +1,5 @@
+/* app/styles/11-responsive.css */
+
 /* Tablet / mniejszy desktop */
 
 @media (max-width: 1280px) {
@@ -849,6 +851,54 @@
     padding: 0 24px;
     font-size: 10px;
     letter-spacing: 0.13em;
+  }
+
+  /* Wyśrodkowanie kluczowych nagłówków na telefonie */
+
+  .heroCopy h1,
+  .experience > div:first-child h2,
+  .gallery > h2,
+  .packages .splitHeader > div:first-child h2,
+  .stories > h2,
+  .faq > h2 {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .heroCopy h1 {
+    max-width: 96%;
+  }
+
+  .experience > div:first-child {
+    text-align: center;
+  }
+
+  .experience > div:first-child h2,
+  .gallery > h2,
+  .packages .splitHeader > div:first-child h2,
+  .stories > h2,
+  .faq > h2 {
+    max-width: 94%;
+  }
+
+  .packages .splitHeader > div:first-child {
+    text-align: center;
+  }
+
+  /* Nazwa pakietu i cena na środku, opis zostaje po lewej */
+
+  .packageCard > div:first-child {
+    text-align: center;
+  }
+
+  .packageName,
+  .packageCard h3 {
+    text-align: center;
+  }
+
+  .packageText {
+    text-align: left;
   }
 }
 
